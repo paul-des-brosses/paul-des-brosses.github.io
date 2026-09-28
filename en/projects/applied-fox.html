@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Applied Fox — Paul des Brosses</title>
+<meta name="description" content="A 100% local multi-agent AI system for R&D technology watch. Everything runs through Ollama, no data leaves the machine, no change without human validation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<noscript><style>[data-reveal]{opacity:1}</style></noscript>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<header class="site-header"><div class="wrap">
+  <a class="brand" href="../index.html">Paul des Brosses</a>
+  <nav class="nav">
+    <a href="../index.html#projets">Projects</a>
+    <a href="../index.html#a-propos">About</a>
+    <a href="../index.html#contact">Contact</a>
+    <span class="lang"><span class="on">EN</span><a href="../../fr/projets/applied-fox.html">FR</a></span>
+  </nav>
+</div></header>
+
+<main>
+
+<section class="page-hero" style="border-top:none"><div class="wrap">
+  <p class="breadcrumbs" data-reveal><a href="../index.html">Home</a> / <a href="../index.html#projets">Projects</a> / Applied Fox</p>
+  <p class="label kicker" data-reveal>Local AI / multi-agent</p>
+  <h1 data-reveal>Applied Fox</h1>
+  <p class="sub" data-reveal>The R&amp;D assistant that never leaves your machine — and never decides in your place. A multi-agent technology-watch system, 100% local via Ollama.</p>
+  <div class="row actions" data-reveal>
+    <a class="btn solid" href="https://github.com/paul-des-brosses/applied-fox" target="_blank" rel="noopener">GitHub repository</a>
+    <a class="btn ghost" href="https://github.com/paul-des-brosses/applied-fox/blob/main/DEMO.md" target="_blank" rel="noopener">Step-by-step demo</a>
+  </div>
+</div></section>
+
+<figure class="cover" data-reveal><div class="wrap">
+  <img src="../../assets/img/applied-fox/master.png" alt="Applied Fox — suggestion validation TUI: accept / reject / defer">
+  <figcaption>The human-in-the-loop loop: each suggestion is presented one by one, with its impact, risks and open questions. The user accepts, rejects or defers, and nothing changes without their approval.</figcaption>
+</div></figure>
+
+<section><div class="wrap">
+  <div class="meta" data-reveal>
+    <div><div class="k">Year</div><div class="v">2026</div></div>
+    <div><div class="k">Role</div><div class="v">Design, architecture, development</div></div>
+    <div><div class="k">Setting</div><div class="v">Personal project</div></div>
+    <div><div class="k">Status</div><div class="v">MVP delivered (M1→8 + v1.5)</div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head" data-reveal><h2>Context</h2></div>
+  <div class="prose" data-reveal>
+    <p>AI tools for engineers suffer from two flaws that can make them harmful to a project: they send your data to servers you don't control, and they tend to take the project over in your place.</p>
+    <p>Applied Fox is built <strong>against those two flaws</strong>. The goal: structured, local, human-controlled technology watch, for long projects where knowledge of the context is the main investment.</p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head" data-reveal><h2>Approach</h2></div>
+  <div class="prose" data-reveal>
+    <p>You describe your project once in a structured <code>.md</code> file (components, constraints, objectives, next deliverable). Applied Fox runs a chain of 4 local agents that collect, filter, evaluate and synthesise the information relevant to that project, then you validate each suggestion.</p>
+    <pre>Scout        →  Reddit + RSS + GitHub  (deterministic 5-step filtering)
+Integrator   →  feasibility assessment
+Judge        →  ranking + ETA  (deterministic filters v1.5)
+Reporter     →  HTML report + 3-8 prioritised suggestions
+                    ↓
+              human validation: accept / reject / defer</pre>
+    <p>Each agent has a <strong>strict Pydantic contract</strong>: if one fails, we know exactly which one and why. The Judge never sees the findings rejected by the Integrator. Three layers of deterministic filters short-circuit ~70% of LLM calls before even querying the model.</p>
+    <p>Non-negotiable constraints: <strong>local by default</strong> (no silent network calls, no telemetry), <strong>hot-swappable LLM</strong> per role, <strong>adaptable to the hardware</strong>, and <strong>the human remains the final arbiter</strong>.</p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head" data-reveal><h2>Result</h2></div>
+  <div class="prose" data-reveal>
+    <ul>
+      <li><strong>MVP delivered</strong>: interview module (4 modes), 4-agent pipeline, 3 active sources, validation loop, multi-project menu.</li>
+      <li>Full run: <strong>~4-6 min cold</strong>, <strong>~1-2 min</strong> with a warm LLM cache (RTX 3070 8 GB).</li>
+      <li>The Judge runs in ~10 s on ~20 findings, thanks to the deterministic filters (−70% LLM calls).</li>
+      <li><strong>Zero data</strong> sent to a cloud, zero subscription.</li>
+    </ul>
+  </div>
+  <figure class="figure doc" data-reveal>
+    <img src="../../assets/img/applied-fox/report.png" alt="HTML technology-watch report produced by Applied Fox (DIY lightning detection station)">
+    <figcaption>Example of the HTML report at the end of a watch: one-line summary, prioritised suggestions (gain, effort, risks), then traceability of rejected findings and consulted sources.</figcaption>
+  </figure>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head" data-reveal><h2>Skills</h2></div>
+  <div class="row" data-reveal>
+    <span class="tag">Python</span>
+    <span class="tag">LangGraph · LangChain</span>
+    <span class="tag">Pydantic</span>
+    <span class="tag">Ollama · local LLMs</span>
+    <span class="tag">Rich · Typer (TUI)</span>
+    <span class="tag">SQLite (cache)</span>
+    <span class="tag">Multi-agent orchestration</span>
+    <span class="tag">LLM evaluation</span>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head" data-reveal><h2>Demo &amp; code</h2></div>
+  <div class="prose" data-reveal>
+    <p>No online demo — that's exactly the point: everything runs locally. The repository contains an install guide, a step-by-step demo and the architecture documentation.</p>
+  </div>
+  <div class="row" data-reveal style="margin-top:24px">
+    <a class="btn solid" href="https://github.com/paul-des-brosses/applied-fox" target="_blank" rel="noopener">GitHub repository</a>
+    <a class="btn ghost" href="https://github.com/paul-des-brosses/applied-fox/blob/main/DEMO.md" target="_blank" rel="noopener">Step-by-step demo</a>
+  </div>
+</div></section>
+
+</main>
+
+<nav class="pager">
+  <a class="prev" href="petale.html"><div class="dir">← Previous project</div><div class="p-title">Pétale</div></a>
+  <a class="next" href="lightning-tdoa.html"><div class="dir">Next project →</div><div class="p-title">Lightning TDOA Simulator</div></a>
+</nav>
+
+<footer><div class="wrap">
+  <span class="label">Paul des Brosses — 2026</span>
+</div></footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forest of Senses — Paul des Brosses</title>
+<meta name="description" content="An interactive audio-visual environment that induces measurable motor adaptation without any instructions, driven by a five-finger isometric force sensor. Post-stroke research prototype.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<noscript><style>[data-reveal]{opacity:1}</style></noscript>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<header class="site-header"><div class="wrap">
+  <a class="brand" href="../index.html">Paul des Brosses</a>
+  <nav class="nav">
+    <a href="../index.html#projets">Projects</a>
+    <a href="../index.html#a-propos">About</a>
+    <a href="../index.html#contact">Contact</a>
+    <span class="lang"><span class="on">EN</span><a href="../../fr/projets/forest-of-senses.html">FR</a></span>
+  </nav>
+</div></header>
+
+<main>
+
+<section class="page-hero" style="border-top:none"><div class="wrap">
+  <p class="breadcrumbs" data-reveal><a href="../index.html">Home</a> / <a href="../index.html#projets">Projects</a> / Forest of Senses</p>
+  <p class="label kicker" data-reveal>Clinical research</p>
+  <h1 data-reveal>Forest of Senses</h1>
+  <p class="sub" data-reveal>An audio-visual environment that induces measurable motor adaptation without giving a single instruction, driven by a five-finger isometric force sensor.</p>
+  <div class="row actions" data-reveal>
+    <a class="btn solid" href="https://github.com/paul-des-brosses/forest-of-senses" target="_blank" rel="noopener">GitHub repository</a>
+    <a class="btn ghost" href="https://github.com/paul-des-brosses/forest-of-senses/blob/main/docs/paper_EN.pdf" target="_blank" rel="noopener">Full paper (PDF)</a>
+  </div>
+</div></section>
+
+<figure class="cover" data-reveal><div class="wrap">
+  <img src="../../assets/img/forest/master.jpg" alt="Forest of Senses — in-game scene rendered in Unity">
+  <figcaption>The in-game environment: snowy landscape, campfire and particles that react to the produced force. No interface, no text — the scenery is the only signal.</figcaption>
+</div></figure>
+
+<section><div class="wrap">
+  <div class="meta" data-reveal>
+    <div><div class="k">Year</div><div class="v">2025</div></div>
+    <div><div class="k">Role</div><div class="v">Design, sensor integration, development, analysis</div></div>
+    <div><div class="k">Setting</div><div class="v">Research — IFT / ESILV</div></div>
+    <div><div class="k">Status</div><div class="v">Research prototype · 15 subjects</div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head" data-reveal><h2>Context</h2></div>
+  <div class="prose" data-reveal>
+    <p>Conventional interactive rehabilitation relies on explicit instructions: “press this finger, reach this target, hold for N seconds.” That guarantees the task is understood, but it also smothers spontaneous exploration — and with it the intrinsic motivation that keeps a patient going through a whole session.</p>
+    <p>Forest of Senses starts from the opposite hypothesis: motor adaptation can be induced <strong>without ever giving an instruction</strong>. The environment targets two axes useful in post-stroke recovery: finger individuation (inhibiting synkinesis) and sub-maximal force regulation (aiming precisely at an invisible force target).</p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head" data-reveal><h2>Approach</h2></div>
+  <div class="prose" data-reveal>
+    <p>The isometric forces of the five fingers are captured by the <strong>Dextrain Manipulandum</strong> (~14 Hz) and fed into a Unity environment. A four-phase state machine progressively changes the contingency between effort and feedback (a “winner-takes-all” rule, a virtual fatigue gauge, an invisible sub-maximal target) without ever revealing it.</p>
+    <p>No interface, no score, no timer, no text: the scenery signals progress (embers → fire and stars → dawn → snowmelt). The shift from winter to spring echoes the gradual, non-linear return of motor function that characterises post-stroke recovery. Feedback is audio-visual: particles, sky, chords; in phase 3, the tempo and filtering of a familiar track become the reward signal.</p>
+    <p>Every frame is logged to CSV and analysed offline in Python (Wilcoxon signed-rank test, Cohen's d).</p>
+    <blockquote>“With this sensor, you control what happens in the world. Explore freely. There are 4 phases; the first is just a one-minute calibration phase.” — the only instruction given.</blockquote>
+  </div>
+  <figure class="figure" data-reveal>
+    <img src="../../assets/img/forest/hero.jpg" alt="The Dextrain Manipulandum, a five-finger isometric force sensor">
+    <figcaption>The Dextrain Manipulandum — a sensor for the isometric force of all five fingers. It is the physical input of the whole experiment.</figcaption>
+  </figure>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head" data-reveal><h2>Result</h2></div>
+  <div class="prose" data-reveal>
+    <p>Pilot study on <strong>15 healthy subjects</strong> (21–63 years old):</p>
+    <ul>
+      <li>Net isolation force: <strong>2.88 N → 4.53 N (+57%)</strong>, p = 0.0020, d = 0.99.</li>
+      <li>Sub-maximal accuracy: <strong>43.4% → 60.4% (+39%)</strong>, p = 0.0054, d = 0.86.</li>
+      <li>86.7% of subjects (13/15) consciously identified the isolation rule; the auditory modality dominated over the visual one.</li>
+    </ul>
+  </div>
+  <figure class="figure" data-reveal>
+    <img src="../../assets/img/forest/fig-isolation.png" alt="Boxplot of net isolation force, phase 0 vs phase 2">
+    <figcaption>Net isolation force — free exploration (2.88 N) vs implicit constraint (4.53 N) across the 15-subject cohort.</figcaption>
+  </figure>
+  <figure class="figure" data-reveal>
+    <img src="../../assets/img/forest/fig-accuracy.png" alt="Boxplot of sub-maximal accuracy, start vs end of phase 3">
+    <figcaption>Sub-maximal accuracy — 43.4% at the start of phase 3 versus 60.4% at the end, well above the ~15% of a random strategy.</figcaption>
+  </figure>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head" data-reveal><h2>Skills</h2></div>
+  <div class="row" data-reveal>
+    <span class="tag">Unity 6 · URP</span>
+    <span class="tag">C#</span>
+    <span class="tag">Sensor integration</span>
+    <span class="tag">State machine</span>
+    <span class="tag">CSV logging</span>
+    <span class="tag">Python · pandas · scipy</span>
+    <span class="tag">Non-parametric statistics</span>
+    <span class="tag">Experiment design</span>
+    <span class="tag">Research methodology</span>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head" data-reveal><h2>Demo &amp; code</h2></div>
+  <div class="prose" data-reveal>
+    <p>The environment depends on a research sensor: it cannot be launched from the repository. Video captures (watch with sound) and the full paper are available in the repo.</p>
+  </div>
+  <div class="row" data-reveal style="margin-top:24px">
+    <a class="btn solid" href="https://github.com/paul-des-brosses/forest-of-senses" target="_blank" rel="noopener">GitHub repository</a>
+    <a class="btn ghost" href="https://github.com/paul-des-brosses/forest-of-senses/blob/main/docs/paper_EN.pdf" target="_blank" rel="noopener">Full paper (PDF)</a>
+  </div>
+</div></section>
+
+</main>
+
+<nav class="pager">
+  <a class="prev" href="lightning-tdoa.html"><div class="dir">← Previous project</div><div class="p-title">Lightning TDOA Simulator</div></a>
+  <a class="next" href="bocage-digital-twin.html"><div class="dir">Next project →</div><div class="p-title">Bocage Digital Twin</div></a>
+</nav>
+
+<footer><div class="wrap">
+  <span class="label">Paul des Brosses — 2026</span>
+</div></footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
