@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lightning TDOA Simulator — Paul des Brosses</title>
+<meta name="description" content="Simulation d'un réseau de détection de foudre VLF à trois stations par multilatération TDOA, et étude de la précision sous bruit contrôlé. Python + démo WebGL.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<noscript><style>[data-reveal]{opacity:1}</style></noscript>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<header class="site-header"><div class="wrap">
+  <a class="brand" href="../index.html">Paul des Brosses</a>
+  <nav class="nav">
+    <a href="../index.html#projets">Projets</a>
+    <a href="../index.html#a-propos">À propos</a>
+    <a href="../index.html#contact">Contact</a>
+    <span class="lang"><a href="../../en/projects/lightning-tdoa.html">EN</a><span class="on">FR</span></span>
+  </nav>
+</div></header>
+
+<main>
+
+<section class="page-hero" style="border-top:none"><div class="wrap">
+  <p class="breadcrumbs" data-reveal><a href="../index.html">Accueil</a> / <a href="../index.html#projets">Projets</a> / Lightning TDOA Simulator</p>
+  <p class="label kicker" data-reveal>Physique / simulation</p>
+  <h1 data-reveal>Lightning TDOA Simulator</h1>
+  <p class="sub" data-reveal>Simulation d'un réseau VLF de détection de foudre à trois stations par multilatération TDOA et étude de la précision atteignable sous bruit contrôlé.</p>
+  <div class="row actions" data-reveal>
+    <a class="btn solid" href="https://paul-des-brosses.github.io/lightning-tdoa-simulator/" target="_blank" rel="noopener">Lancer la démo (WASM)</a>
+    <a class="btn ghost" href="https://github.com/paul-des-brosses/lightning-tdoa-simulator" target="_blank" rel="noopener">Dépôt GitHub</a>
+  </div>
+</div></section>
+
+<figure class="cover" data-reveal><div class="wrap">
+  <img src="../../assets/img/lightning/master.png" alt="Interface de la démo Lightning TDOA : stations, carte d'erreur et panneau de statistiques">
+  <figcaption>La démo live : trois stations (S1–S3), la carte d'erreur calculée en direct, les détections et un panneau temps réel (éclairs, taux observé, erreur médiane et p95).</figcaption>
+</div></figure>
+
+<section><div class="wrap">
+  <div class="meta" data-reveal>
+    <div><div class="k">Année</div><div class="v">2025</div></div>
+    <div><div class="k">Rôle</div><div class="v">Conception, développement, benchmarks</div></div>
+    <div><div class="k">Cadre</div><div class="v">Projet perso, inspiré par un projet matériel ESILV</div></div>
+    <div><div class="k">Statut</div><div class="v">Étude logicielle publique</div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head" data-reveal><h2>Contexte</h2></div>
+  <div class="prose" data-reveal>
+    <p>À l'origine, un projet <strong>matériel</strong> : un détecteur de foudre VLF à trois nœuds, antennes cadre, cartes d'acquisition ESP32 et modules GPS pour la synchronisation temporelle. Le prototype a atteint le stade fonctionnel mais n'a jamais été finalisé, et le code d'origine n'a pas été conservé.</p>
+    <p>Ce simulateur reconstruit et formalise la partie algorithmique qui a survécu (la géométrie, le modèle de bruit, le solveur et les benchmarks) pour répondre aux questions que le prototype n'avait pas eu le temps de trancher empiriquement.</p>
+    <p>Le principe tient en une phrase : trois stations horodatent l'impulsion, deux différences de temps dessinent deux hyperboles, leur intersection donne la position. Ce qui m'a retenu, c'est l'écart entre cette idée, simple à énoncer, et la précision qu'exige son exploitation, tout se joue dans la synchronisation et l'horodatage.</p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head" data-reveal><h2>Approche</h2></div>
+  <div class="prose" data-reveal>
+    <p>Un éclair rayonne une impulsion VLF qui se propage à ~c ; trois récepteurs synchronisés la voient arriver à des instants légèrement différents. Pour une source en <strong>p</strong> et une station en <strong>rᵢ</strong> :</p>
+    <pre>t_i = || p − r_i || / c  +  n_i</pre>
+    <p>Le solveur travaille sur les <em>différences</em> de temps par rapport à une station de référence, ce qui élimine l'origine absolue. Deux solveurs sont implémentés derrière la même API : un minimisateur non linéaire aux moindres carrés (SciPy, chemin de production, extensible à <em>N</em> stations) et une intersection fermée des deux hyperboles (référence et contrôle).</p>
+    <p>La simulation s'arrête volontairement au niveau des temps d'arrivée, pas de synthèse de forme d'onde. Le but est d'exposer la structure géométrique du TDOA. Les hypothèses simplificatrices (propagation rectiligne à c constant, géométrie 2D, bruit gaussien indépendant) sont énoncées explicitement, car elles conditionnent la lecture des chiffres.</p>
+    <p>Point de conception qui compte : <code>solver.py</code> n'importe pas <code>simulator.py</code>. Le solveur consomme un simple <code>dict[station_id, t_arrival]</code>. Brancher de vrais récepteurs plus tard = écrire un nouveau producteur, sans toucher au solveur.</p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head" data-reveal><h2>Résultat</h2></div>
+  <div class="prose" data-reveal>
+    <ul>
+      <li>Trois stations sur une base équilatérale de 50 km, bruit de 100 ns : <strong>erreur médiane ~52 m</strong> dans le triangle, <strong>&lt; 65 m</strong> jusqu'au cercle circonscrit.</li>
+      <li>Pente log-log essentiellement de 1 sur quatre décades : la mise à l'échelle linéaire attendue à géométrie fixe.</li>
+      <li><strong>Taille de réseau optimale</strong> : côté ≈ 5× le rayon de la zone à couvrir — les stations doivent être éloignées, pas regroupées.</li>
+      <li>Les deux solveurs se suivent à moins de 5 % ; le NLLS est retenu, car il généralise à <em>N</em> stations.</li>
+    </ul>
+  </div>
+  <figure class="figure" data-reveal>
+    <img src="../../assets/img/lightning/heatmap.png" alt="Carte de chaleur de l'erreur médiane de localisation autour d'un triangle de 50 km">
+    <figcaption>Carte d'erreur générée hors-ligne par le script de benchmark du dépôt (<code>experiments/bench_heatmap.py</code>) : erreur médiane par cellule sur 100 tirages Monte Carlo, avec les contours de GDOP = 5, 10 et 20. Faible à l'intérieur du triangle, elle s'envole le long des axes médians où la géométrie se dégrade.</figcaption>
+  </figure>
+  <figure class="figure" data-reveal>
+    <img src="../../assets/img/lightning/noise-curve.png" alt="Erreur médiane de localisation en fonction du bruit temporel, échelle log-log">
+    <figcaption>Erreur médiane vs σ sur les canaux temporels (log-log), également produite par un script du dépôt. La pente ≈ 1 confirme le scaling linéaire ; à 100 ns le point est bon à ~55 m.</figcaption>
+  </figure>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head" data-reveal><h2>Compétences</h2></div>
+  <div class="row" data-reveal>
+    <span class="tag">Python</span>
+    <span class="tag">numpy · scipy</span>
+    <span class="tag">Traitement de signal</span>
+    <span class="tag">Optimisation non linéaire</span>
+    <span class="tag">Géométrie · multilatération</span>
+    <span class="tag">Monte Carlo</span>
+    <span class="tag">Pyodide · WebAssembly</span>
+    <span class="tag">Tests · benchmarks</span>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head" data-reveal><h2>Démo &amp; code</h2></div>
+  <div class="prose" data-reveal>
+    <p>La démo web est un site statique (HTML/CSS/JS + Pyodide) : la bibliothèque Python est chargée telle quelle dans le navigateur, sans portage JavaScript. On déplace les trois stations, on déclenche des orages, et on regarde le solveur travailler.</p>
+  </div>
+  <div class="row" data-reveal style="margin-top:24px">
+    <a class="btn solid" href="https://paul-des-brosses.github.io/lightning-tdoa-simulator/" target="_blank" rel="noopener">Lancer la démo</a>
+    <a class="btn ghost" href="https://github.com/paul-des-brosses/lightning-tdoa-simulator" target="_blank" rel="noopener">Dépôt GitHub</a>
+  </div>
+</div></section>
+
+</main>
+
+<nav class="pager">
+  <a class="prev" href="applied-fox.html"><div class="dir">← Projet précédent</div><div class="p-title">Applied Fox</div></a>
+  <a class="next" href="forest-of-senses.html"><div class="dir">Projet suivant →</div><div class="p-title">Forest of Senses</div></a>
+</nav>
+
+<footer><div class="wrap">
+  <span class="label">Paul des Brosses — 2026</span>
+</div></footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

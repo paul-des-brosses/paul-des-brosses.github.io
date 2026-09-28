@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bocage Digital Twin — Paul des Brosses</title>
+<meta name="description" content="Jumeau numérique instrumenté d'un bocage normand : tester si la donnée permet de concilier écologie et économie. Simulation Unity 6 jouable en WebGL.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<noscript><style>[data-reveal]{opacity:1}</style></noscript>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<header class="site-header"><div class="wrap">
+  <a class="brand" href="../index.html">Paul des Brosses</a>
+  <nav class="nav">
+    <a href="../index.html#projets">Projets</a>
+    <a href="../index.html#a-propos">À propos</a>
+    <a href="../index.html#contact">Contact</a>
+    <span class="lang"><a href="../../en/projects/bocage-digital-twin.html">EN</a><span class="on">FR</span></span>
+  </nav>
+</div></header>
+
+<main>
+
+<section class="page-hero" style="border-top:none"><div class="wrap">
+  <p class="breadcrumbs" data-reveal><a href="../index.html">Accueil</a> / <a href="../index.html#projets">Projets</a> / Bocage Digital Twin</p>
+  <p class="label kicker" data-reveal>Simulation / environnement</p>
+  <h1 data-reveal>Bocage Digital Twin</h1>
+  <p class="sub" data-reveal>Un jumeau numérique instrumenté d'un bocage normand, construit pour tester une conviction : on peut optimiser un système en conciliant écologie et économie, plutôt que d'avoir systématiquement à opposer les deux.</p>
+  <div class="row actions" data-reveal>
+    <a class="btn solid" href="https://paul-des-brosses.github.io/bocage-digital-twin/" target="_blank" rel="noopener">Lancer la démo (WebGL)</a>
+    <a class="btn ghost" href="https://github.com/paul-des-brosses/bocage-digital-twin" target="_blank" rel="noopener">Dépôt GitHub</a>
+  </div>
+</div></section>
+
+<figure class="cover" data-reveal><div class="wrap">
+  <img src="../../assets/img/bocage/hero.jpg" alt="Capture du Bocage Digital Twin : scène, KPI et panneaux de pilotage">
+  <figcaption>Le jumeau en action : 5 KPI en haut, leviers de gestion à gauche, panneaux thématiques et journal d'activité. Chaque pixel du décor est tracé par une variable mesurée, jamais par un script.</figcaption>
+</div></figure>
+
+<section><div class="wrap">
+  <div class="meta" data-reveal>
+    <div><div class="k">Année</div><div class="v">2025</div></div>
+    <div><div class="k">Rôle</div><div class="v">Conception, architecture, développement</div></div>
+    <div><div class="k">Cadre</div><div class="v">Projet perso</div></div>
+    <div><div class="k">Statut</div><div class="v">Jouable en ligne (WebGL)</div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head" data-reveal><h2>Contexte</h2></div>
+  <div class="prose" data-reveal>
+    <p>Écologie et économie sont sans cesse présentées comme opposées. Ma conviction : on peut optimiser un système en conciliant les deux, plutôt que d'avoir systématiquement à les opposer. Mon hypothèse : l'accès à la donnée rend cette conciliation possible. C'est la promesse de l'Industrie 4.0, ramenée à un écosystème.</p>
+    <p>Plutôt que de l'affirmer, j'ai construit un modèle qui la <strong>teste</strong>. La simulation ne présuppose jamais la réponse : si on gère mal, l'écologie et l'économie souffrent toutes les deux, et le jumeau le reflète. C'est un vrai jumeau numérique, pas un jeu : chaque variable vient d'une mesure, jamais du calendrier ou d'une ambiance scriptée.</p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head" data-reveal><h2>Approche</h2></div>
+  <div class="prose" data-reveal>
+    <p>Simulation temps réel d'un site de <strong>bocage percheron</strong> fictif mais plausible. On se met dans la peau de l'exploitant et on pilote 6 leviers (azote, pesticides, travail du sol, couverts, haies, part de prairie) contre 2 réglages climatiques, et l'on observe les conséquences cascader sur l'eau, le carbone, l'azote, le rendement, la biodiversité et la marge.</p>
+    <p>Deux simulations tournent en parallèle sur les mêmes graines : la run réelle suit tes décisions, une run « ombre » garde les décisions initiales gelées. Leur écart, en euros, mesure la <strong>contribution de l'instrumentation</strong>, mesurée, jamais supposée.</p>
+    <p>5 indicateurs clés (réserve utile, carbone du sol, biodiversité, rendement, marge) et 3 panneaux thématiques ; chaque chiffre est traçable jusqu'à une variable du modèle. 5 capteurs (station météo, tour à covariance, piézomètre, acoustique, caméra-piège) sont cliquables dans la scène pour leur lecture mesurée et leur modèle de bruit.</p>
+    <p>Principe directeur : <strong>primauté du capteur</strong>. Oiseaux et héron n'apparaissent que lorsque l'indice de biodiversité <em>mesuré</em> le justifie. De plus, la teinte des arbres et buissons varie pour refléter à l'écran leur état de santé, selon le même principe.</p>
+    <p>C'est là qu'intervient le <strong>moteur de recommandation</strong>, dérivé du modèle et non scripté. Il évalue chaque décision possible et projette ses issues en trois scénarios (pire / attendu / meilleur) : les coups <strong>gagnant-gagnant</strong>, meilleurs à la fois pour l'écologie et l'économie, remontent en pop-up proactif, tandis que les compromis restent dans une liste passive. L'outil éclaire l'arbitrage, il ne le prend pas : c'est toujours l'utilisateur qui décide.</p>
+  </div>
+  <figure class="figure" data-reveal>
+    <img src="../../assets/img/bocage/recommendation.png" alt="Moteur de recommandation affichant les scénarios pire / attendu / meilleur d'une décision">
+    <figcaption>Le moteur de recommandation (dérivé du modèle) remonte les coups « gagnant-gagnant » en pop-up et les compromis en liste passive..</figcaption>
+  </figure>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head" data-reveal><h2>Résultat</h2></div>
+  <div class="prose" data-reveal>
+    <ul>
+      <li>Modèle <strong>déterministe</strong> : même graine et mêmes entrées ⇒ même run.</li>
+      <li>Ordres de grandeur <strong>sourcés</strong> (INRAE, Solagro, Arvalis/COMIFER, Efese, PNR du Perche, Météo-France).</li>
+      <li>Un indicateur honnête : la contribution de l'instrumentation mesure le <strong>gain marginal de précision</strong>, pas la preuve que bien gérer exige des capteurs.</li>
+      <li>Le modèle impose un vrai arbitrage : gérer mal fait chuter écologie et économie ensemble.</li>
+      <li>Le <strong>moteur de recommandation</strong> est dérivé du modèle, sans règle codée en dur : il identifie les coups gagnant-gagnant sans jamais décider à la place de l'utilisateur.</li>
+    </ul>
+  </div>
+  <div class="row" data-reveal style="margin-top:24px">
+    <a class="btn solid" href="https://paul-des-brosses.github.io/bocage-digital-twin/" target="_blank" rel="noopener">Lancer la démo (WebGL, ≥ 1280 px)</a>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head" data-reveal><h2>Compétences</h2></div>
+  <div class="row" data-reveal>
+    <span class="tag">Unity 6 LTS · URP 2D</span>
+    <span class="tag">C#</span>
+    <span class="tag">Shader Graph</span>
+    <span class="tag">Jumeau numérique</span>
+    <span class="tag">WebGL · CI GitHub Actions</span>
+    <span class="tag">Modélisation agronomique</span>
+    <span class="tag">Moteur de recommandation</span>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-head" data-reveal><h2>Démo &amp; code</h2></div>
+  <div class="prose" data-reveal>
+    <p>Le jumeau tourne directement dans le navigateur (WebGL). L'architecture logicielle est découpée en 5 couches strictes (Simulation Core / Sensors / Decision / Indicators / Presentation), le cœur de simulation étant du C# pur, sans dépendance à Unity, testé en headless.</p>
+  </div>
+  <div class="row" data-reveal style="margin-top:24px">
+    <a class="btn solid" href="https://paul-des-brosses.github.io/bocage-digital-twin/" target="_blank" rel="noopener">Lancer la démo</a>
+    <a class="btn ghost" href="https://github.com/paul-des-brosses/bocage-digital-twin" target="_blank" rel="noopener">Dépôt GitHub</a>
+  </div>
+</div></section>
+
+</main>
+
+<nav class="pager">
+  <a class="prev" href="forest-of-senses.html"><div class="dir">← Projet précédent</div><div class="p-title">Forest of Senses</div></a>
+  <a class="next" href="petale.html"><div class="dir">Projet suivant →</div><div class="p-title">Pétale</div></a>
+</nav>
+
+<footer><div class="wrap">
+  <span class="label">Paul des Brosses — 2026</span>
+</div></footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

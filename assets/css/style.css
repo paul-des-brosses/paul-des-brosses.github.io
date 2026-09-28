@@ -1,0 +1,165 @@
+/* ==========================================================================
+   Paul des Brosses — Portfolio
+   Design system V1 : « labo sobre » — beige, monochrome + accent terracotta
+   ========================================================================== */
+
+:root{
+  --bg:#F2EEE3;
+  --surface:#FBF7EF;
+  --ink:#1B1917;
+  --ink-soft:#615B4F;
+  --line:#E5DFD0;
+  --accent:#B84C26;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,monospace;
+  --maxw:980px;
+}
+
+*{box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;font-size:17px;line-height:1.65}
+::selection{background:var(--accent);color:var(--bg)}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,h4{margin:0;font-weight:500;letter-spacing:-0.02em;line-height:1.1}
+p{margin:0}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 36px}
+.label{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+
+/* --- scroll progress ---------------------------------------------------- */
+#progress{position:fixed;top:0;left:0;width:100%;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:0 50%;z-index:70;transition:transform .1s linear}
+
+/* --- header ------------------------------------------------------------- */
+.site-header{position:sticky;top:0;z-index:20;background:rgba(242,238,227,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.site-header .wrap{display:flex;justify-content:space-between;align-items:center;height:56px;gap:20px}
+.brand{font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;text-decoration:none;white-space:nowrap}
+.nav{display:flex;align-items:center;gap:22px;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em}
+.nav a{text-decoration:none;color:var(--ink-soft);transition:color .2s}
+.nav a:hover{color:var(--accent)}
+.lang{display:flex;gap:2px;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em}
+.lang a,.lang span{padding:4px 10px;border:1px solid var(--line);text-decoration:none;background:var(--surface);transition:background .2s,color .2s}
+.lang .on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.lang a:hover{border-color:var(--ink)}
+
+/* --- hero --------------------------------------------------------------- */
+.hero{padding:84px 0 56px}
+.kicker{margin-bottom:28px}
+.hero h1{font-size:clamp(2.3rem,5.6vw,4.2rem);max-width:18ch}
+.lede{margin-top:28px;max-width:58ch;color:var(--ink-soft);font-size:1.125rem}
+.hero .avail{margin-top:26px;display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.82rem;letter-spacing:.04em;color:var(--accent)}
+.hero .avail::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none}
+.hero .actions{margin-top:36px}
+
+/* --- sections ----------------------------------------------------------- */
+section{padding:44px 0;border-top:1px solid var(--line)}
+.sec-head{display:flex;gap:20px;align-items:baseline;margin-bottom:40px}
+.sec-head h2{font-size:clamp(1.6rem,3vw,2.2rem)}
+
+/* --- buttons + tags ----------------------------------------------------- */
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;padding:12px 20px;border:1px solid var(--ink);text-decoration:none;display:inline-block;cursor:pointer;background:transparent;transition:background .2s,color .2s,border-color .2s}
+.btn.solid{background:var(--ink);color:var(--bg)}
+.btn.solid:hover{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--bg)}
+.link{font-family:var(--mono);font-size:.78rem;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--accent);padding-bottom:2px;transition:color .2s}
+.link:hover{color:var(--accent)}
+.tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;padding:5px 10px;border:1px solid var(--line);background:var(--surface);transition:background .2s,color .2s,border-color .2s}
+a.tag:hover, .tag:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+/* --- project list (home) ------------------------------------------------ */
+.project{position:relative;display:grid;grid-template-columns:290px minmax(0,1fr);gap:34px;align-items:start;padding:34px 0;border-top:1px solid var(--line);transition:transform .35s cubic-bezier(.2,.6,.2,1)}
+.project::before{content:"";position:absolute;top:-1px;left:0;height:1px;width:0;background:var(--accent);transition:width .45s cubic-bezier(.2,.6,.2,1)}
+.project:hover{transform:translateX(6px)}
+.project:hover::before{width:100%}
+.project .thumb{display:block;border:1px solid var(--line);background:var(--surface);aspect-ratio:3/2;overflow:hidden}
+.project .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .55s cubic-bezier(.2,.6,.2,1)}
+.project:hover .thumb img{transform:scale(1.035)}
+.project .head{display:flex;gap:14px;align-items:baseline}
+.project h3{font-size:1.6rem;transition:color .3s ease}
+.project:hover h3{color:var(--accent)}
+.project h3 a{text-decoration:none}
+.project .sub{color:var(--ink-soft);margin-top:10px;max-width:56ch}
+.project .more{margin-top:16px}
+
+/* --- project meta grid -------------------------------------------------- */
+.meta{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:26px}
+.meta .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);padding-bottom:8px;border-bottom:1px solid var(--line);margin-bottom:10px}
+.meta .v{font-size:.95rem}
+.metric{font-family:var(--mono);font-size:1.6rem;font-weight:500;color:var(--accent)}
+
+/* --- prose (project body) ---------------------------------------------- */
+.prose{max-width:66ch}
+.prose > * + *{margin-top:1.05em}
+.prose p{color:var(--ink)}
+.prose ul,.prose ol{margin:1.05em 0 0;padding-left:1.3em}
+.prose li + li{margin-top:.35em}
+.prose strong{font-weight:600}
+.prose a{color:inherit;border-bottom:1px solid var(--accent);text-decoration:none;transition:color .2s}
+.prose a:hover{color:var(--accent)}
+.prose code{font-family:var(--mono);font-size:.85em;background:var(--surface);border:1px solid var(--line);padding:1px 5px}
+.prose blockquote{margin:1.4em 0;padding-left:18px;border-left:2px solid var(--accent);color:var(--ink-soft);font-family:var(--mono);font-size:.85rem;line-height:1.7}
+.prose pre{font-family:var(--mono);font-size:.78rem;line-height:1.7;background:var(--surface);border:1px solid var(--line);padding:18px 20px;overflow-x:auto;margin:1.4em 0;color:var(--ink)}
+.prose hr{border:none;border-top:1px solid var(--line);margin:2.4em 0}
+
+/* --- figures ------------------------------------------------------------ */
+.figure{margin:40px 0}
+.figure img{border:1px solid var(--line);background:var(--surface)}
+.figure figcaption{margin-top:12px;font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);line-height:1.7}
+.figure.wide{max-width:none}
+.figure.doc{max-width:620px;margin-left:auto;margin-right:auto}
+
+/* --- project page header ------------------------------------------------ */
+.page-hero{padding:56px 0 40px}
+.page-hero .back{display:inline-block;margin-bottom:26px}
+.page-hero h1{font-size:clamp(2rem,4.6vw,3.4rem);max-width:20ch}
+.page-hero .sub{margin-top:20px;max-width:60ch;color:var(--ink-soft);font-size:1.1rem}
+.page-hero .actions{margin-top:32px}
+.breadcrumbs{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--ink-soft);margin-bottom:24px}
+.breadcrumbs a{text-decoration:none;color:inherit}
+.breadcrumbs a:hover{color:var(--accent)}
+
+/* hero cover image */
+.cover{margin:8px 0 0}
+.cover img{border:1px solid var(--line);width:100%}
+.cover figcaption{margin-top:12px;font-family:var(--mono);font-size:.72rem;color:var(--ink-soft)}
+
+/* --- pager (prev/next project) ----------------------------------------- */
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:8px}
+.pager a{background:var(--bg);padding:26px 28px;text-decoration:none;transition:background .2s}
+.pager a:hover{background:var(--surface)}
+.pager a:hover .p-title{color:var(--accent)}
+.pager .dir{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.pager .p-title{margin-top:8px;font-weight:500;font-size:1.15rem;transition:color .2s}
+.pager .next{text-align:right}
+
+/* --- contact / footer --------------------------------------------------- */
+.contact-list{display:grid;gap:14px;font-family:var(--mono);font-size:.85rem}
+.contact-list a{text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:2px;transition:color .2s}
+.contact-list a:hover{color:var(--accent)}
+footer{border-top:1px solid var(--line);margin-top:44px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-top:36px;padding-bottom:72px}
+
+/* --- reveal (fantaisie) ------------------------------------------------- */
+[data-reveal]{opacity:0}
+[data-reveal].in{opacity:1;animation:reveal .85s cubic-bezier(.2,.7,.2,1) backwards}
+@keyframes reveal{from{opacity:0;transform:translateY(30px)}}
+
+/* --- responsive --------------------------------------------------------- */
+@media (max-width:720px){
+  .wrap{padding:0 22px}
+  .site-header .wrap{gap:10px}
+  .nav{gap:14px}
+  .nav .nav-label{display:none}
+  .project{grid-template-columns:1fr;gap:16px}
+  .project .thumb{max-width:520px}
+  .meta{grid-template-columns:1fr 1fr}
+  .pager{grid-template-columns:1fr}
+  .pager .next{text-align:left}
+}
+
+@media (prefers-reduced-motion:reduce){
+  #progress{transition:none}
+  [data-reveal]{opacity:1}
+  [data-reveal].in{animation:none}
+}
