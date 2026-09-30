@@ -7,7 +7,6 @@
 <meta name="description" content="An instrumented digital twin of a Norman bocage: testing whether data can reconcile ecology and economy. A Unity 6 simulation playable in WebGL.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/css/style.css">
 <noscript><style>[data-reveal]{opacity:1}</style></noscript>
 </head>
@@ -40,15 +39,16 @@
 
 <figure class="cover" data-reveal><div class="wrap">
   <img src="../../assets/img/bocage/hero.jpg" alt="Screenshot of the Bocage Digital Twin: scene, KPIs and control panels">
-  <figcaption>The twin in action: 5 KPIs at the top, management levers on the left, thematic panels and an activity log. Every pixel of the scenery is driven by a measured variable, never by a script.</figcaption>
+  <figcaption>The twin in action: <span class="data">5</span> KPIs at the top, management levers on the left, thematic panels and an activity log. Every pixel of the scenery is driven by a measured variable, never by a script.</figcaption>
 </div></figure>
 
 <section><div class="wrap">
   <div class="meta" data-reveal>
-    <div><div class="k">Year</div><div class="v">2025</div></div>
+    <div><div class="k">Year</div><div class="v"><span class="data">2025</span></div></div>
     <div><div class="k">Role</div><div class="v">Design, architecture, development</div></div>
     <div><div class="k">Setting</div><div class="v">Personal project</div></div>
     <div><div class="k">Status</div><div class="v">Playable online (WebGL)</div></div>
+    <div class="wide"><div class="k">Stack</div><div class="v">Unity 6 LTS · URP 2D · C# · Shader Graph · WebGL · CI GitHub Actions</div></div>
   </div>
 </div></section>
 
@@ -63,9 +63,9 @@
 <section><div class="wrap">
   <div class="sec-head" data-reveal><h2>Approach</h2></div>
   <div class="prose" data-reveal>
-    <p>Real-time simulation of a fictional but plausible <strong>Perche bocage</strong> site. You step into the farmer's shoes and steer 6 levers (nitrogen, pesticides, tillage, cover crops, hedgerows, share of grassland) against 2 climate settings, and watch the consequences cascade onto water, carbon, nitrogen, yield, biodiversity and margin.</p>
+    <p>Real-time simulation of a fictional but plausible <strong>Perche bocage</strong> site. You step into the farmer's shoes and steer <span class="data">6</span> levers (nitrogen, pesticides, tillage, cover crops, hedgerows, share of grassland) against <span class="data">2</span> climate settings, and watch the consequences cascade onto water, carbon, nitrogen, yield, biodiversity and margin.</p>
     <p>Two simulations run in parallel on the same seeds: the real run follows your decisions, while a “shadow” run keeps the initial decisions frozen. Their gap, in euros, measures the <strong>contribution of the instrumentation</strong> — measured, never assumed.</p>
-    <p>5 key indicators (available water capacity, soil carbon, biodiversity, yield, margin) and 3 thematic panels; every figure is traceable back to a variable in the model. 5 sensors (weather station, eddy-covariance tower, piezometer, acoustic sensor, camera trap) are clickable in the scene for their measured reading and their noise model.</p>
+    <p><span class="data">5</span> key indicators (available water capacity, soil carbon, biodiversity, yield, margin) and <span class="data">3</span> thematic panels; every figure is traceable back to a variable in the model. <span class="data">5</span> sensors (weather station, eddy-covariance tower, piezometer, acoustic sensor, camera trap) are clickable in the scene for their measured reading and their noise model.</p>
     <p>Guiding principle: <strong>the sensor comes first</strong>. Birds and the heron only appear when the <em>measured</em> biodiversity index justifies it. The tint of the trees and bushes also varies to reflect their health on screen, on the same principle.</p>
     <p>This is where the <strong>recommendation engine</strong> comes in, derived from the model rather than scripted. It evaluates every possible decision and projects its outcomes in three scenarios (worst / expected / best): <strong>win-win</strong> moves, better for both ecology and economy, surface as proactive pop-ups, while trade-offs stay in a passive list. The tool informs the trade-off; it does not make it: the user always decides.</p>
   </div>
@@ -92,22 +92,9 @@
 </div></section>
 
 <section><div class="wrap">
-  <div class="sec-head" data-reveal><h2>Skills</h2></div>
-  <div class="row" data-reveal>
-    <span class="tag">Unity 6 LTS · URP 2D</span>
-    <span class="tag">C#</span>
-    <span class="tag">Shader Graph</span>
-    <span class="tag">Digital twin</span>
-    <span class="tag">WebGL · CI GitHub Actions</span>
-    <span class="tag">Agronomic modelling</span>
-    <span class="tag">Recommendation engine</span>
-  </div>
-</div></section>
-
-<section><div class="wrap">
   <div class="sec-head" data-reveal><h2>Demo &amp; code</h2></div>
   <div class="prose" data-reveal>
-    <p>The twin runs directly in the browser (WebGL). The software architecture is split into 5 strict layers (Simulation Core / Sensors / Decision / Indicators / Presentation), with the simulation core written in pure C#, free of any Unity dependency, tested headless.</p>
+    <p>The twin runs directly in the browser (WebGL). The software architecture is split into <span class="data">5</span> strict layers (Simulation Core / Sensors / Decision / Indicators / Presentation), with the simulation core written in pure C#, free of any Unity dependency, tested headless.</p>
   </div>
   <div class="row" data-reveal style="margin-top:24px">
     <a class="btn solid" href="https://paul-des-brosses.github.io/bocage-digital-twin/" target="_blank" rel="noopener">Launch the demo</a>

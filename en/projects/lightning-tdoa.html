@@ -7,7 +7,6 @@
 <meta name="description" content="Simulation of a three-station VLF lightning detection network using TDOA multilateration, and a study of accuracy under controlled noise. Python + WASM demo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/css/style.css">
 <noscript><style>[data-reveal]{opacity:1}</style></noscript>
 </head>
@@ -39,16 +38,17 @@
 </div></section>
 
 <figure class="cover" data-reveal><div class="wrap">
-  <img src="../../assets/img/lightning/master.png" alt="Lightning TDOA demo interface: stations, error map and statistics panel">
-  <figcaption>The live demo: three stations (S1–S3), the error map computed on the fly, the detections and a real-time panel (strikes, observed rate, median and p95 error).</figcaption>
+  <img src="../../assets/img/lightning/hero.jpg" alt="Location error map and triangle of stations S1–S3">
+  <figcaption>The error map computed on the fly around the triangle of the three stations (S1–S3). Low inside the triangle, it blows up along the median axes where the geometry degrades.</figcaption>
 </div></figure>
 
 <section><div class="wrap">
   <div class="meta" data-reveal>
-    <div><div class="k">Year</div><div class="v">2025</div></div>
+    <div><div class="k">Year</div><div class="v"><span class="data">2025</span></div></div>
     <div><div class="k">Role</div><div class="v">Design, development, benchmarks</div></div>
     <div><div class="k">Setting</div><div class="v">Personal project, inspired by an ESILV hardware project</div></div>
     <div><div class="k">Status</div><div class="v">Public software study</div></div>
+    <div class="wide"><div class="k">Stack</div><div class="v">Python · numpy/scipy · Monte Carlo · Pyodide · WebAssembly</div></div>
   </div>
 </div></section>
 
@@ -76,34 +76,20 @@
   <div class="sec-head" data-reveal><h2>Result</h2></div>
   <div class="prose" data-reveal>
     <ul>
-      <li>Three stations on a 50 km equilateral baseline, 100 ns noise: <strong>median error ~52 m</strong> inside the triangle, <strong>&lt; 65 m</strong> out to the circumscribed circle.</li>
-      <li>An essentially 1 log-log slope over four decades: the linear scaling expected at fixed geometry.</li>
-      <li><strong>Optimal network size</strong>: side ≈ 5× the radius of the area to cover — stations must be far apart, not clustered.</li>
-      <li>The two solvers agree to within 5%; NLLS is kept because it generalises to <em>N</em> stations.</li>
+      <li>Three stations on a <span class="data">50 km</span> equilateral baseline, <span class="data">100 ns</span> noise: <strong>median error <span class="data">~52 m</span></strong> inside the triangle, <strong><span class="data">&lt; 65 m</span></strong> out to the circumscribed circle.</li>
+      <li>An essentially <span class="data">1</span> log-log slope over four decades: the linear scaling expected at fixed geometry.</li>
+      <li><strong>Optimal network size</strong>: side ≈ <span class="data">5×</span> the radius of the area to cover — stations must be far apart, not clustered.</li>
+      <li>The two solvers agree to within <span class="data">5%</span>; NLLS is kept because it generalises to <em>N</em> stations.</li>
     </ul>
   </div>
   <figure class="figure" data-reveal>
     <img src="../../assets/img/lightning/heatmap.png" alt="Heat map of the median localisation error around a 50 km triangle">
-    <figcaption>Error map generated offline by the repo's benchmark script (<code>experiments/bench_heatmap.py</code>): median error per cell over 100 Monte Carlo draws, with GDOP contours at 5, 10 and 20. Low inside the triangle, it explodes along the median axes where the geometry degrades.</figcaption>
+    <figcaption>Error map generated offline by the repo's benchmark script (<code>experiments/bench_heatmap.py</code>): median error per cell over <span class="data">100</span> Monte Carlo draws, with GDOP contours at <span class="data">5, 10 and 20</span>. Low inside the triangle, it explodes along the median axes where the geometry degrades.</figcaption>
   </figure>
   <figure class="figure" data-reveal>
     <img src="../../assets/img/lightning/noise-curve.png" alt="Median localisation error as a function of temporal noise, log-log scale">
-    <figcaption>Median error vs σ on the time channels (log-log), also produced by a repo script. The slope ≈ 1 confirms the linear scaling; at 100 ns the point is good to ~55 m.</figcaption>
+    <figcaption>Median error vs σ on the time channels (log-log), also produced by a repo script. The slope ≈ <span class="data">1</span> confirms the linear scaling; at <span class="data">100 ns</span> the point is good to <span class="data">~55 m</span>.</figcaption>
   </figure>
-</div></section>
-
-<section><div class="wrap">
-  <div class="sec-head" data-reveal><h2>Skills</h2></div>
-  <div class="row" data-reveal>
-    <span class="tag">Python</span>
-    <span class="tag">numpy · scipy</span>
-    <span class="tag">Non-linear optimisation</span>
-    <span class="tag">Signal processing</span>
-    <span class="tag">Geometry · multilateration</span>
-    <span class="tag">Monte Carlo</span>
-    <span class="tag">Pyodide · WebAssembly</span>
-    <span class="tag">Testing · benchmarks</span>
-  </div>
 </div></section>
 
 <section><div class="wrap">
@@ -111,6 +97,10 @@
   <div class="prose" data-reveal>
     <p>The web demo is a static site (HTML/CSS/JS + Pyodide): the Python library is loaded as-is in the browser, with no JavaScript port. You move the three stations, trigger storms, and watch the solver work.</p>
   </div>
+  <figure class="figure" data-reveal>
+    <img src="../../assets/img/lightning/interface_heatmap.png" alt="Full demo interface: layers, error map, controls and statistics panel">
+    <figcaption>The live interface: three stations (S1–S3), the recomputed error map, the detections, the layers and a real-time panel (strikes, observed rate, median and p95 error).</figcaption>
+  </figure>
   <div class="row" data-reveal style="margin-top:24px">
     <a class="btn solid" href="https://paul-des-brosses.github.io/lightning-tdoa-simulator/" target="_blank" rel="noopener">Launch the demo</a>
     <a class="btn ghost" href="https://github.com/paul-des-brosses/lightning-tdoa-simulator" target="_blank" rel="noopener">GitHub repository</a>

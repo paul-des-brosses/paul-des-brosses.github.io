@@ -7,7 +7,6 @@
 <meta name="description" content="Jumeau numérique instrumenté d'un bocage normand : tester si la donnée permet de concilier écologie et économie. Simulation Unity 6 jouable en WebGL.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/css/style.css">
 <noscript><style>[data-reveal]{opacity:1}</style></noscript>
 </head>
@@ -21,7 +20,7 @@
     <a href="../index.html#projets">Projets</a>
     <a href="../index.html#a-propos">À propos</a>
     <a href="../index.html#contact">Contact</a>
-    <span class="lang"><a href="../../en/projects/bocage-digital-twin.html">EN</a><span class="on">FR</span></span>
+    <span class="lang"><span class="on">FR</span><a href="../../en/projects/bocage-digital-twin.html">EN</a></span>
   </nav>
 </div></header>
 
@@ -40,15 +39,16 @@
 
 <figure class="cover" data-reveal><div class="wrap">
   <img src="../../assets/img/bocage/hero.jpg" alt="Capture du Bocage Digital Twin : scène, KPI et panneaux de pilotage">
-  <figcaption>Le jumeau en action : 5 KPI en haut, leviers de gestion à gauche, panneaux thématiques et journal d'activité. Chaque pixel du décor est tracé par une variable mesurée, jamais par un script.</figcaption>
+  <figcaption>Le jumeau en action : <span class="data">5</span> KPI en haut, leviers de gestion à gauche, panneaux thématiques et journal d'activité. Chaque pixel du décor est tracé par une variable mesurée, jamais par un script.</figcaption>
 </div></figure>
 
 <section><div class="wrap">
   <div class="meta" data-reveal>
-    <div><div class="k">Année</div><div class="v">2025</div></div>
+    <div><div class="k">Année</div><div class="v"><span class="data">2025</span></div></div>
     <div><div class="k">Rôle</div><div class="v">Conception, architecture, développement</div></div>
     <div><div class="k">Cadre</div><div class="v">Projet perso</div></div>
     <div><div class="k">Statut</div><div class="v">Jouable en ligne (WebGL)</div></div>
+    <div class="wide"><div class="k">Stack</div><div class="v">Unity 6 LTS · URP 2D · C# · Shader Graph · WebGL · CI GitHub Actions</div></div>
   </div>
 </div></section>
 
@@ -63,9 +63,9 @@
 <section><div class="wrap">
   <div class="sec-head" data-reveal><h2>Approche</h2></div>
   <div class="prose" data-reveal>
-    <p>Simulation temps réel d'un site de <strong>bocage percheron</strong> fictif mais plausible. On se met dans la peau de l'exploitant et on pilote 6 leviers (azote, pesticides, travail du sol, couverts, haies, part de prairie) contre 2 réglages climatiques, et l'on observe les conséquences cascader sur l'eau, le carbone, l'azote, le rendement, la biodiversité et la marge.</p>
+    <p>Simulation temps réel d'un site de <strong>bocage percheron</strong> fictif mais plausible. On se met dans la peau de l'exploitant et on pilote <span class="data">6</span> leviers (azote, pesticides, travail du sol, couverts, haies, part de prairie) contre <span class="data">2</span> réglages climatiques, et l'on observe les conséquences cascader sur l'eau, le carbone, l'azote, le rendement, la biodiversité et la marge.</p>
     <p>Deux simulations tournent en parallèle sur les mêmes graines : la run réelle suit tes décisions, une run « ombre » garde les décisions initiales gelées. Leur écart, en euros, mesure la <strong>contribution de l'instrumentation</strong>, mesurée, jamais supposée.</p>
-    <p>5 indicateurs clés (réserve utile, carbone du sol, biodiversité, rendement, marge) et 3 panneaux thématiques ; chaque chiffre est traçable jusqu'à une variable du modèle. 5 capteurs (station météo, tour à covariance, piézomètre, acoustique, caméra-piège) sont cliquables dans la scène pour leur lecture mesurée et leur modèle de bruit.</p>
+    <p><span class="data">5</span> indicateurs clés (réserve utile, carbone du sol, biodiversité, rendement, marge) et <span class="data">3</span> panneaux thématiques ; chaque chiffre est traçable jusqu'à une variable du modèle. <span class="data">5</span> capteurs (station météo, tour à covariance, piézomètre, acoustique, caméra-piège) sont cliquables dans la scène pour leur lecture mesurée et leur modèle de bruit.</p>
     <p>Principe directeur : <strong>primauté du capteur</strong>. Oiseaux et héron n'apparaissent que lorsque l'indice de biodiversité <em>mesuré</em> le justifie. De plus, la teinte des arbres et buissons varie pour refléter à l'écran leur état de santé, selon le même principe.</p>
     <p>C'est là qu'intervient le <strong>moteur de recommandation</strong>, dérivé du modèle et non scripté. Il évalue chaque décision possible et projette ses issues en trois scénarios (pire / attendu / meilleur) : les coups <strong>gagnant-gagnant</strong>, meilleurs à la fois pour l'écologie et l'économie, remontent en pop-up proactif, tandis que les compromis restent dans une liste passive. L'outil éclaire l'arbitrage, il ne le prend pas : c'est toujours l'utilisateur qui décide.</p>
   </div>
@@ -92,22 +92,9 @@
 </div></section>
 
 <section><div class="wrap">
-  <div class="sec-head" data-reveal><h2>Compétences</h2></div>
-  <div class="row" data-reveal>
-    <span class="tag">Unity 6 LTS · URP 2D</span>
-    <span class="tag">C#</span>
-    <span class="tag">Shader Graph</span>
-    <span class="tag">Jumeau numérique</span>
-    <span class="tag">WebGL · CI GitHub Actions</span>
-    <span class="tag">Modélisation agronomique</span>
-    <span class="tag">Moteur de recommandation</span>
-  </div>
-</div></section>
-
-<section><div class="wrap">
   <div class="sec-head" data-reveal><h2>Démo &amp; code</h2></div>
   <div class="prose" data-reveal>
-    <p>Le jumeau tourne directement dans le navigateur (WebGL). L'architecture logicielle est découpée en 5 couches strictes (Simulation Core / Sensors / Decision / Indicators / Presentation), le cœur de simulation étant du C# pur, sans dépendance à Unity, testé en headless.</p>
+    <p>Le jumeau tourne directement dans le navigateur (WebGL). L'architecture logicielle est découpée en <span class="data">5</span> couches strictes (Simulation Core / Sensors / Decision / Indicators / Presentation), le cœur de simulation étant du C# pur, sans dépendance à Unity, testé en headless.</p>
   </div>
   <div class="row" data-reveal style="margin-top:24px">
     <a class="btn solid" href="https://paul-des-brosses.github.io/bocage-digital-twin/" target="_blank" rel="noopener">Lancer la démo</a>

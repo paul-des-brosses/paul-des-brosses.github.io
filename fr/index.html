@@ -7,7 +7,6 @@
 <meta name="description" content="Portfolio de Paul des Brosses, étudiant ingénieur : prototypage rapide à l'intersection du logiciel et du matériel. Recherche, jumeaux numériques, systèmes embarqués et IA locale.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/style.css">
 <noscript><style>[data-reveal]{opacity:1}</style></noscript>
 </head>
@@ -26,15 +25,37 @@
 </div></header>
 
 <section class="hero" style="border-top:none"><div class="wrap">
-  <p class="label kicker" data-reveal>Portfolio</p>
-  <div data-parallax="0.08" data-parallax-fade="560"><h1 data-reveal>Paul des Brosses</h1></div>
-  <p class="lede" data-reveal>Étudiant ingénieur en M2 — hardware, software et le prototype qui relie les deux.</p>
-  <p class="avail" data-reveal>Recherche un stage de fin d'études — 6 mois, dès février 2027</p>
+  <h1 data-reveal>Paul des Brosses</h1>
+  <p class="lede" data-reveal>Étudiant ingénieur en M2 : hardware, software, et le prototype qui relie les deux.</p>
+  <p class="avail" data-reveal>Recherche un stage de fin d'études : 6 mois, à partir de février 2027</p>
   <div class="row actions" data-reveal>
     <a class="btn solid" href="#projets">Voir les projets</a>
     <a class="btn ghost" href="mailto:pdesbrosses@outlook.fr">pdesbrosses@outlook.fr</a>
   </div>
-</div></section>
+</div>
+<div class="planche" data-reveal>
+  <a class="tile forest" href="projets/forest-of-senses.html">
+    <span class="ph"><img src="../assets/img/forest/master.jpg" alt="Forest of Senses — environnement in-game (Unity)" loading="eager"></span>
+    <span class="tile-cap"><span class="name">Forest of Senses</span><span class="disc">Unity, recherche</span></span>
+  </a>
+  <a class="tile fox" href="projets/applied-fox.html">
+    <span class="ph"><img src="../assets/img/applied-fox/master.png" alt="Applied Fox — écran de validation des suggestions (TUI)" loading="eager"></span>
+    <span class="tile-cap"><span class="name">Applied Fox</span><span class="disc">IA locale, multi-agents</span></span>
+  </a>
+  <a class="tile bocage" href="projets/bocage-digital-twin.html">
+    <span class="ph"><img src="../assets/img/bocage/master_fond.png" alt="Bocage Digital Twin — scène du bocage (WebGL)" loading="eager"></span>
+    <span class="tile-cap"><span class="name">Bocage Digital Twin</span><span class="disc">Unity, WebGL</span></span>
+  </a>
+  <a class="tile petale" href="projets/petale.html">
+    <span class="ph"><img src="../assets/img/petale/master.jpg" alt="Pétale — lampe modulaire" loading="eager" onerror="this.onerror=null;this.src='../assets/img/placeholder.svg'"></span>
+    <span class="tile-cap"><span class="name">Pétale</span><span class="disc">Design produit</span></span>
+  </a>
+  <a class="tile lightning" href="projets/lightning-tdoa.html">
+    <span class="ph"><img src="../assets/img/lightning/hero.jpg" alt="Lightning TDOA — carte d'erreur et triangle des stations" loading="eager"></span>
+    <span class="tile-cap"><span class="name">Lightning TDOA</span><span class="disc">Physique, WebAssembly</span></span>
+  </a>
+</div>
+</section>
 
 <section id="projets"><div class="wrap">
   <div class="sec-head" data-reveal><h2>Projets</h2></div>
@@ -44,8 +65,6 @@
     <div class="body">
       <div class="head"><h3><a href="projets/forest-of-senses.html">Forest of Senses</a></h3></div>
       <p class="sub">Environnement d'adaptation motrice sans consigne pour la recherche en rééducation post-AVC, piloté par un capteur de force isométrique à cinq doigts.</p>
-      <div class="row" style="margin-top:16px"><span class="tag">Unity</span><span class="tag">C#</span><span class="tag">Capteur de force</span><span class="tag">Recherche</span></div>
-      <p class="more"><a class="link" href="projets/forest-of-senses.html">Étude de cas →</a></p>
     </div>
   </article>
 
@@ -53,19 +72,15 @@
     <a class="thumb" href="projets/applied-fox.html"><img src="../assets/img/applied-fox/master.png" alt="Applied Fox — écran de validation des suggestions (TUI)"></a>
     <div class="body">
       <div class="head"><h3><a href="projets/applied-fox.html">Applied Fox</a></h3></div>
-      <p class="sub">Système multi-agents d'IA 100 % local pour la veille technologique R&amp;D, aucune donnée ne quitte la machine, aucune modification sans validation humaine.</p>
-      <div class="row" style="margin-top:16px"><span class="tag">Python</span><span class="tag">LangGraph</span><span class="tag">Ollama</span><span class="tag">Multi-agents</span></div>
-      <p class="more"><a class="link" href="projets/applied-fox.html">Étude de cas →</a></p>
+      <p class="sub">Système multi-agents d'IA <span class="data">100 %</span> local pour la veille technologique R&amp;D, aucune donnée ne quitte la machine, aucune modification sans validation humaine.</p>
     </div>
   </article>
 
   <article class="project" data-reveal>
-    <a class="thumb" href="projets/bocage-digital-twin.html"><img src="../assets/img/bocage/hero.jpg" alt="Bocage Digital Twin — scène et interface de pilotage"></a>
+    <a class="thumb" href="projets/bocage-digital-twin.html"><img src="../assets/img/bocage/hero.jpg" alt="Bocage Digital Twin — interface complète (KPI, leviers, panneaux)"></a>
     <div class="body">
       <div class="head"><h3><a href="projets/bocage-digital-twin.html">Bocage Digital Twin</a></h3></div>
       <p class="sub">Jumeau numérique instrumenté d'un bocage normand : tester si la donnée permet de concilier écologie et économie. Jouable dans le navigateur (WebGL).</p>
-      <div class="row" style="margin-top:16px"><span class="tag">Unity</span><span class="tag">C#</span><span class="tag">Digital twin</span><span class="tag">WebGL</span></div>
-      <p class="more"><a class="link" href="projets/bocage-digital-twin.html">Étude de cas →</a></p>
     </div>
   </article>
 
@@ -73,19 +88,15 @@
     <a class="thumb" href="projets/petale.html"><img src="../assets/img/petale/master.jpg" alt="Pétale — lampe modulaire" onerror="this.onerror=null;this.src='../assets/img/placeholder.svg'"></a>
     <div class="body">
       <div class="head"><h3><a href="projets/petale.html">Pétale</a></h3></div>
-      <p class="sub">Lampe modulaire en acrylique découpé au laser : cinq pétales translucides à repositionner à volonté. Campagne de crowdfunding financée à 337 % de l'objectif.</p>
-      <div class="row" style="margin-top:16px"><span class="tag">Design produit</span><span class="tag">Crowdfunding</span><span class="tag">Découpe laser</span></div>
-      <p class="more"><a class="link" href="projets/petale.html">Étude de cas →</a></p>
+      <p class="sub">Lampe modulaire en acrylique découpé au laser : cinq pétales translucides à repositionner à volonté. Campagne de crowdfunding financée à <span class="data">337 %</span> de l'objectif.</p>
     </div>
   </article>
 
   <article class="project" data-reveal>
-    <a class="thumb" href="projets/lightning-tdoa.html"><img src="../assets/img/lightning/master.png" alt="Lightning TDOA — interface de simulation (stations, carte d'erreur, statistiques)"></a>
+    <a class="thumb" href="projets/lightning-tdoa.html"><img src="../assets/img/lightning/hero.jpg" alt="Lightning TDOA — carte d'erreur et triangle des stations"></a>
     <div class="body">
       <div class="head"><h3><a href="projets/lightning-tdoa.html">Lightning TDOA Simulator</a></h3></div>
       <p class="sub">Simulation d'un réseau de détection de foudre VLF à trois stations par multilatération TDOA, et étude de la précision sous bruit contrôlé.</p>
-      <div class="row" style="margin-top:16px"><span class="tag">Python</span><span class="tag">Physique</span><span class="tag">TDOA</span><span class="tag">WebAssembly</span></div>
-      <p class="more"><a class="link" href="projets/lightning-tdoa.html">Étude de cas →</a></p>
     </div>
   </article>
 </div></section>
@@ -102,14 +113,14 @@
 <section id="contact"><div class="wrap">
   <div class="sec-head" data-reveal><h2>Contact</h2></div>
   <div class="contact-list" data-reveal>
-    <span>Email — <a href="mailto:pdesbrosses@outlook.fr">pdesbrosses@outlook.fr</a></span>
-    <span>LinkedIn — <a href="https://www.linkedin.com/in/paul-des-brosses/" target="_blank" rel="noopener">in/paul-des-brosses</a></span>
-    <span>GitHub — <a href="https://github.com/paul-des-brosses" target="_blank" rel="noopener">paul-des-brosses</a></span>
+    <div class="contact-item"><span class="k">Email</span><a href="mailto:pdesbrosses@outlook.fr">pdesbrosses@outlook.fr</a></div>
+    <div class="contact-item"><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/paul-des-brosses/" target="_blank" rel="noopener">in/paul-des-brosses</a></div>
+    <div class="contact-item"><span class="k">GitHub</span><a href="https://github.com/paul-des-brosses" target="_blank" rel="noopener">paul-des-brosses</a></div>
   </div>
 </div></section>
 
 <footer><div class="wrap">
-  <span class="label">Paul des Brosses — 2026</span>
+  <span class="label">Paul des Brosses, 2026</span>
 </div></footer>
 
 <script src="../assets/js/main.js"></script>

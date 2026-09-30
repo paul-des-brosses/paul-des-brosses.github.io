@@ -7,7 +7,6 @@
 <meta name="description" content="Simulation d'un réseau de détection de foudre VLF à trois stations par multilatération TDOA, et étude de la précision sous bruit contrôlé. Python + démo WASM.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/css/style.css">
 <noscript><style>[data-reveal]{opacity:1}</style></noscript>
 </head>
@@ -21,7 +20,7 @@
     <a href="../index.html#projets">Projets</a>
     <a href="../index.html#a-propos">À propos</a>
     <a href="../index.html#contact">Contact</a>
-    <span class="lang"><a href="../../en/projects/lightning-tdoa.html">EN</a><span class="on">FR</span></span>
+    <span class="lang"><span class="on">FR</span><a href="../../en/projects/lightning-tdoa.html">EN</a></span>
   </nav>
 </div></header>
 
@@ -39,16 +38,17 @@
 </div></section>
 
 <figure class="cover" data-reveal><div class="wrap">
-  <img src="../../assets/img/lightning/master.png" alt="Interface de la démo Lightning TDOA : stations, carte d'erreur et panneau de statistiques">
-  <figcaption>La démo live : trois stations (S1–S3), la carte d'erreur calculée en direct, les détections et un panneau temps réel (éclairs, taux observé, erreur médiane et p95).</figcaption>
+  <img src="../../assets/img/lightning/hero.jpg" alt="Carte d'erreur de localisation et triangle des stations S1–S3">
+  <figcaption>La carte d'erreur calculée en direct autour du triangle des trois stations (S1–S3). Faible à l'intérieur du triangle, elle s'envole le long des axes médians où la géométrie se dégrade.</figcaption>
 </div></figure>
 
 <section><div class="wrap">
   <div class="meta" data-reveal>
-    <div><div class="k">Année</div><div class="v">2025</div></div>
+    <div><div class="k">Année</div><div class="v"><span class="data">2025</span></div></div>
     <div><div class="k">Rôle</div><div class="v">Conception, développement, benchmarks</div></div>
     <div><div class="k">Cadre</div><div class="v">Projet perso, inspiré par un projet matériel ESILV</div></div>
     <div><div class="k">Statut</div><div class="v">Étude logicielle publique</div></div>
+    <div class="wide"><div class="k">Stack</div><div class="v">Python · numpy/scipy · Monte Carlo · Pyodide · WebAssembly</div></div>
   </div>
 </div></section>
 
@@ -76,34 +76,20 @@
   <div class="sec-head" data-reveal><h2>Résultat</h2></div>
   <div class="prose" data-reveal>
     <ul>
-      <li>Trois stations sur une base équilatérale de 50 km, bruit de 100 ns : <strong>erreur médiane ~52 m</strong> dans le triangle, <strong>&lt; 65 m</strong> jusqu'au cercle circonscrit.</li>
-      <li>Pente log-log essentiellement de 1 sur quatre décades : la mise à l'échelle linéaire attendue à géométrie fixe.</li>
-      <li><strong>Taille de réseau optimale</strong> : côté ≈ 5× le rayon de la zone à couvrir — les stations doivent être éloignées, pas regroupées.</li>
-      <li>Les deux solveurs se suivent à moins de 5 % ; le NLLS est retenu, car il généralise à <em>N</em> stations.</li>
+      <li>Trois stations sur une base équilatérale de <span class="data">50 km</span>, bruit de <span class="data">100 ns</span> : <strong>erreur médiane <span class="data">~52 m</span></strong> dans le triangle, <strong><span class="data">&lt; 65 m</span></strong> jusqu'au cercle circonscrit.</li>
+      <li>Pente log-log essentiellement de <span class="data">1</span> sur quatre décades : la mise à l'échelle linéaire attendue à géométrie fixe.</li>
+      <li><strong>Taille de réseau optimale</strong> : côté ≈ <span class="data">5×</span> le rayon de la zone à couvrir — les stations doivent être éloignées, pas regroupées.</li>
+      <li>Les deux solveurs se suivent à moins de <span class="data">5 %</span> ; le NLLS est retenu, car il généralise à <em>N</em> stations.</li>
     </ul>
   </div>
   <figure class="figure" data-reveal>
     <img src="../../assets/img/lightning/heatmap.png" alt="Carte de chaleur de l'erreur médiane de localisation autour d'un triangle de 50 km">
-    <figcaption>Carte d'erreur générée hors-ligne par le script de benchmark du dépôt (<code>experiments/bench_heatmap.py</code>) : erreur médiane par cellule sur 100 tirages Monte Carlo, avec les contours de GDOP = 5, 10 et 20. Faible à l'intérieur du triangle, elle s'envole le long des axes médians où la géométrie se dégrade.</figcaption>
+    <figcaption>Carte d'erreur générée hors-ligne par le script de benchmark du dépôt (<code>experiments/bench_heatmap.py</code>) : erreur médiane par cellule sur <span class="data">100</span> tirages Monte Carlo, avec les contours de GDOP = <span class="data">5, 10 et 20</span>. Faible à l'intérieur du triangle, elle s'envole le long des axes médians où la géométrie se dégrade.</figcaption>
   </figure>
   <figure class="figure" data-reveal>
     <img src="../../assets/img/lightning/noise-curve.png" alt="Erreur médiane de localisation en fonction du bruit temporel, échelle log-log">
-    <figcaption>Erreur médiane vs σ sur les canaux temporels (log-log), également produite par un script du dépôt. La pente ≈ 1 confirme le scaling linéaire ; à 100 ns le point est bon à ~55 m.</figcaption>
+    <figcaption>Erreur médiane vs σ sur les canaux temporels (log-log), également produite par un script du dépôt. La pente ≈ <span class="data">1</span> confirme le scaling linéaire ; à <span class="data">100 ns</span> le point est bon à <span class="data">~55 m</span>.</figcaption>
   </figure>
-</div></section>
-
-<section><div class="wrap">
-  <div class="sec-head" data-reveal><h2>Compétences</h2></div>
-  <div class="row" data-reveal>
-    <span class="tag">Python</span>
-    <span class="tag">numpy · scipy</span>
-    <span class="tag">Traitement de signal</span>
-    <span class="tag">Optimisation non linéaire</span>
-    <span class="tag">Géométrie · multilatération</span>
-    <span class="tag">Monte Carlo</span>
-    <span class="tag">Pyodide · WebAssembly</span>
-    <span class="tag">Tests · benchmarks</span>
-  </div>
 </div></section>
 
 <section><div class="wrap">
@@ -111,6 +97,10 @@
   <div class="prose" data-reveal>
     <p>La démo web est un site statique (HTML/CSS/JS + Pyodide) : la bibliothèque Python est chargée telle quelle dans le navigateur, sans portage JavaScript. On déplace les trois stations, on déclenche des orages, et on regarde le solveur travailler.</p>
   </div>
+  <figure class="figure" data-reveal>
+    <img src="../../assets/img/lightning/interface_heatmap.png" alt="Interface complète de la démo : calques, carte d'erreur, contrôles et panneau de statistiques">
+    <figcaption>L'interface live : trois stations (S1–S3), la carte d'erreur recalculée, les détections, les calques et un panneau temps réel (éclairs, taux observé, erreur médiane et p95).</figcaption>
+  </figure>
   <div class="row" data-reveal style="margin-top:24px">
     <a class="btn solid" href="https://paul-des-brosses.github.io/lightning-tdoa-simulator/" target="_blank" rel="noopener">Lancer la démo</a>
     <a class="btn ghost" href="https://github.com/paul-des-brosses/lightning-tdoa-simulator" target="_blank" rel="noopener">Dépôt GitHub</a>

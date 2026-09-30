@@ -7,7 +7,6 @@
 <meta name="description" content="A 100% local multi-agent AI system for R&D technology watch. Everything runs through Ollama, no data leaves the machine, no change without human validation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/css/style.css">
 <noscript><style>[data-reveal]{opacity:1}</style></noscript>
 </head>
@@ -45,10 +44,11 @@
 
 <section><div class="wrap">
   <div class="meta" data-reveal>
-    <div><div class="k">Year</div><div class="v">2026</div></div>
+    <div><div class="k">Year</div><div class="v"><span class="data">2026</span></div></div>
     <div><div class="k">Role</div><div class="v">Design, architecture, development</div></div>
     <div><div class="k">Setting</div><div class="v">Personal project</div></div>
-    <div><div class="k">Status</div><div class="v">MVP delivered (M1→8 + v1.5)</div></div>
+    <div><div class="k">Status</div><div class="v">MVP delivered (<span class="data">M1→8 + v1.5</span>)</div></div>
+    <div class="wide"><div class="k">Stack</div><div class="v">Python · LangGraph · LangChain · Pydantic · Ollama · SQLite</div></div>
   </div>
 </div></section>
 
@@ -63,14 +63,14 @@
 <section><div class="wrap">
   <div class="sec-head" data-reveal><h2>Approach</h2></div>
   <div class="prose" data-reveal>
-    <p>You describe your project once in a structured <code>.md</code> file (components, constraints, objectives, next deliverable). Applied Fox runs a chain of 4 local agents that collect, filter, evaluate and synthesise the information relevant to that project, then you validate each suggestion.</p>
+    <p>You describe your project once in a structured <code>.md</code> file (components, constraints, objectives, next deliverable). Applied Fox runs a chain of <span class="data">4</span> local agents that collect, filter, evaluate and synthesise the information relevant to that project, then you validate each suggestion.</p>
     <pre>Scout        →  Reddit + RSS + GitHub  (deterministic 5-step filtering)
 Integrator   →  feasibility assessment
 Judge        →  ranking + ETA  (deterministic filters v1.5)
 Reporter     →  HTML report + 3-8 prioritised suggestions
                     ↓
               human validation: accept / reject / defer</pre>
-    <p>Each agent has a <strong>strict Pydantic contract</strong>: if one fails, we know exactly which one and why. The Judge never sees the findings rejected by the Integrator. Three layers of deterministic filters short-circuit ~70% of LLM calls before even querying the model.</p>
+    <p>Each agent has a <strong>strict Pydantic contract</strong>: if one fails, we know exactly which one and why. The Judge never sees the findings rejected by the Integrator. Three layers of deterministic filters short-circuit <span class="data">~70%</span> of LLM calls before even querying the model.</p>
     <p>Non-negotiable constraints: <strong>local by default</strong> (no silent network calls, no telemetry), <strong>hot-swappable LLM</strong> per role, <strong>adaptable to the hardware</strong>, and <strong>the human remains the final arbiter</strong>.</p>
   </div>
 </div></section>
@@ -79,9 +79,9 @@ Reporter     →  HTML report + 3-8 prioritised suggestions
   <div class="sec-head" data-reveal><h2>Result</h2></div>
   <div class="prose" data-reveal>
     <ul>
-      <li><strong>MVP delivered</strong>: interview module (4 modes), 4-agent pipeline, 3 active sources, validation loop, multi-project menu.</li>
-      <li>Full run: <strong>~4-6 min cold</strong>, <strong>~1-2 min</strong> with a warm LLM cache (RTX 3070 8 GB).</li>
-      <li>The Judge runs in ~10 s on ~20 findings, thanks to the deterministic filters (−70% LLM calls).</li>
+      <li><strong>MVP delivered</strong>: interview module (<span class="data">4</span> modes), <span class="data">4</span>-agent pipeline, <span class="data">3</span> active sources, validation loop, multi-project menu.</li>
+      <li>Full run: <strong><span class="data">~4-6 min</span> cold</strong>, <strong><span class="data">~1-2 min</span></strong> with a warm LLM cache (<span class="data">RTX 3070 8 GB</span>).</li>
+      <li>The Judge runs in <span class="data">~10 s</span> on <span class="data">~20</span> findings, thanks to the deterministic filters (<span class="data">−70%</span> LLM calls).</li>
       <li><strong>Zero data</strong> sent to a cloud, zero subscription.</li>
     </ul>
   </div>
@@ -89,20 +89,6 @@ Reporter     →  HTML report + 3-8 prioritised suggestions
     <img src="../../assets/img/applied-fox/report.png" alt="HTML technology-watch report produced by Applied Fox (DIY lightning detection station)">
     <figcaption>Example of the HTML report at the end of a watch: one-line summary, prioritised suggestions (gain, effort, risks), then traceability of rejected findings and consulted sources.</figcaption>
   </figure>
-</div></section>
-
-<section><div class="wrap">
-  <div class="sec-head" data-reveal><h2>Skills</h2></div>
-  <div class="row" data-reveal>
-    <span class="tag">Python</span>
-    <span class="tag">LangGraph · LangChain</span>
-    <span class="tag">Pydantic</span>
-    <span class="tag">Ollama · local LLMs</span>
-    <span class="tag">Rich · Typer (TUI)</span>
-    <span class="tag">SQLite (cache)</span>
-    <span class="tag">Multi-agent orchestration</span>
-    <span class="tag">LLM evaluation</span>
-  </div>
 </div></section>
 
 <section><div class="wrap">

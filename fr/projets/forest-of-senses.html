@@ -7,7 +7,6 @@
 <meta name="description" content="Environnement audio-visuel interactif qui induit une adaptation motrice mesurable sans aucune consigne, piloté par un capteur de force isométrique à cinq doigts. Prototype de recherche post-AVC.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/css/style.css">
 <noscript><style>[data-reveal]{opacity:1}</style></noscript>
 </head>
@@ -21,7 +20,7 @@
     <a href="../index.html#projets">Projets</a>
     <a href="../index.html#a-propos">À propos</a>
     <a href="../index.html#contact">Contact</a>
-    <span class="lang"><a href="../../en/projects/forest-of-senses.html">EN</a><span class="on">FR</span></span>
+    <span class="lang"><span class="on">FR</span><a href="../../en/projects/forest-of-senses.html">EN</a></span>
   </nav>
 </div></header>
 
@@ -45,10 +44,11 @@
 
 <section><div class="wrap">
   <div class="meta" data-reveal>
-    <div><div class="k">Année</div><div class="v">2025</div></div>
+    <div><div class="k">Année</div><div class="v"><span class="data">2025</span></div></div>
     <div><div class="k">Rôle</div><div class="v">Conception, intégration capteur, développement, analyse</div></div>
     <div><div class="k">Cadre</div><div class="v">Recherche — IFT / ESILV</div></div>
-    <div><div class="k">Statut</div><div class="v">Prototype de recherche · 15 sujets</div></div>
+    <div><div class="k">Statut</div><div class="v">Prototype de recherche · <span class="data">15</span> sujets</div></div>
+    <div class="wide"><div class="k">Stack</div><div class="v">Unity · C# · intégration capteur · Python (scipy, pandas)</div></div>
   </div>
 </div></section>
 
@@ -63,7 +63,7 @@
 <section><div class="wrap">
   <div class="sec-head" data-reveal><h2>Approche</h2></div>
   <div class="prose" data-reveal>
-    <p>Les forces isométriques des cinq doigts sont captées par le <strong>Dextrain Manipulandum</strong> (~14 Hz) et injectées dans un environnement Unity. Une machine à états de quatre phases modifie progressivement la contingence entre l'effort et le retour (règle « winner-takes-all », jauge de fatigue virtuelle, cible sous-maximale invisible) sans jamais les révéler.</p>
+    <p>Les forces isométriques des cinq doigts sont captées par le <strong>Dextrain Manipulandum</strong> (<span class="data">~14 Hz</span>) et injectées dans un environnement Unity. Une machine à états de quatre phases modifie progressivement la contingence entre l'effort et le retour (règle « winner-takes-all », jauge de fatigue virtuelle, cible sous-maximale invisible) sans jamais les révéler.</p>
     <p>Aucune interface, aucun score, aucun chrono, aucun texte : c'est le décor qui signale la progression (braises → feu et étoiles → aube → fonte des neiges). Le passage de l'hiver au printemps fait écho au retour progressif et non linéaire de la fonction motrice qui caractérise la récupération post-AVC. Le retour est audio-visuel : particules, ciel, accords ; en phase 3, le tempo et le filtrage d'un morceau familier deviennent le signal de récompense.</p>
     <p>Chaque frame est journalisée en CSV et analysée hors-ligne en Python (test de Wilcoxon signé, d de Cohen).</p>
     <blockquote>« Avec ce capteur, vous contrôlez ce qui se passe dans le monde. Explorez librement. Il y a 4 phases, la première est juste une phase de calibration d'une minute. » — la seule consigne donnée.</blockquote>
@@ -77,36 +77,21 @@
 <section><div class="wrap">
   <div class="sec-head" data-reveal><h2>Résultat</h2></div>
   <div class="prose" data-reveal>
-    <p>Étude pilote sur <strong>15 sujets sains</strong> (21–63 ans) :</p>
+    <p>Étude pilote sur <strong><span class="data">15</span> sujets sains</strong> (<span class="data">21–63 ans</span>) :</p>
     <ul>
-      <li>Force nette d'isolation : <strong>2,88 N → 4,53 N (+57 %)</strong>, p = 0,0020, d = 0,99.</li>
-      <li>Précision sous-maximale : <strong>43,4 % → 60,4 % (+39 %)</strong>, p = 0,0054, d = 0,86.</li>
-      <li>86,7 % des sujets (13/15) ont identifié consciemment la règle d'isolation ; la modalité auditive domine sur la visuelle.</li>
+      <li>Force nette d'isolation : <strong><span class="data">2,88 N</span> → <span class="data">4,53 N</span> (<span class="data">+57 %</span>)</strong>, p = <span class="data">0,0020</span>, d = <span class="data">0,99</span>.</li>
+      <li>Précision sous-maximale : <strong><span class="data">43,4 %</span> → <span class="data">60,4 %</span> (<span class="data">+39 %</span>)</strong>, p = <span class="data">0,0054</span>, d = <span class="data">0,86</span>.</li>
+      <li><span class="data">86,7 %</span> des sujets (<span class="data">13/15</span>) ont identifié consciemment la règle d'isolation ; la modalité auditive domine sur la visuelle.</li>
     </ul>
   </div>
   <figure class="figure" data-reveal>
     <img src="../../assets/img/forest/fig-isolation.png" alt="Boxplot de la force nette d'isolation, phase 0 vs phase 2">
-    <figcaption>Force nette d'isolation — exploration libre (2,88 N) vs contrainte implicite (4,53 N) sur la cohorte de 15 sujets.</figcaption>
+    <figcaption>Force nette d'isolation — exploration libre (<span class="data">2,88 N</span>) vs contrainte implicite (<span class="data">4,53 N</span>) sur la cohorte de <span class="data">15</span> sujets.</figcaption>
   </figure>
   <figure class="figure" data-reveal>
     <img src="../../assets/img/forest/fig-accuracy.png" alt="Boxplot de la précision sous-maximale, début vs fin de phase 3">
-    <figcaption>Précision sous-maximale — 43,4 % en début de phase 3 contre 60,4 % en fin, bien au-dessus des ~15 % d'une stratégie aléatoire.</figcaption>
+    <figcaption>Précision sous-maximale — <span class="data">43,4 %</span> en début de phase 3 contre <span class="data">60,4 %</span> en fin, bien au-dessus des <span class="data">~15 %</span> d'une stratégie aléatoire.</figcaption>
   </figure>
-</div></section>
-
-<section><div class="wrap">
-  <div class="sec-head" data-reveal><h2>Compétences</h2></div>
-  <div class="row" data-reveal>
-    <span class="tag">Unity 6 · URP</span>
-    <span class="tag">C#</span>
-    <span class="tag">Intégration capteur</span>
-    <span class="tag">Machine à états</span>
-    <span class="tag">Journalisation CSV</span>
-    <span class="tag">Python · pandas · scipy</span>
-    <span class="tag">Statistiques non paramétriques</span>
-    <span class="tag">Design d'expérience</span>
-    <span class="tag">Méthodologie de recherche</span>
-  </div>
 </div></section>
 
 <section><div class="wrap">

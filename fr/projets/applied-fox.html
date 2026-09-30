@@ -7,7 +7,6 @@
 <meta name="description" content="Système multi-agents d'IA 100 % local pour la veille technologique R&D. Tout tourne via Ollama, aucune donnée ne quitte la machine, aucune modification sans validation humaine.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/css/style.css">
 <noscript><style>[data-reveal]{opacity:1}</style></noscript>
 </head>
@@ -21,7 +20,7 @@
     <a href="../index.html#projets">Projets</a>
     <a href="../index.html#a-propos">À propos</a>
     <a href="../index.html#contact">Contact</a>
-    <span class="lang"><a href="../../en/projects/applied-fox.html">EN</a><span class="on">FR</span></span>
+    <span class="lang"><span class="on">FR</span><a href="../../en/projects/applied-fox.html">EN</a></span>
   </nav>
 </div></header>
 
@@ -45,10 +44,11 @@
 
 <section><div class="wrap">
   <div class="meta" data-reveal>
-    <div><div class="k">Année</div><div class="v">2026</div></div>
+    <div><div class="k">Année</div><div class="v"><span class="data">2026</span></div></div>
     <div><div class="k">Rôle</div><div class="v">Conception, architecture, développement</div></div>
     <div><div class="k">Cadre</div><div class="v">Projet perso</div></div>
-    <div><div class="k">Statut</div><div class="v">MVP livré (M1→8 + v1.5)</div></div>
+    <div><div class="k">Statut</div><div class="v">MVP livré (<span class="data">M1→8 + v1.5</span>)</div></div>
+    <div class="wide"><div class="k">Stack</div><div class="v">Python · LangGraph · LangChain · Pydantic · Ollama · SQLite</div></div>
   </div>
 </div></section>
 
@@ -63,14 +63,14 @@
 <section><div class="wrap">
   <div class="sec-head" data-reveal><h2>Approche</h2></div>
   <div class="prose" data-reveal>
-    <p>Tu décris ton projet une fois dans un fichier <code>.md</code> structuré (composants, contraintes, objectifs, prochain livrable). Applied Fox fait tourner une chaîne de 4 agents locaux qui collectent, filtrent, évaluent et synthétisent l'information pertinente pour ce projet, puis tu valides chaque suggestion.</p>
+    <p>Tu décris ton projet une fois dans un fichier <code>.md</code> structuré (composants, contraintes, objectifs, prochain livrable). Applied Fox fait tourner une chaîne de <span class="data">4</span> agents locaux qui collectent, filtrent, évaluent et synthétisent l'information pertinente pour ce projet, puis tu valides chaque suggestion.</p>
     <pre>Scout        →  Reddit + RSS + GitHub  (filtrage déterministe en 5 étapes)
 Integrator   →  évaluation de faisabilité
 Judge        →  classement + ETA  (filtres déterministes v1.5)
 Reporter     →  rapport HTML + 3-8 suggestions priorisées
                     ↓
               validation humaine : accepter / rejeter / reporter</pre>
-    <p>Chaque agent a un <strong>contrat Pydantic strict</strong> : si l'un échoue, on sait exactement lequel et pourquoi. Le Judge ne voit jamais les trouvailles rejetées par l'Integrator. Trois couches de filtres déterministes court-circuitent ~70 % des appels LLM avant même de solliciter le modèle.</p>
+    <p>Chaque agent a un <strong>contrat Pydantic strict</strong> : si l'un échoue, on sait exactement lequel et pourquoi. Le Judge ne voit jamais les trouvailles rejetées par l'Integrator. Trois couches de filtres déterministes court-circuitent <span class="data">~70 %</span> des appels LLM avant même de solliciter le modèle.</p>
     <p>Contraintes non négociables : <strong>local par défaut</strong> (aucun appel réseau silencieux, aucune télémétrie), <strong>LLM hot-swappable</strong> par rôle, <strong>adaptable au matériel</strong>, et <strong>l'humain reste l'arbitre final</strong>.</p>
   </div>
 </div></section>
@@ -79,9 +79,9 @@ Reporter     →  rapport HTML + 3-8 suggestions priorisées
   <div class="sec-head" data-reveal><h2>Résultat</h2></div>
   <div class="prose" data-reveal>
     <ul>
-      <li><strong>MVP livré</strong> : module interview (4 modes), pipeline 4 agents, 3 sources actives, boucle de validation, menu multi-projets.</li>
-      <li>Run complet : <strong>~4-6 min à froid</strong>, <strong>~1-2 min</strong> avec le cache LLM chaud (RTX 3070 8 Go).</li>
-      <li>Le Judge tourne en ~10 s sur ~20 trouvailles, grâce aux filtres déterministes (−70 % d'appels LLM).</li>
+      <li><strong>MVP livré</strong> : module interview (<span class="data">4</span> modes), pipeline <span class="data">4</span> agents, <span class="data">3</span> sources actives, boucle de validation, menu multi-projets.</li>
+      <li>Run complet : <strong><span class="data">~4-6 min</span> à froid</strong>, <strong><span class="data">~1-2 min</span></strong> avec le cache LLM chaud (<span class="data">RTX 3070 8 Go</span>).</li>
+      <li>Le Judge tourne en <span class="data">~10 s</span> sur <span class="data">~20</span> trouvailles, grâce aux filtres déterministes (<span class="data">−70 %</span> d'appels LLM).</li>
       <li><strong>Zéro donnée</strong> envoyée à un cloud, zéro abonnement.</li>
     </ul>
   </div>
@@ -89,20 +89,6 @@ Reporter     →  rapport HTML + 3-8 suggestions priorisées
     <img src="../../assets/img/applied-fox/report.png" alt="Rapport de veille HTML produit par Applied Fox (station de détection de foudre DIY)">
     <figcaption>Exemple de rapport HTML de fin de veille : synthèse en une ligne, suggestions priorisées (gain, effort, risques), puis traçabilité des trouvailles rejetées et des sources consultées.</figcaption>
   </figure>
-</div></section>
-
-<section><div class="wrap">
-  <div class="sec-head" data-reveal><h2>Compétences</h2></div>
-  <div class="row" data-reveal>
-    <span class="tag">Python</span>
-    <span class="tag">LangGraph · LangChain</span>
-    <span class="tag">Pydantic</span>
-    <span class="tag">Ollama · LLM locaux</span>
-    <span class="tag">Rich · Typer (TUI)</span>
-    <span class="tag">SQLite (cache)</span>
-    <span class="tag">Orchestration multi-agents</span>
-    <span class="tag">Évaluation LLM</span>
-  </div>
 </div></section>
 
 <section><div class="wrap">

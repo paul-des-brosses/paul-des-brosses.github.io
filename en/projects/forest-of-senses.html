@@ -7,7 +7,6 @@
 <meta name="description" content="An interactive audio-visual environment that induces measurable motor adaptation without any instructions, driven by a five-finger isometric force sensor. Post-stroke research prototype.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/css/style.css">
 <noscript><style>[data-reveal]{opacity:1}</style></noscript>
 </head>
@@ -45,10 +44,11 @@
 
 <section><div class="wrap">
   <div class="meta" data-reveal>
-    <div><div class="k">Year</div><div class="v">2025</div></div>
+    <div><div class="k">Year</div><div class="v"><span class="data">2025</span></div></div>
     <div><div class="k">Role</div><div class="v">Design, sensor integration, development, analysis</div></div>
     <div><div class="k">Setting</div><div class="v">Research — IFT / ESILV</div></div>
-    <div><div class="k">Status</div><div class="v">Research prototype · 15 subjects</div></div>
+    <div><div class="k">Status</div><div class="v">Research prototype · <span class="data">15</span> subjects</div></div>
+    <div class="wide"><div class="k">Stack</div><div class="v">Unity · C# · sensor integration · Python (scipy, pandas)</div></div>
   </div>
 </div></section>
 
@@ -63,7 +63,7 @@
 <section><div class="wrap">
   <div class="sec-head" data-reveal><h2>Approach</h2></div>
   <div class="prose" data-reveal>
-    <p>The isometric forces of the five fingers are captured by the <strong>Dextrain Manipulandum</strong> (~14 Hz) and fed into a Unity environment. A four-phase state machine progressively changes the contingency between effort and feedback (a “winner-takes-all” rule, a virtual fatigue gauge, an invisible sub-maximal target) without ever revealing it.</p>
+    <p>The isometric forces of the five fingers are captured by the <strong>Dextrain Manipulandum</strong> (<span class="data">~14 Hz</span>) and fed into a Unity environment. A four-phase state machine progressively changes the contingency between effort and feedback (a “winner-takes-all” rule, a virtual fatigue gauge, an invisible sub-maximal target) without ever revealing it.</p>
     <p>No interface, no score, no timer, no text: the scenery signals progress (embers → fire and stars → dawn → snowmelt). The shift from winter to spring echoes the gradual, non-linear return of motor function that characterises post-stroke recovery. Feedback is audio-visual: particles, sky, chords; in phase 3, the tempo and filtering of a familiar track become the reward signal.</p>
     <p>Every frame is logged to CSV and analysed offline in Python (Wilcoxon signed-rank test, Cohen's d).</p>
     <blockquote>“With this sensor, you control what happens in the world. Explore freely. There are 4 phases; the first is just a one-minute calibration phase.” — the only instruction given.</blockquote>
@@ -77,36 +77,21 @@
 <section><div class="wrap">
   <div class="sec-head" data-reveal><h2>Result</h2></div>
   <div class="prose" data-reveal>
-    <p>Pilot study on <strong>15 healthy subjects</strong> (21–63 years old):</p>
+    <p>Pilot study on <strong><span class="data">15</span> healthy subjects</strong> (<span class="data">21–63 years old</span>):</p>
     <ul>
-      <li>Net isolation force: <strong>2.88 N → 4.53 N (+57%)</strong>, p = 0.0020, d = 0.99.</li>
-      <li>Sub-maximal accuracy: <strong>43.4% → 60.4% (+39%)</strong>, p = 0.0054, d = 0.86.</li>
-      <li>86.7% of subjects (13/15) consciously identified the isolation rule; the auditory modality dominated over the visual one.</li>
+      <li>Net isolation force: <strong><span class="data">2.88 N</span> → <span class="data">4.53 N</span> (<span class="data">+57%</span>)</strong>, p = <span class="data">0.0020</span>, d = <span class="data">0.99</span>.</li>
+      <li>Sub-maximal accuracy: <strong><span class="data">43.4%</span> → <span class="data">60.4%</span> (<span class="data">+39%</span>)</strong>, p = <span class="data">0.0054</span>, d = <span class="data">0.86</span>.</li>
+      <li><span class="data">86.7%</span> of subjects (<span class="data">13/15</span>) consciously identified the isolation rule; the auditory modality dominated over the visual one.</li>
     </ul>
   </div>
   <figure class="figure" data-reveal>
     <img src="../../assets/img/forest/fig-isolation.png" alt="Boxplot of net isolation force, phase 0 vs phase 2">
-    <figcaption>Net isolation force — free exploration (2.88 N) vs implicit constraint (4.53 N) across the 15-subject cohort.</figcaption>
+    <figcaption>Net isolation force — free exploration (<span class="data">2.88 N</span>) vs implicit constraint (<span class="data">4.53 N</span>) across the <span class="data">15</span>-subject cohort.</figcaption>
   </figure>
   <figure class="figure" data-reveal>
     <img src="../../assets/img/forest/fig-accuracy.png" alt="Boxplot of sub-maximal accuracy, start vs end of phase 3">
-    <figcaption>Sub-maximal accuracy — 43.4% at the start of phase 3 versus 60.4% at the end, well above the ~15% of a random strategy.</figcaption>
+    <figcaption>Sub-maximal accuracy — <span class="data">43.4%</span> at the start of phase 3 versus <span class="data">60.4%</span> at the end, well above the <span class="data">~15%</span> of a random strategy.</figcaption>
   </figure>
-</div></section>
-
-<section><div class="wrap">
-  <div class="sec-head" data-reveal><h2>Skills</h2></div>
-  <div class="row" data-reveal>
-    <span class="tag">Unity 6 · URP</span>
-    <span class="tag">C#</span>
-    <span class="tag">Sensor integration</span>
-    <span class="tag">State machine</span>
-    <span class="tag">CSV logging</span>
-    <span class="tag">Python · pandas · scipy</span>
-    <span class="tag">Non-parametric statistics</span>
-    <span class="tag">Experiment design</span>
-    <span class="tag">Research methodology</span>
-  </div>
 </div></section>
 
 <section><div class="wrap">
