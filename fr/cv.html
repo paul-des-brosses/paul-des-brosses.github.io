@@ -8,7 +8,7 @@
   <style>
     /* Spécifique à la vue CV */
     .cv-container {
-      max-width: 960px;
+      max-width: 980px;
       margin: 2.5rem auto 5rem;
       padding: 0 1.5rem;
     }
@@ -91,7 +91,7 @@
     /* Corps du CV en 2 colonnes */
     .cv-body {
       display: grid;
-      grid-template-columns: 320px 1fr;
+      grid-template-columns: 310px 1fr;
       padding: 2.5rem;
       gap: 3rem;
     }
@@ -123,31 +123,33 @@
       margin-bottom: 0.2rem;
     }
     .cv-entry-head strong {
-      font-size: 0.98rem;
+      font-size: 0.96rem;
       color: var(--text);
     }
     .cv-entry-head .date {
       font-size: 0.78rem;
       color: var(--text-muted);
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      white-space: nowrap;
+      margin-left: 0.5rem;
     }
     .cv-entry-sub {
       font-size: 0.85rem;
       color: #0C3463;
       font-style: italic;
-      margin-bottom: 0.45rem;
+      margin-bottom: 0.4rem;
     }
     .cv-entry-desc {
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       line-height: 1.6;
       color: var(--text);
     }
     .cv-entry ul {
       padding-left: 1.1rem;
-      margin-top: 0.4rem;
+      margin-top: 0.35rem;
     }
     .cv-entry li {
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       line-height: 1.55;
       color: var(--text);
       margin-bottom: 0.35rem;
@@ -189,14 +191,16 @@
   <div id="progress"></div>
 
   <header class="site-header">
-    <a class="brand" href="index.html">Paul des Brosses</a>
-    <nav>
-      <a href="index.html#projets">Projets</a>
-      <a href="index.html#a-propos">À propos</a>
-      <a href="cv.html" style="color:var(--text); font-weight:600;">CV</a>
-      <a href="index.html#contact">Contact</a>
-      <span class="lang"><span class="on">FR</span><a href="../en/cv.html">EN</a></span>
-    </nav>
+    <div class="wrap">
+      <a class="brand" href="index.html">Paul des Brosses</a>
+      <nav class="nav">
+        <a href="index.html#projets">Projets</a>
+        <a href="index.html#a-propos">À propos</a>
+        <a href="cv.html" style="color:var(--text); font-weight:700;">CV</a>
+        <a href="index.html#contact">Contact</a>
+        <span class="lang"><span class="on">FR</span><a href="../en/cv.html">EN</a></span>
+      </nav>
+    </div>
   </header>
 
   <main class="cv-container">
@@ -239,20 +243,22 @@
           <div class="cv-entry">
             <div class="cv-entry-head">
               <strong>ESILV &mdash; Paris La Défense</strong>
+              <span class="date">Depuis 2022</span>
             </div>
-            <div class="cv-entry-sub">Depuis 2022</div>
+            <div class="cv-entry-sub">Ingénieur, majeure Creative Technology</div>
             <div class="cv-entry-desc">
-              Ingénieur, majeure Creative Technology. IA, traitement du signal, hardware embarqué, 3D temps réel, architecture logicielle.
+              IA, traitement du signal, hardware embarqué, 3D temps réel, architecture logicielle, mathématiques appliquées.
             </div>
           </div>
 
           <div class="cv-entry">
             <div class="cv-entry-head">
               <strong>UVIC &mdash; Catalogne, Espagne</strong>
+              <span class="date">2024 &ndash; 2025</span>
             </div>
-            <div class="cv-entry-sub">2024 &ndash; 2025</div>
+            <div class="cv-entry-sub">Semestre Erasmus</div>
             <div class="cv-entry-desc">
-              Semestre Erasmus. Mineurs IA et finance de marché. Cursus 100 % en anglais.
+              Mineurs IA et finance de marché. Enseignement en anglais.
             </div>
           </div>
 
@@ -270,29 +276,39 @@
 
           <div class="skill-block">
             <div class="skill-name">IA &amp; LLM</div>
-            <div class="skill-items">LangChain, LangGraph &bull; Systèmes multi-agents &bull; RAG, agents locaux &bull; Ollama &bull; Pydantic &bull; ChromaDB</div>
+            <div class="skill-items">LangChain, LangGraph &bull; systèmes multi-agents &bull; RAG, agents autonomes &bull; Ollama &bull; Pydantic &bull; ChromaDB, embeddings &bull; Claude API</div>
           </div>
 
           <div class="skill-block">
             <div class="skill-name">Hardware &amp; Signal</div>
-            <div class="skill-items">ESP32, Arduino, C embarqué &bull; Traitement du signal &bull; RF, VLF, GPS &bull; Protocoles : TCP, UDP, MQTT, I2C</div>
+            <div class="skill-items">ESP32, Arduino, C embarqué &bull; traitement du signal &bull; RF, VLF, GPS &bull; réseau : TCP, UDP, HTTP, MQTT, I2C</div>
           </div>
 
           <div class="skill-block">
-            <div class="skill-name">Simulation &amp; Data</div>
-            <div class="skill-items">Jumeaux numériques &bull; Modélisation de systèmes complexes &bull; NumPy, Pandas, Matplotlib, SciPy</div>
+            <div class="skill-name">Simulation &amp; Systèmes</div>
+            <div class="skill-items">modélisation de systèmes complexes &bull; jumeaux numériques</div>
+          </div>
+
+          <div class="skill-block">
+            <div class="skill-name">Data</div>
+            <div class="skill-items">NumPy, Pandas, Matplotlib</div>
+          </div>
+
+          <div class="cv-section-title">Soft Skills</div>
+          <div class="skill-block">
+            <div class="skill-items">Auto-formation rapide &bull; gestion de projet de bout en bout &bull; méthodologie de recherche &bull; design thinking &bull; autonomie de décision &bull; vulgarisation technique &bull; persévérance</div>
           </div>
 
           <div class="cv-section-title">Langues</div>
           <div class="skill-block">
-            <div class="skill-items">Français (maternel) &bull; Anglais (B2 professionnel) &bull; Espagnol (B1)</div>
+            <div class="skill-items">Français (maternel) &bull; Anglais (B2) &bull; Espagnol (B1)</div>
           </div>
 
           <div class="cv-section-title">Centres d'intérêt</div>
           <div class="skill-block">
-            <div class="skill-items"><strong>Maker / DIY</strong> : conception PCB, impression 3D, radio-amateur</div>
+            <div class="skill-items"><strong>Maker / DIY</strong> : conception PCB, impression 3D, radio amateur</div>
             <div class="skill-items" style="margin-top:0.35rem;"><strong>Sport</strong> : natation, randonnée en montagne</div>
-            <div class="skill-items" style="margin-top:0.35rem;"><strong>Scoutisme</strong> : 11 ans d'engagement et transmission</div>
+            <div class="skill-items" style="margin-top:0.35rem;"><strong>Scoutisme</strong> : 11 ans d'engagement, transmission</div>
           </div>
 
         </aside>
@@ -304,13 +320,14 @@
 
           <div class="cv-entry">
             <div class="cv-entry-head">
-              <strong>Ingénieur Stagiaire R&amp;D &mdash; Ardanti Défense</strong>
-              <span class="date">Avril &ndash; Août 2026</span>
+              <strong>Ingénieur R&amp;D (Stage puis Freelance) &mdash; Ardanti Défense</strong>
+              <span class="date">Avril 2026 &ndash; en cours</span>
             </div>
-            <div class="cv-entry-sub">Sûreté de sites sensibles et infrastructures critiques</div>
+            <div class="cv-entry-sub">Sûreté de sites sensibles et infrastructures critiques (poursuite en freelance en parallèle du M2)</div>
             <ul>
               <li><strong>Méta-capteur de détection d'intrusion</strong> multicapteur (fusion LiDAR + caméra thermique) : choix des composants, développement software, architecture réseau et fiabilisation de la détection.</li>
               <li>Conduite du projet jusqu'à la <strong>démonstration client</strong> et l'installation sur un site critique.</li>
+              <li>Prolongation en <strong>mission freelance</strong> : poursuite des développements R&amp;D et intégration de nouveaux modules de détection.</li>
               <li>Conception d'un système d'<strong>IA locale souveraine</strong> (RAG, LLM auto-hébergés) conforme aux recommandations ANSSI.</li>
               <li>Contribution transverse à la communication technique et commerciale (vidéo, posters) pour un forum du secteur.</li>
             </ul>
@@ -324,11 +341,24 @@
             <div class="cv-entry-sub">Tourisme fluvial, accueil et opérations</div>
             <ul>
               <li>Service client multilingue (FR / EN / ES) sur un site touristique majeur.</li>
-              <li>Gestion opérationnelle, logistique d'embarquement, gestion de flux sous forte affluence.</li>
+              <li>Gestion opérationnelle, logistique d'embarquement, gestion de flux.</li>
             </ul>
           </div>
 
           <div class="cv-section-title">Recherche &amp; Projets Ingénieur</div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-head">
+              <strong>Echoes of a Gesture &mdash; Interaction corporelle continue</strong>
+              <span class="date">2026 &ndash; en cours</span>
+            </div>
+            <div class="cv-entry-sub">Projet d'innovation M2 &amp; Recherche HCI &bull; Unity VFX Graph, MediaPipe Pose, C#</div>
+            <ul>
+              <li>Dispositif immersif sans capteur porté ni contrôleur : modulation continue d'un champ de particules génératif physique via les 4 facteurs d'<strong>Effort de Laban</strong> (Espace, Temps, Poids, Flux).</li>
+              <li><strong>Vision par ordinateur temps réel</strong> (stream optique 1080p, MediaPipe 33 points-clés) et équations cinématiques sur fenêtres glissantes.</li>
+              <li>Évaluation expérimentale rigoureuse (<em>within-subject</em>) mesurant le sentiment d'agentivité et le dialogue homme-machine sans dictionnaire gestuel explicite.</li>
+            </ul>
+          </div>
 
           <div class="cv-entry">
             <div class="cv-entry-head">
@@ -337,32 +367,33 @@
             </div>
             <div class="cv-entry-sub">Recherche Santé &amp; Tech &bull; Unity 6, C#, Python</div>
             <ul>
-              <li>Environnement immersif induisant une <strong>adaptation motrice de la main sans consigne</strong>, piloté par capteur isométrique à 5 doigts (Dextrain Manipulandum).</li>
-              <li><strong>Démarche de recherche complète</strong> : protocole clinique, étude préliminaire (15 sujets, p &lt; 0.01), manuscrit scientifique rédigé.</li>
+              <li>Environnement audio-visuel immersif induisant une <strong>adaptation motrice de la main sans aucune instruction</strong>, piloté par un capteur de force à 5 doigts.</li>
+              <li><strong>Démarche de recherche complète</strong> : protocole, étude préliminaire aux résultats significatifs, manuscrit rédigé &mdash; le son comme modalité thérapeutique centrale.</li>
+              <li>Auto-formation Unity de zéro, de l'idée au traitement statistique des données.</li>
             </ul>
           </div>
 
           <div class="cv-entry">
             <div class="cv-entry-head">
-              <strong>Applied Fox &mdash; Système multi-agent de veille R&amp;D</strong>
+              <strong>Applied Fox &mdash; Système multi-agent de veille</strong>
               <span class="date">2026</span>
             </div>
-            <div class="cv-entry-sub">IA appliquée locale &bull; Python, LangGraph, Ollama</div>
+            <div class="cv-entry-sub">IA appliquée &mdash; agents LLM locaux &bull; Python, LangGraph, Ollama</div>
             <ul>
-              <li>Pipeline de 4 agents LLM collaboratifs pour une veille technologique structurée, avec validation humaine stricte (« human-in-the-loop »).</li>
-              <li><strong>100 % local, zéro fuite cloud</strong> : exécution autonome sous Ollama, architecture agnostique et filtrage déterministe (−70 % d'appels LLM).</li>
+              <li><strong>Pipeline multi-agent</strong> d'agents LLM collaborant (recherche, intégration, arbitrage, rapport) pour une veille R&amp;D priorisée, avec validation humaine.</li>
+              <li><strong>100% local, zéro fuite</strong> : tourne entièrement sur Ollama ; architecture agnostique, modèles interchangeables.</li>
             </ul>
           </div>
 
           <div class="cv-entry">
             <div class="cv-entry-head">
               <strong>Bocage Digital Twin &mdash; Jumeau numérique écologique</strong>
-              <span class="date">2025 &ndash; 2026</span>
+              <span class="date">2026</span>
             </div>
             <div class="cv-entry-sub">Simulation de systèmes complexes &bull; Unity 6 WebGL, C#</div>
             <ul>
-              <li>Jumeau numérique temps réel d'un agroécosystème : mesure de la contribution de l'instrumentation sur la conciliation écologie/rentabilité.</li>
-              <li>Simulation à deux couches (run réelle vs run ombre gelée), paramètres calibrés sur sources publiques (INRAE, Météo-France).</li>
+              <li><strong>Jumeau numérique</strong> temps réel d'un bocage : effet croisé des choix agricoles et du climat sur eau, sol, biodiversité, rendement et rentabilité.</li>
+              <li><strong>Simulation à deux couches</strong> (run réel vs baseline figée) pour mesurer la contribution réelle de l'instrumentation ; paramètres ancrés sur sources scientifiques publiques.</li>
             </ul>
           </div>
 
@@ -371,43 +402,73 @@
               <strong>Lightning TDOA Simulator &mdash; Localisation de foudre</strong>
               <span class="date">2025 &ndash; 2026</span>
             </div>
-            <div class="cv-entry-sub">Traitement du signal &amp; géométrie de réseau &bull; Python, WASM</div>
+            <div class="cv-entry-sub">Traitement du signal &amp; géométrie de réseau &bull; Python</div>
             <ul>
-              <li>Réseau de 3 stations VLF localisant la foudre par multilatération temporelle hyperbolique (TDOA). Modélisation de bruit et solveur NLLS Monte Carlo.</li>
+              <li>Réseau de 3 stations VLF localisant la foudre par <strong>triangulation temporelle (TDOA)</strong>, formalisé depuis un projet hardware réel.</li>
+              <li>Modélisation du bruit, comparaison de solveurs, précision caractérisée par <strong>Monte Carlo</strong> ; démo jouable dans le navigateur.</li>
             </ul>
           </div>
 
           <div class="cv-entry">
             <div class="cv-entry-head">
-              <strong>Pétale &mdash; Lampe modulaire financée sur Kickstarter</strong>
-              <span class="date">2025 &ndash; 2026</span>
+              <strong>Lampe Modulable &mdash; Produit financé sur Kickstarter</strong>
+              <span class="date">2025</span>
             </div>
-            <div class="cv-entry-sub">Design produit &amp; entrepreneuriat</div>
+            <div class="cv-entry-sub">Entrepreneuriat &amp; design produit</div>
             <ul>
-              <li>De l'idéation CAO et découpe laser jusqu'à la livraison client. Campagne de crowdfunding <strong>financée à 337 %</strong> en 20 jours.</li>
+              <li>Abat-jour modulable en acrylique conçu à partir d'un matériau contraint : de l'idéation à la livraison client, sous objectif de marge.</li>
+              <li>Campagne marketing <strong>financée à 340%</strong> ; sourcing fournisseurs, fabrication et livraison gérés en équipe.</li>
             </ul>
           </div>
 
-          <div class="cv-section-title">Engagement &amp; Responsabilités</div>
+          <div class="cv-entry">
+            <div class="cv-entry-head">
+              <strong>Mobilier Rétroéclairé Connecté</strong>
+              <span class="date">2026 &ndash; en cours</span>
+            </div>
+            <div class="cv-entry-sub">Entrepreneuriat &amp; design produit</div>
+            <ul>
+              <li>Approche industrielle : idéation, étude de marché, stratégie Design to Cost pour la série.</li>
+              <li>Intégration LEDs et électronique embarquée dans une structure bois co-conçue avec un ébéniste.</li>
+            </ul>
+          </div>
 
           <div class="cv-entry">
             <div class="cv-entry-head">
-              <strong>Chef de Patrouille &mdash; Scouts d'Europe</strong>
+              <strong>Projets Académiques Sélectionnés</strong>
+              <span class="date">2023 &ndash; 2024</span>
+            </div>
+            <div class="cv-entry-sub">Travaux dirigés ESILV</div>
+            <ul>
+              <li><strong>Robot hexapode autonome</strong> de nettoyage : cinématique de locomotion, navigation embarquée.</li>
+              <li><strong>Moteur de jeu type Pokémon</strong> (C++) : POO, gestion mémoire manuelle, combat au tour par tour.</li>
+              <li><strong>Traitement d'image bas niveau</strong> (C#) : filtres implémentés à la main (convolution, Sobel) sans librairie.</li>
+              <li><strong>Modélisation SQL</strong> : gestion commerciale, requêtes multi-jointures optimisées.</li>
+            </ul>
+          </div>
+
+          <div class="cv-section-title">Engagement</div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-head">
+              <strong>Chef de Patrouille &mdash; Scoutisme</strong>
               <span class="date">2012 &ndash; 2023</span>
             </div>
-            <div class="cv-entry-sub">11 ans d'engagement continu &bull; Groupe Saint Louis, Paris</div>
+            <div class="cv-entry-sub">Groupe Saint Louis, Paris (Scouts d'Europe)</div>
             <ul>
-              <li>Encadrement d'une équipe de 6 jeunes, transmission technique, gestion de budget et de logistique en camp en autonomie.</li>
+              <li>Encadrement d'une équipe de 6 jeunes sur plusieurs années, transmission de compétences.</li>
+              <li>Gestion de budget, logistique et décisions en autonomie en camp. 11 ans d'engagement continu.</li>
             </ul>
           </div>
 
           <div class="cv-entry">
             <div class="cv-entry-head">
-              <strong>Mission Humanitaire en Arménie &mdash; L'Œuvre d'Orient</strong>
+              <strong>Mission Humanitaire en Arménie</strong>
               <span class="date">Juillet 2022</span>
             </div>
+            <div class="cv-entry-sub">L'Œuvre d'Orient</div>
             <ul>
-              <li>Rénovation d'un orphelinat (maçonnerie, peinture) et encadrement d'activités pour enfants.</li>
+              <li>Rénovation d'un orphelinat (maçonnerie, peinture) et animation auprès d'enfants.</li>
             </ul>
           </div>
 
