@@ -171,6 +171,81 @@
       line-height: 1.5;
     }
 
+    /* Top navigation unified with homepage */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(244, 241, 234, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 2.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .ui-brand {
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.75rem;
+    }
+    .ui-nav {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+    }
+    .ui-actions {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .ui-nav a,
+    .ui-actions a,
+    .ui-actions span {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(244, 241, 234, 0.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.38rem 0.85rem;
+      color: var(--text);
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(42, 50, 53, 0.04);
+      transition: all 0.2s ease;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+    }
+    .ui-nav a:hover,
+    .ui-actions a:hover {
+      background: rgba(244, 241, 234, 0.98);
+      border-color: var(--accent-blue);
+      color: var(--accent-blue);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(88, 135, 155, 0.15);
+    }
+    .ui-nav a.active,
+    .ui-actions .lang-active {
+      font-weight: 700;
+      color: var(--text);
+      border-color: rgba(42, 50, 53, 0.25);
+      background: rgba(244, 241, 234, 0.95);
+    }
+
     @media print {
       body { background: #FFFFFF; }
       .site-header, .cv-actions-bar, footer { display: none !important; }
@@ -180,6 +255,8 @@
     }
 
     @media (max-width: 800px) {
+      .header-inner { flex-direction: column; gap: 1rem; text-align: center; padding: 1rem 1.5rem; }
+      .ui-nav, .ui-actions { gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
       .cv-header-banner { flex-direction: column; align-items: flex-start; text-align: left; }
       .cv-contacts-header { text-align: left; }
       .cv-body { grid-template-columns: 1fr; gap: 2rem; padding: 1.5rem; }
@@ -191,15 +268,19 @@
   <div id="progress"></div>
 
   <header class="site-header">
-    <div class="wrap">
-      <a class="brand" href="index.html">Paul des Brosses</a>
-      <nav class="nav">
-        <a href="index.html#projets">Projects</a>
-        <a href="index.html#a-propos">About</a>
-        <a href="cv.html" style="color:var(--text); font-weight:700;">CV</a>
-        <a href="index.html#contact">Contact</a>
-        <span class="lang"><a href="../fr/cv.html">FR</a><span class="on">EN</span></span>
+    <div class="header-inner mono">
+      <a class="ui-brand" href="index.html">PAUL DES BROSSES</a>
+      <nav class="ui-nav interactive">
+        <a href="index.html#projets">PROJECTS</a>
+        <a href="index.html#a-propos">ABOUT</a>
+        <a href="cv.html" class="active">CV ↗</a>
+        <a href="index.html#contact">CONTACT</a>
       </nav>
+      <div class="ui-actions interactive">
+        <a href="../fr/cv.html">FR</a>
+        <span class="lang-active">EN</span>
+        <a href="https://github.com/paul-des-brosses" target="_blank" rel="noopener">GITHUB ↗</a>
+      </div>
     </div>
   </header>
 

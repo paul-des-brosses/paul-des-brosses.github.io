@@ -279,10 +279,24 @@
     .card-meta {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       color: var(--text-muted);
       border-bottom: 1px dashed var(--border);
       padding-bottom: 0.75rem;
       margin-bottom: 1rem;
+    }
+    .badge-demo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.68rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.08);
+      border: 1px solid rgba(37, 99, 235, 0.25);
+      color: #2563EB;
+      font-weight: 700;
+      letter-spacing: 0.04em;
     }
     .card-title {
       font-size: 1.25rem;
@@ -650,7 +664,7 @@
             <div>
               <div class="card-meta mono">
                 <span style="color: var(--accent-blue);">WEBGL &amp; GIS</span>
-                <span>2025</span>
+                <span class="badge-demo"><span class="status-dot-live" style="width:5px; height:5px;"></span> ONLINE DEMO</span>
               </div>
               <h3 class="card-title">Bocage Digital Twin</h3>
               <p class="card-desc">Hedgerow digital twin to reconcile ecology and economy. Interactive online simulation.</p>
@@ -659,7 +673,7 @@
               <img src="../assets/img/bocage/master_fond.png" alt="Bocage Digital Twin preview" loading="lazy">
             </div>
             <div class="card-cta mono">
-              <span>VIEW</span> <span>→</span>
+              <span>TRY DEMO</span> <span>→</span>
             </div>
           </a>
 
@@ -668,7 +682,7 @@
             <div>
               <div class="card-meta mono">
                 <span style="color: var(--accent-blue);">WASM &amp; SIGNAL</span>
-                <span>2025</span>
+                <span class="badge-demo"><span class="status-dot-live" style="width:5px; height:5px;"></span> ONLINE DEMO</span>
               </div>
               <h3 class="card-title">Lightning TDoA</h3>
               <p class="card-desc">Simulation of a 3-station VLF lightning detection network using hyperbolic multilateration.</p>
@@ -677,7 +691,7 @@
               <img src="../assets/img/lightning/hero.jpg" alt="Lightning TDoA preview" loading="lazy">
             </div>
             <div class="card-cta mono">
-              <span>VIEW</span> <span>→</span>
+              <span>TRY DEMO</span> <span>→</span>
             </div>
           </a>
 
