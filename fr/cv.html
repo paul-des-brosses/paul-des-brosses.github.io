@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curriculum Vitae — Paul des Brosses</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    /* Spécifique à la vue CV */
+    .cv-container {
+      max-width: 960px;
+      margin: 2.5rem auto 5rem;
+      padding: 0 1.5rem;
+    }
+    .cv-actions-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .cv-paper {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      box-shadow: 0 12px 36px rgba(42, 50, 53, 0.06);
+      overflow: hidden;
+    }
+    
+    .cv-header-banner {
+      background: #0C3463;
+      color: #FFFFFF;
+      padding: 2.5rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+    .cv-identity-with-photo {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+    .cv-avatar {
+      width: 105px;
+      height: 105px;
+      border-radius: 50%;
+      border: 3px solid rgba(255, 255, 255, 0.9);
+      object-fit: cover;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+    .cv-title-block h1 {
+      font-size: 2.2rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.35rem;
+      font-weight: 700;
+    }
+    .cv-title-block .role {
+      font-size: 1.05rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 0.35rem;
+    }
+    .cv-title-block .baseline {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.75);
+    }
+    .cv-contacts-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      font-size: 0.85rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      color: rgba(255,255,255,0.85);
+      text-align: right;
+    }
+    .cv-contacts-header a {
+      color: #FFFFFF;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .cv-contacts-header a:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    /* Corps du CV en 2 colonnes */
+    .cv-body {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      padding: 2.5rem;
+      gap: 3rem;
+    }
+
+    .cv-section-title {
+      font-size: 0.82rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #0C3463;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.25rem;
+      margin-top: 1.75rem;
+    }
+    .cv-section-title:first-child {
+      margin-top: 0;
+    }
+
+    /* Entrées */
+    .cv-entry {
+      margin-bottom: 1.4rem;
+    }
+    .cv-entry-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.2rem;
+    }
+    .cv-entry-head strong {
+      font-size: 0.98rem;
+      color: var(--text);
+    }
+    .cv-entry-head .date {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    .cv-entry-sub {
+      font-size: 0.85rem;
+      color: #0C3463;
+      font-style: italic;
+      margin-bottom: 0.45rem;
+    }
+    .cv-entry-desc {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--text);
+    }
+    .cv-entry ul {
+      padding-left: 1.1rem;
+      margin-top: 0.4rem;
+    }
+    .cv-entry li {
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+
+    /* Groupes compétences */
+    .skill-block {
+      margin-bottom: 1.1rem;
+    }
+    .skill-block .skill-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .skill-block .skill-items {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    @media print {
+      body { background: #FFFFFF; }
+      .site-header, .cv-actions-bar, footer { display: none !important; }
+      .cv-container { margin: 0; padding: 0; max-width: 100%; }
+      .cv-paper { border: none; box-shadow: none; }
+      .cv-header-banner { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+
+    @media (max-width: 800px) {
+      .cv-header-banner { flex-direction: column; align-items: flex-start; text-align: left; }
+      .cv-contacts-header { text-align: left; }
+      .cv-body { grid-template-columns: 1fr; gap: 2rem; padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="progress"></div>
+
+  <header class="site-header">
+    <a class="brand" href="index.html">Paul des Brosses</a>
+    <nav>
+      <a href="index.html#projets">Projets</a>
+      <a href="index.html#a-propos">À propos</a>
+      <a href="cv.html" style="color:var(--text); font-weight:600;">CV</a>
+      <a href="index.html#contact">Contact</a>
+      <span class="lang"><span class="on">FR</span><a href="../en/cv.html">EN</a></span>
+    </nav>
+  </header>
+
+  <main class="cv-container">
+
+    <div class="cv-actions-bar">
+      <div class="mono" style="color:var(--text-muted);">CURRICULUM VITÆ &bull; 2026</div>
+      <button onclick="window.print()" class="btn ghost" style="cursor:pointer; padding:0.4rem 1rem; font-size:0.8rem;">
+        IMPRIMER / SAUVEGARDER EN PDF &darr;
+      </button>
+    </div>
+
+    <div class="cv-paper">
+      
+      <!-- HEADER BLEU -->
+      <header class="cv-header-banner">
+        <div class="cv-identity-with-photo">
+          <img src="../assets/img/photo-cv.jpeg" alt="Paul des Brosses" class="cv-avatar">
+          <div class="cv-title-block">
+            <h1>PAUL DES BROSSES</h1>
+            <div class="role">Ingénieur Creative Technology</div>
+            <div class="baseline">Hardware &times; Software &times; IA appliquée</div>
+          </div>
+        </div>
+        <div class="cv-contacts-header">
+          <div>Paris / La Défense</div>
+          <div><a href="mailto:pdesbrosses@outlook.fr">pdesbrosses@outlook.fr</a></div>
+          <div><a href="https://linkedin.com/in/paul-des-brosses/" target="_blank">linkedin.com/in/paul-des-brosses</a></div>
+          <div><a href="https://github.com/paul-des-brosses" target="_blank">github.com/paul-des-brosses</a></div>
+        </div>
+      </header>
+
+      <!-- CORPS DU CV -->
+      <div class="cv-body">
+        
+        <!-- COLONNE GAUCHE -->
+        <aside>
+          
+          <div class="cv-section-title">Formation</div>
+          
+          <div class="cv-entry">
+            <div class="cv-entry-head">
+              <strong>ESILV &mdash; Paris La Défense</strong>
+            </div>
+            <div class="cv-entry-sub">Depuis 2022</div>
+            <div class="cv-entry-desc">
+              Ingénieur, majeure Creative Technology. IA, traitement du signal, hardware embarqué, 3D temps réel, architecture logicielle.
+            </div>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-head">
+              <strong>UVIC &mdash; Catalogne, Espagne</strong>
+            </div>
+            <div class="cv-entry-sub">2024 &ndash; 2025</div>
+            <div class="cv-entry-desc">
+              Semestre Erasmus. Mineurs IA et finance de marché. Cursus 100 % en anglais.
+            </div>
+          </div>
+
+          <div class="cv-section-title">Compétences</div>
+
+          <div class="skill-block">
+            <div class="skill-name">Creative Tech &amp; 3D</div>
+            <div class="skill-items">Unity 6, C#, WebGL &bull; SolidWorks &bull; KiCad &bull; Photopea &bull; DaVinci Resolve</div>
+          </div>
+
+          <div class="skill-block">
+            <div class="skill-name">Code &amp; Backend</div>
+            <div class="skill-items">Python, C++, C# &bull; SQL &bull; Git, Docker</div>
+          </div>
+
+          <div class="skill-block">
+            <div class="skill-name">IA &amp; LLM</div>
+            <div class="skill-items">LangChain, LangGraph &bull; Systèmes multi-agents &bull; RAG, agents locaux &bull; Ollama &bull; Pydantic &bull; ChromaDB</div>
+          </div>
+
+          <div class="skill-block">
+            <div class="skill-name">Hardware &amp; Signal</div>
+            <div class="skill-items">ESP32, Arduino, C embarqué &bull; Traitement du signal &bull; RF, VLF, GPS &bull; Protocoles : TCP, UDP, MQTT, I2C</div>
+          </div>
+
+          <div class="skill-block">
+            <div class="skill-name">Simulation &amp; Data</div>
+            <div class="skill-items">Jumeaux numériques &bull; Modélisation de systèmes complexes &bull; NumPy, Pandas, Matplotlib, SciPy</div>
+          </div>
+
+          <div class="cv-section-title">Langues</div>
+          <div class="skill-block">
+            <div class="skill-items">Français (maternel) &bull; Anglais (B2 professionnel) &bull; Espagnol (B1)</div>
+          </div>
+
+          <div class="cv-section-title">Centres d'intérêt</div>
+          <div class="skill-block">
+            <div class="skill-items"><strong>Maker / DIY</strong> : conception PCB, impression 3D, radio-amateur</div>
+            <div class="skill-items" style="margin-top:0.35rem;"><strong>Sport</strong> : natation, randonnée en montagne</div>
+            <div class="skill-items" style="margin-top:0.35rem;"><strong>Scoutisme</strong> : 11 ans d'engagement et transmission</div>
+          </div>
+
+        </aside>
+
+        <!-- COLONNE DROITE -->
+        <div>
+
+          <div class="cv-section-title">Expérience Professionnelle</div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-head">
+              <strong>Ingénieur Stagiaire R&amp;D &mdash; Ardanti Défense</strong>
+              <span class="date">Avril &ndash; Août 2026</span>
+            </div>
+            <div class="cv-entry-sub">Sûreté de sites sensibles et infrastructures critiques</div>
+            <ul>
+              <li><strong>Méta-capteur de détection d'intrusion</strong> multicapteur (fusion LiDAR + caméra thermique) : choix des composants, développement software, architecture réseau et fiabilisation de la détection.</li>
+              <li>Conduite du projet jusqu'à la <strong>démonstration client</strong> et l'installation sur un site critique.</li>
+              <li>Conception d'un système d'<strong>IA locale souveraine</strong> (RAG, LLM auto-hébergés) conforme aux recommandations ANSSI.</li>
+              <li>Contribution transverse à la communication technique et commerciale (vidéo, posters) pour un forum du secteur.</li>
+            </ul>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-head">
+              <strong>Employé Polyvalent &mdash; Vedettes de Paris</strong>
+              <span class="date">Juin &ndash; Août 2024</span>
+            </div>
+            <div class="cv-entry-sub">Tourisme fluvial, accueil et opérations</div>
+            <ul>
+              <li>Service client multilingue (FR / EN / ES) sur un site touristique majeur.</li>
+              <li>Gestion opérationnelle, logistique d'embarquement, gestion de flux sous forte affluence.</li>
+            </ul>
+          </div>
+
+          <div class="cv-section-title">Recherche &amp; Projets Ingénieur</div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-head">
+              <strong>Forest of Senses &mdash; Adaptation motrice implicite</strong>
+              <span class="date">2025</span>
+            </div>
+            <div class="cv-entry-sub">Recherche Santé &amp; Tech &bull; Unity 6, C#, Python</div>
+            <ul>
+              <li>Environnement immersif induisant une <strong>adaptation motrice de la main sans consigne</strong>, piloté par capteur isométrique à 5 doigts (Dextrain Manipulandum).</li>
+              <li><strong>Démarche de recherche complète</strong> : protocole clinique, étude préliminaire (15 sujets, p &lt; 0.01), manuscrit scientifique rédigé.</li>
+            </ul>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-head">
+              <strong>Applied Fox &mdash; Système multi-agent de veille R&amp;D</strong>
+              <span class="date">2026</span>
+            </div>
+            <div class="cv-entry-sub">IA appliquée locale &bull; Python, LangGraph, Ollama</div>
+            <ul>
+              <li>Pipeline de 4 agents LLM collaboratifs pour une veille technologique structurée, avec validation humaine stricte (« human-in-the-loop »).</li>
+              <li><strong>100 % local, zéro fuite cloud</strong> : exécution autonome sous Ollama, architecture agnostique et filtrage déterministe (−70 % d'appels LLM).</li>
+            </ul>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-head">
+              <strong>Bocage Digital Twin &mdash; Jumeau numérique écologique</strong>
+              <span class="date">2025 &ndash; 2026</span>
+            </div>
+            <div class="cv-entry-sub">Simulation de systèmes complexes &bull; Unity 6 WebGL, C#</div>
+            <ul>
+              <li>Jumeau numérique temps réel d'un agroécosystème : mesure de la contribution de l'instrumentation sur la conciliation écologie/rentabilité.</li>
+              <li>Simulation à deux couches (run réelle vs run ombre gelée), paramètres calibrés sur sources publiques (INRAE, Météo-France).</li>
+            </ul>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-head">
+              <strong>Lightning TDOA Simulator &mdash; Localisation de foudre</strong>
+              <span class="date">2025 &ndash; 2026</span>
+            </div>
+            <div class="cv-entry-sub">Traitement du signal &amp; géométrie de réseau &bull; Python, WASM</div>
+            <ul>
+              <li>Réseau de 3 stations VLF localisant la foudre par multilatération temporelle hyperbolique (TDOA). Modélisation de bruit et solveur NLLS Monte Carlo.</li>
+            </ul>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-head">
+              <strong>Pétale &mdash; Lampe modulaire financée sur Kickstarter</strong>
+              <span class="date">2025 &ndash; 2026</span>
+            </div>
+            <div class="cv-entry-sub">Design produit &amp; entrepreneuriat</div>
+            <ul>
+              <li>De l'idéation CAO et découpe laser jusqu'à la livraison client. Campagne de crowdfunding <strong>financée à 337 %</strong> en 20 jours.</li>
+            </ul>
+          </div>
+
+          <div class="cv-section-title">Engagement &amp; Responsabilités</div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-head">
+              <strong>Chef de Patrouille &mdash; Scouts d'Europe</strong>
+              <span class="date">2012 &ndash; 2023</span>
+            </div>
+            <div class="cv-entry-sub">11 ans d'engagement continu &bull; Groupe Saint Louis, Paris</div>
+            <ul>
+              <li>Encadrement d'une équipe de 6 jeunes, transmission technique, gestion de budget et de logistique en camp en autonomie.</li>
+            </ul>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-head">
+              <strong>Mission Humanitaire en Arménie &mdash; L'Œuvre d'Orient</strong>
+              <span class="date">Juillet 2022</span>
+            </div>
+            <ul>
+              <li>Rénovation d'un orphelinat (maçonnerie, peinture) et encadrement d'activités pour enfants.</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="wrap" style="text-align:center;">
+      <span class="mono" style="color:var(--text-muted); font-size:0.75rem;">PAUL DES BROSSES &mdash; 2026</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

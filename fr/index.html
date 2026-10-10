@@ -1,128 +1,1086 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paul des Brosses — Étudiant ingénieur · Hardware / Software · Creative Tech</title>
-<meta name="description" content="Portfolio de Paul des Brosses, étudiant ingénieur : prototypage rapide à l'intersection du logiciel et du matériel. Recherche, jumeaux numériques, systèmes embarqués et IA locale.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="../assets/css/style.css">
-<noscript><style>[data-reveal]{opacity:1}</style></noscript>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paul des Brosses — Creative Technology & Ingénierie</title>
+  <meta name="description" content="Portfolio de Paul des Brosses : systèmes embarqués, traitement du signal, modélisation spatiale et prototypage hardware/software.">
+  <style>
+    :root {
+      --bg: #F4F1EA;
+      --surface: #FFFFFF;
+      --border: #DCD6C8;
+      --border-light: rgba(42, 50, 53, 0.08);
+      --text: #2A3235;
+      --text-muted: #687175;
+      --accent-blue: #58879B;
+      --accent-sage: #778A71;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ---- 1. HERO HEADER ---- */
+    #hero-container {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .hero-ui {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      padding: 3.5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+    .interactive { pointer-events: auto; }
+
+    .ui-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 1.25rem;
+    }
+    .ui-nav {
+      display: flex;
+      gap: 2rem;
+    }
+    .ui-nav a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .ui-nav a:hover {
+      color: var(--accent-blue);
+    }
+
+    .ui-center {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .ui-tag {
+      color: var(--accent-blue);
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      font-weight: 600;
+    }
+    .ui-name {
+      font-size: clamp(3.4rem, 8.5vw, 7.5rem);
+      font-weight: 600;
+      letter-spacing: -0.045em;
+      line-height: 0.95;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+    .ui-sub {
+      font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .ui-bottom {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      border-top: 1px solid var(--border-light);
+      padding-top: 1.5rem;
+    }
+    .scroll-btn {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 0.45rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(244, 241, 234, 0.7);
+      backdrop-filter: blur(8px);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .scroll-btn:hover {
+      background: rgba(244, 241, 234, 1);
+      border-color: var(--text-muted);
+    }
+
+    #visual-background {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    /* ---- LAYOUT GLOBAL ---- */
+    .wrap {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .sec-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+    .sec-title h2 {
+      font-size: 2.2rem;
+      font-weight: 550;
+      letter-spacing: -0.03em;
+      margin-top: 0.5rem;
+    }
+
+    /* ---- 2. MUR D'ATELIER (4 COLONNES PAR LIGNE) ---- */
+    #projets {
+      position: relative;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 6rem 0;
+    }
+
+    .perspective-stage {
+      perspective: 1200px;
+      perspective-origin: 50% 20%;
+    }
+
+    .projets-3d-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 1.5rem;
+      row-gap: 2rem;
+      transform-style: preserve-3d;
+    }
+
+    .projet-card-3d {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      aspect-ratio: 3 / 4.2;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      box-shadow: 0 30px 60px rgba(42, 50, 53, 0.12);
+
+      transform: translate3d(var(--offset-x, 0px), 80px, 220px) rotateX(-22deg) rotateY(var(--rot-y, 0deg)) scale(1.15);
+      opacity: 0.25;
+
+      transition:
+        transform 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.7s ease-out,
+        box-shadow 0.6s ease;
+      will-change: transform, opacity;
+    }
+
+    .projet-card-3d:nth-child(1) { --offset-x: -30px; --rot-y: 8deg;  transition-delay: 0.00s; }
+    .projet-card-3d:nth-child(2) { --offset-x: -10px; --rot-y: 3deg;  transition-delay: 0.10s; }
+    .projet-card-3d:nth-child(3) { --offset-x: 10px;  --rot-y: -3deg; transition-delay: 0.20s; }
+    .projet-card-3d:nth-child(4) { --offset-x: 30px;  --rot-y: -8deg; transition-delay: 0.30s; }
+    .projet-card-3d:nth-child(5) { --offset-x: -25px; --rot-y: 6deg;  transition-delay: 0.40s; }
+
+    .perspective-stage.is-landed .projet-card-3d {
+      transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg) scale(1);
+      opacity: 1;
+      box-shadow: 0 4px 16px rgba(42, 50, 53, 0.04);
+    }
+
+    .perspective-stage.is-landed .projet-card-3d:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 28px rgba(42, 50, 53, 0.08), 0 0 0 1px var(--accent-blue);
+      transition-delay: 0s;
+      transition-duration: 0.25s;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-muted);
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+    }
+    .card-viz {
+      flex-grow: 1;
+      border: 1px solid var(--border-light);
+      background: #FAF8F5;
+      border-radius: 2px;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .card-viz img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+
+    .card-cta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 0.75rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+    .projet-card-3d:hover .card-cta {
+      color: var(--accent-blue);
+    }
+
+    /* ---- 3. SECTION À PROPOS ---- */
+    #a-propos {
+      border-top: 1px solid var(--border);
+      padding: 6rem 0;
+      background: var(--bg);
+    }
+    .about-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+    }
+    .about-intro-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .about-lead {
+      font-size: 1.3rem;
+      font-weight: 500;
+      line-height: 1.5;
+      color: var(--text);
+      letter-spacing: -0.015em;
+      margin-bottom: 1.25rem;
+    }
+    .about-prose p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+    .about-prose p strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* Piliers d'ingénierie */
+    .demarche-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .pillar-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .pillar-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent-blue);
+    }
+    .pillar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1rem;
+    }
+    .pillar-num {
+      font-size: 0.75rem;
+      color: var(--accent-blue);
+      font-weight: 700;
+    }
+    .pillar-icon {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .pillar-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .pillar-card p {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+    .pillar-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      border-top: 1px dashed var(--border);
+      padding-top: 0.9rem;
+    }
+    .pill {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.55rem;
+      background: rgba(42, 50, 53, 0.04);
+      border: 1px solid var(--border-light);
+      border-radius: 3px;
+      color: var(--text);
+    }
+
+    .status-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent-sage);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .status-badge::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: var(--accent-sage);
+      border-radius: 50%;
+    }
+    .status-desc {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+    .status-desc strong {
+      color: var(--text);
+    }
+    .spec-list {
+      border-top: 1px dashed var(--border);
+      padding-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .spec-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+    }
+    .spec-k { color: var(--text-muted); }
+    .spec-v { font-weight: 600; color: var(--text); }
+
+    /* ---- 4. SECTION CONTACT & FOOTER ---- */
+    #contact {
+      border-top: 1px solid var(--border);
+      padding: 6rem 0 4rem 0;
+      background: var(--bg);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 5rem;
+    }
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 120px;
+      transition: all 0.2s ease;
+    }
+    .contact-card:hover {
+      border-color: var(--accent-blue);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(42, 50, 53, 0.04);
+    }
+    .contact-card .val {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    footer {
+      border-top: 1px solid var(--border-light);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-muted);
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 1024px) {
+      .projets-3d-grid { grid-template-columns: repeat(2, 1fr); }
+      .projet-card-3d {
+        transform: none !important;
+        opacity: 1 !important;
+        aspect-ratio: auto;
+      }
+      .about-intro-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-ui { padding: 2rem 1.5rem; }
+      .ui-top, .ui-bottom { display: flex; flex-direction: column; gap: 1rem; text-align: center; }
+      .ui-nav { gap: 1.25rem; }
+      .ui-bottom { grid-template-columns: 1fr; }
+      .projets-3d-grid { grid-template-columns: 1fr; }
+      .wrap { padding: 0 1.5rem; }
+      #projets, #a-propos, #contact { padding: 4rem 0; }
+    }
+  </style>
 </head>
 <body>
 
-<div id="progress"></div>
+  <!-- 1. HERO CONTAINER -->
+  <div id="hero-container">
+    <div id="visual-background"></div>
 
-<header class="site-header"><div class="wrap">
-  <a class="brand" href="index.html">Paul des Brosses</a>
-  <nav class="nav">
-    <a href="#projets">Projets</a>
-    <a href="#a-propos">À propos</a>
-    <a href="#contact">Contact</a>
-    <span class="lang"><span class="on">FR</span><a href="../en/index.html">EN</a></span>
-  </nav>
-</div></header>
+    <div class="hero-ui">
+      <header class="ui-top mono">
+        <div>PAUL DES BROSSES</div>
+        <nav class="ui-nav interactive">
+          <a href="#projets">PROJETS</a>
+          <a href="#a-propos">À PROPOS</a>
+          <a href="cv.html">CV ↗</a>
+          <a href="#contact">CONTACT</a>
+        </nav>
+        <div class="interactive" style="display:flex; gap:1.5rem; align-items:center;">
+          <span style="color:var(--text-muted); font-weight:700;">FR</span>
+          <a href="../en/index.html" style="color:var(--text); text-decoration:none;">EN</a>
+          <a href="https://github.com/paul-des-brosses" target="_blank" rel="noopener" style="color:var(--text); text-decoration:none;">GITHUB ↗</a>
+        </div>
+      </header>
 
-<section class="hero" style="border-top:none"><div class="wrap">
-  <h1 data-reveal>Paul des Brosses</h1>
-  <p class="lede" data-reveal>Étudiant ingénieur en M2 : hardware, software, et le prototype qui relie les deux.</p>
-  <p class="avail" data-reveal>Recherche un stage de fin d'études : 6 mois, à partir de février 2027</p>
-  <div class="row actions" data-reveal>
-    <a class="btn solid" href="#projets">Voir les projets</a>
-    <a class="btn ghost" href="mailto:pdesbrosses@outlook.fr">pdesbrosses@outlook.fr</a>
+      <div class="ui-center">
+        <span class="mono ui-tag">Ingénieur Creative Technology</span>
+        <h1 class="ui-name">Paul des Brosses</h1>
+        <p class="ui-sub">
+          Hardware &times; Software &times; IA appliquée. Prototypage rapide du capteur au système déployé.
+        </p>
+      </div>
+
+      <footer class="ui-bottom mono">
+        <div></div>
+        <div style="text-align: center;">
+          <a href="#projets" class="scroll-btn interactive">DÉCOUVRIR LES PROJETS ↓</a>
+        </div>
+        <div></div>
+      </footer>
+    </div>
   </div>
-</div>
-<div class="planche" data-reveal>
-  <a class="tile forest" href="projets/forest-of-senses.html">
-    <span class="ph"><img src="../assets/img/forest/master.jpg" alt="Forest of Senses — environnement in-game (Unity)" loading="eager"></span>
-    <span class="tile-cap"><span class="name">Forest of Senses</span><span class="disc">Unity, recherche</span></span>
-  </a>
-  <a class="tile fox" href="projets/applied-fox.html">
-    <span class="ph"><img src="../assets/img/applied-fox/master.png" alt="Applied Fox — écran de validation des suggestions (TUI)" loading="eager"></span>
-    <span class="tile-cap"><span class="name">Applied Fox</span><span class="disc">IA locale, multi-agents</span></span>
-  </a>
-  <a class="tile bocage" href="projets/bocage-digital-twin.html">
-    <span class="ph"><img src="../assets/img/bocage/master_fond.png" alt="Bocage Digital Twin — scène du bocage (WebGL)" loading="eager"></span>
-    <span class="tile-cap"><span class="name">Bocage Digital Twin</span><span class="disc">Unity, WebGL</span></span>
-  </a>
-  <a class="tile petale" href="projets/petale.html">
-    <span class="ph"><img src="../assets/img/petale/master.jpg" alt="Pétale — lampe modulaire" loading="eager" onerror="this.onerror=null;this.src='../assets/img/placeholder.svg'"></span>
-    <span class="tile-cap"><span class="name">Pétale</span><span class="disc">Design produit</span></span>
-  </a>
-  <a class="tile lightning" href="projets/lightning-tdoa.html">
-    <span class="ph"><img src="../assets/img/lightning/hero.jpg" alt="Lightning TDOA — carte d'erreur et triangle des stations" loading="eager"></span>
-    <span class="tile-cap"><span class="name">Lightning TDOA</span><span class="disc">Physique, WebAssembly</span></span>
-  </a>
-</div>
-</section>
 
-<section id="projets"><div class="wrap">
-  <div class="sec-head" data-reveal><h2>Projets</h2></div>
+  <!-- 2. PROJETS (4 PAR LIGNE) -->
+  <section id="projets">
+    <div class="wrap">
 
-  <article class="project" data-reveal>
-    <a class="thumb" href="projets/forest-of-senses.html"><img src="../assets/img/forest/master.jpg" alt="Forest of Senses — environnement in-game (Unity)"></a>
-    <div class="body">
-      <div class="head"><h3><a href="projets/forest-of-senses.html">Forest of Senses</a></h3></div>
-      <p class="sub">Environnement d'adaptation motrice sans consigne pour la recherche en rééducation post-AVC, piloté par un capteur de force isométrique à cinq doigts.</p>
+      <header class="sec-header">
+        <div class="sec-title">
+          <h2>Projets</h2>
+        </div>
+      </header>
+
+      <div class="perspective-stage" id="stage-3d">
+        <div class="projets-3d-grid">
+
+          <!-- PROJET 1 -->
+          <a href="projets/applied-fox.html" class="projet-card-3d">
+            <div>
+              <div class="card-meta mono">
+                <span style="color: var(--accent-blue);">IA LOCALE</span>
+                <span>2026</span>
+              </div>
+              <h3 class="card-title">Applied Fox</h3>
+              <p class="card-desc">Système multi-agents 100 % local pour la veille technologique R&amp;D sous validation humaine stricte.</p>
+            </div>
+            <div class="card-viz">
+              <img src="../assets/img/applied-fox/master.png" alt="Applied Fox preview" loading="lazy">
+            </div>
+            <div class="card-cta mono">
+              <span>DÉCOUVRIR</span> <span>→</span>
+            </div>
+          </a>
+
+          <!-- PROJET 2 -->
+          <a href="projets/forest-of-senses.html" class="projet-card-3d">
+            <div>
+              <div class="card-meta mono">
+                <span style="color: var(--accent-blue);">RÉÉDUCATION</span>
+                <span>2025</span>
+              </div>
+              <h3 class="card-title">Forest of Senses</h3>
+              <p class="card-desc">Environnement de rééducation motrice post-AVC piloté par un capteur isométrique à 5 doigts.</p>
+            </div>
+            <div class="card-viz">
+              <img src="../assets/img/forest/master.jpg" alt="Forest of Senses preview" loading="lazy">
+            </div>
+            <div class="card-cta mono">
+              <span>DÉCOUVRIR</span> <span>→</span>
+            </div>
+          </a>
+
+          <!-- PROJET 3 -->
+          <a href="projets/bocage-digital-twin.html" class="projet-card-3d">
+            <div>
+              <div class="card-meta mono">
+                <span style="color: var(--accent-blue);">WEBGL &amp; SIG</span>
+                <span>2025</span>
+              </div>
+              <h3 class="card-title">Bocage Digital Twin</h3>
+              <p class="card-desc">Jumeau numérique de haie bocagère pour concilier écologie et économie. Simulation interactive en ligne.</p>
+            </div>
+            <div class="card-viz">
+              <img src="../assets/img/bocage/master_fond.png" alt="Bocage Digital Twin preview" loading="lazy">
+            </div>
+            <div class="card-cta mono">
+              <span>DÉCOUVRIR</span> <span>→</span>
+            </div>
+          </a>
+
+          <!-- PROJET 4 -->
+          <a href="projets/lightning-tdoa.html" class="projet-card-3d">
+            <div>
+              <div class="card-meta mono">
+                <span style="color: var(--accent-blue);">WASM &amp; SIGNAL</span>
+                <span>2025</span>
+              </div>
+              <h3 class="card-title">Lightning TDoA</h3>
+              <p class="card-desc">Simulation d'un réseau de détection de foudre VLF à 3 stations par multilatération hyperbolique.</p>
+            </div>
+            <div class="card-viz">
+              <img src="../assets/img/lightning/hero.jpg" alt="Lightning TDoA preview" loading="lazy">
+            </div>
+            <div class="card-cta mono">
+              <span>DÉCOUVRIR</span> <span>→</span>
+            </div>
+          </a>
+
+          <!-- PROJET 5 -->
+          <a href="projets/petale.html" class="projet-card-3d">
+            <div>
+              <div class="card-meta mono">
+                <span style="color: var(--accent-sage);">HARDWARE</span>
+                <span>2026</span>
+              </div>
+              <h3 class="card-title">Pétale</h3>
+              <p class="card-desc">Lampe modulaire en plaques d'acrylique thermoformées découpées au laser. Crowdfunding validé à 337 %.</p>
+            </div>
+            <div class="card-viz">
+              <img src="../assets/img/petale/master.jpg" alt="Pétale preview" loading="lazy">
+            </div>
+            <div class="card-cta mono">
+              <span>DÉCOUVRIR</span> <span>→</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
     </div>
-  </article>
+  </section>
 
-  <article class="project" data-reveal>
-    <a class="thumb" href="projets/applied-fox.html"><img src="../assets/img/applied-fox/master.png" alt="Applied Fox — écran de validation des suggestions (TUI)"></a>
-    <div class="body">
-      <div class="head"><h3><a href="projets/applied-fox.html">Applied Fox</a></h3></div>
-      <p class="sub">Système multi-agents d'IA <span class="data">100 %</span> local pour la veille technologique R&amp;D, aucune donnée ne quitte la machine, aucune modification sans validation humaine.</p>
+  <!-- 3. SECTION À PROPOS -->
+  <section id="a-propos">
+    <div class="wrap">
+
+      <header class="sec-header">
+        <div class="sec-title">
+          <h2>Ingénierie &amp; Démarche</h2>
+        </div>
+      </header>
+
+      <div class="about-layout">
+        
+        <!-- INTRO & DISPONIBILITÉ -->
+        <div class="about-intro-grid">
+          <div class="about-prose">
+            <p class="about-lead">
+              Ce qui m'intéresse, c'est l'endroit précis où la logique logicielle rencontre le réel physique : concevoir des systèmes complets, du capteur brut au modèle mathématique et à l'interface de décision.
+            </p>
+            <p>
+              Issu du <strong>prototypage rapide</strong>, je ne me contente pas de modéliser une solution théorique. Je la câble, je l'assemble en atelier, je code le firmware et j'écris les algorithmes de traitement. Cette approche « hardware × software » me permet de porter un projet de bout en bout : cerner une problématique physique, concevoir le banc de test, acquérir des données fiables et livrer un démonstrateur tangible et vérifiable.
+            </p>
+            <p>
+              Qu'il s'agisse de mesurer des micro-pressions isométriques, de localiser des transitoires électromagnétiques ou de simuler les flux biogéochimiques d'un paysage, ma démarche privilégie toujours la <strong>rigueur déterministe</strong>, l'ancrage dans la mesure réelle et la souveraineté locale du traitement.
+            </p>
+          </div>
+
+          <div class="status-panel">
+            <div>
+              <div class="status-badge mono">DISPONIBILITÉ R&amp;D</div>
+              <p class="status-desc">
+                Étudiant en <strong>M2 Creative Technology à l'ESILV</strong> (majeure hardware, IA et simulation de systèmes), je recherche un <strong>stage de fin d'études de 6 mois à partir de février 2027</strong> en prototypage hardware/software, R&amp;D appliquée ou ingénierie de pointe.
+              </p>
+            </div>
+            <div class="spec-list mono">
+              <div class="spec-item">
+                <span class="spec-k">DURÉE</span>
+                <span class="spec-v">6 mois</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-k">PÉRIODE</span>
+                <span class="spec-v">Février 2027</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-k">LOCALISATION</span>
+                <span class="spec-v">Île-de-France / Mobilité</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-k">OBJECTIF</span>
+                <span class="spec-v">R&amp;D / Prototypage</span>
+              </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+              <a href="cv.html" class="scroll-btn interactive" style="display:inline-block; width:100%; text-align:center;">
+                CONSULTER LE CV COMPLET ↗
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- LES 3 PILIERS DE LA DÉMARCHE -->
+        <div>
+          <div class="demarche-title">
+            <span class="mono" style="color: var(--accent-sage);">AXES D'EXPERTISE</span>
+            <span>Trois piliers complémentaires</span>
+          </div>
+
+          <div class="pillars-grid">
+            <div class="pillar-card">
+              <div>
+                <div class="pillar-header mono">
+                  <span class="pillar-num">01</span>
+                  <span class="pillar-icon">PHYSIQUE &rarr; SIGNAL</span>
+                </div>
+                <h3>Hardware, Capteurs &amp; Embarqué</h3>
+                <p>
+                  Acquisition bas niveau, instrumentation sur mesure et traitement du signal (VLF, force, optique). Conception de bancs physiques et capture de données réelles sous contraintes temporelles strictes.
+                </p>
+              </div>
+              <div class="pillar-tags mono">
+                <span class="pill">ESP32 / C++</span>
+                <span class="pill">Traitement du signal</span>
+                <span class="pill">TDOA / RF</span>
+                <span class="pill">KiCad</span>
+              </div>
+            </div>
+
+            <div class="pillar-card">
+              <div>
+                <div class="pillar-header mono">
+                  <span class="pillar-num">02</span>
+                  <span class="pillar-icon">MATHS &rarr; DÉCISION</span>
+                </div>
+                <h3>Modélisation &amp; Jumeaux Numériques</h3>
+                <p>
+                  Simulation déterministe de systèmes complexes, solveurs d'optimisation non linéaire et modélisation écologique/physique. Validation par méthodes Monte Carlo et benchmarks rigoureux.
+                </p>
+              </div>
+              <div class="pillar-tags mono">
+                <span class="pill">Python / SciPy</span>
+                <span class="pill">Monte Carlo</span>
+                <span class="pill">Unity 6 / C#</span>
+                <span class="pill">WebGL / WASM</span>
+              </div>
+            </div>
+
+            <div class="pillar-card">
+              <div>
+                <div class="pillar-header mono">
+                  <span class="pillar-num">03</span>
+                  <span class="pillar-icon">LOCAL &rarr; CONTRÔLE</span>
+                </div>
+                <h3>IA Locale Souveraine &amp; Systèmes</h3>
+                <p>
+                  Pipelines multi-agents et architectures IA 100 % locales (zéro fuite cloud) avec contrats de types stricts et boucles de validation « human-in-the-loop » déterministes.
+                </p>
+              </div>
+              <div class="pillar-tags mono">
+                <span class="pill">LangGraph</span>
+                <span class="pill">Ollama</span>
+                <span class="pill">Pydantic</span>
+                <span class="pill">Multi-agents</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </div>
-  </article>
+  </section>
 
-  <article class="project" data-reveal>
-    <a class="thumb" href="projets/bocage-digital-twin.html"><img src="../assets/img/bocage/hero.jpg" alt="Bocage Digital Twin — interface complète (KPI, leviers, panneaux)"></a>
-    <div class="body">
-      <div class="head"><h3><a href="projets/bocage-digital-twin.html">Bocage Digital Twin</a></h3></div>
-      <p class="sub">Jumeau numérique instrumenté d'un bocage normand : tester si la donnée permet de concilier écologie et économie. Jouable dans le navigateur (WebGL).</p>
+  <!-- 4. SECTION CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+
+      <header class="sec-header">
+        <div class="sec-title">
+          <h2>Contact</h2>
+        </div>
+      </header>
+
+      <div class="contact-grid">
+        <a href="mailto:pdesbrosses@outlook.fr" class="contact-card">
+          <span class="mono" style="color: var(--text-muted);">EMAIL</span>
+          <span class="val">pdesbrosses@outlook.fr</span>
+          <span class="mono" style="color: var(--accent-blue);">ÉCRIRE ↗</span>
+        </a>
+        <a href="https://www.linkedin.com/in/paul-des-brosses/" target="_blank" rel="noopener" class="contact-card">
+          <span class="mono" style="color: var(--text-muted);">LINKEDIN</span>
+          <span class="val">Paul des Brosses</span>
+          <span class="mono" style="color: var(--accent-blue);">CONNECTER ↗</span>
+        </a>
+        <a href="https://github.com/paul-des-brosses" target="_blank" rel="noopener" class="contact-card">
+          <span class="mono" style="color: var(--text-muted);">GITHUB</span>
+          <span class="val">paul-des-brosses</span>
+          <span class="mono" style="color: var(--accent-blue);">PARCOURIR ↗</span>
+        </a>
+      </div>
+
+      <footer class="mono">
+        <div>PAUL DES BROSSES</div>
+        <div>PORTFOLIO &bull; CREATIVE TECHNOLOGY</div>
+      </footer>
+
     </div>
-  </article>
+  </section>
 
-  <article class="project" data-reveal>
-    <a class="thumb" href="projets/petale.html"><img src="../assets/img/petale/master.jpg" alt="Pétale — lampe modulaire" onerror="this.onerror=null;this.src='../assets/img/placeholder.svg'"></a>
-    <div class="body">
-      <div class="head"><h3><a href="projets/petale.html">Pétale</a></h3></div>
-      <p class="sub">Lampe modulaire en acrylique découpé au laser : cinq pétales translucides à repositionner à volonté. Campagne de crowdfunding financée à <span class="data">337 %</span> de l'objectif.</p>
-    </div>
-  </article>
+  <!-- SCRIPTS -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+      }
+    }
+  </script>
 
-  <article class="project" data-reveal>
-    <a class="thumb" href="projets/lightning-tdoa.html"><img src="../assets/img/lightning/hero.jpg" alt="Lightning TDOA — carte d'erreur et triangle des stations"></a>
-    <div class="body">
-      <div class="head"><h3><a href="projets/lightning-tdoa.html">Lightning TDOA Simulator</a></h3></div>
-      <p class="sub">Simulation d'un réseau de détection de foudre VLF à trois stations par multilatération TDOA, et étude de la précision sous bruit contrôlé.</p>
-    </div>
-  </article>
-</div></section>
+  <script type="module">
+    import * as THREE from 'three';
 
-<section id="a-propos"><div class="wrap">
-  <div class="sec-head" data-reveal><h2>À propos</h2></div>
-  <div class="prose" data-reveal>
-    <p>Ce qui m'intéresse, c'est l'endroit où la logique logicielle rencontre le réel physique. Je viens du prototypage rapide : je ne me contente pas de modéliser une solution, je la construis, je l'assemble, je la code et je l'intègre physiquement. Cette double compétence matériel/logiciel me permet de concevoir des systèmes interactifs et embarqués qui tiennent debout de bout en bout.</p>
-    <p>Ce que je préfère, c'est mener un projet de A à Z : repérer le problème, concevoir, prototyper, produire des données, et aboutir à un MVP démontrable qui aide réellement à le résoudre.</p>
-    <p>Étudiant en M2 <strong>Creative Technology</strong> à l'ESILV, je recherche un <strong>stage de fin d'études de 6 mois à partir de février 2027</strong>, en R&amp;D, prototypage hardware/software ou creative tech.</p>
-  </div>
-</div></section>
+    class TopographySim {
+      constructor(containerId) {
+        this.container = document.getElementById(containerId);
+        if (!this.container) return;
 
-<section id="contact"><div class="wrap">
-  <div class="sec-head" data-reveal><h2>Contact</h2></div>
-  <div class="contact-list" data-reveal>
-    <div class="contact-item"><span class="k">Email</span><a href="mailto:pdesbrosses@outlook.fr">pdesbrosses@outlook.fr</a></div>
-    <div class="contact-item"><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/paul-des-brosses/" target="_blank" rel="noopener">in/paul-des-brosses</a></div>
-    <div class="contact-item"><span class="k">GitHub</span><a href="https://github.com/paul-des-brosses" target="_blank" rel="noopener">paul-des-brosses</a></div>
-  </div>
-</div></section>
+        this.initialized = false;
+        this.rafId = null;
+        this.isHovering = false;
 
-<footer><div class="wrap">
-  <span class="label">Paul des Brosses, 2026</span>
-</div></footer>
+        this.mouse = new THREE.Vector2(999, 999);
+        this.mouseWorld = new THREE.Vector3(999, 0, 999);
+        this.basePlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
+        this.raycaster = new THREE.Raycaster();
 
-<script src="../assets/js/main.js"></script>
+        this.onMouseMove = this.onMouseMove.bind(this);
+        this.onMouseLeave = this.onMouseLeave.bind(this);
+        this.onWindowResize = this.onWindowResize.bind(this);
+        this.animate = this.animate.bind(this);
+
+        window.addEventListener('resize', this.onWindowResize);
+
+        if (window.innerWidth >= 768) {
+          this.init();
+        }
+      }
+
+      init() {
+        if (this.initialized) return;
+
+        this.scene = new THREE.Scene();
+        this.scene.background = new THREE.Color('#F4F1EA');
+        this.scene.fog = new THREE.Fog('#F4F1EA', 5, 12);
+
+        this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 20);
+        this.camera.position.set(0, 4.5, 6);
+        this.camera.lookAt(0, 0, 0);
+
+        this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        this.container.appendChild(this.renderer.domElement);
+
+        this.geometry = new THREE.PlaneGeometry(16, 16, 350, 350);
+        this.geometry.rotateX(-Math.PI / 2);
+
+        this.material = new THREE.ShaderMaterial({
+          uniforms: {
+            uTime: { value: 0 },
+            uColorSauge: { value: new THREE.Color('#778A71') },
+            uColorBlue: { value: new THREE.Color('#58879B') },
+            uColorHover: { value: new THREE.Color('#2A3235') },
+            uMousePos: { value: new THREE.Vector2(999, 999) }
+          },
+          vertexShader: `
+            uniform float uTime;
+            uniform vec2 uMousePos;
+
+            varying float vElevation;
+            varying float vAlphaMask;
+            varying float vHover;
+
+            float hash(vec2 p) {
+              return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
+            }
+            float noise(vec2 p) {
+              vec2 i = floor(p);
+              vec2 f = fract(p);
+              vec2 u = f * f * (3.0 - 2.0 * f);
+              return mix(mix(hash(i + vec2(0.0,0.0)), hash(i + vec2(1.0,0.0)), u.x),
+                         mix(hash(i + vec2(0.0,1.0)), hash(i + vec2(1.0,1.0)), u.x), u.y);
+            }
+            float fbm(vec2 p) {
+              float value = 0.0;
+              float amplitude = 0.5;
+              for (int i = 0; i < 4; i++) {
+                value += amplitude * noise(p);
+                p *= 2.0;
+                amplitude *= 0.5;
+              }
+              return value;
+            }
+
+            void main() {
+              vec3 pos = position;
+
+              vec2 uv = (pos.xz + 8.0) / 16.0;
+              float dist = distance(uv, vec2(0.5));
+              vAlphaMask = smoothstep(0.06, 0.20, dist);
+
+              float distToMouse = distance(pos.xz, uMousePos);
+              vHover = smoothstep(2.0, 0.0, distToMouse);
+
+              float wave = fbm(pos.xz * 1.5 + uTime * 0.1) * 1.2;
+              float micro = fbm(pos.xz * 4.0 - uTime * 0.05) * 0.3;
+
+              pos.y = (wave + micro) * vAlphaMask;
+              pos.y += vHover * 0.4;
+
+              vElevation = pos.y;
+
+              vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
+              gl_PointSize = (12.0 / -mvPosition.z) * vAlphaMask;
+              gl_Position = projectionMatrix * mvPosition;
+            }
+          `,
+          fragmentShader: `
+            uniform vec3 uColorSauge;
+            uniform vec3 uColorBlue;
+            uniform vec3 uColorHover;
+
+            varying float vElevation;
+            varying float vAlphaMask;
+            varying float vHover;
+
+            void main() {
+              if (vAlphaMask < 0.01) discard;
+
+              vec2 cxy = 2.0 * gl_PointCoord - 1.0;
+              if (dot(cxy, cxy) > 1.0) discard;
+
+              float mixRatio = smoothstep(0.0, 0.8, vElevation);
+              vec3 baseColor = mix(uColorSauge, uColorBlue, mixRatio);
+              vec3 finalColor = mix(baseColor, uColorHover, vHover * 0.8);
+
+              gl_FragColor = vec4(finalColor, vAlphaMask * 0.8);
+            }
+          `,
+          transparent: true,
+          depthWrite: false
+        });
+
+        this.points = new THREE.Points(this.geometry, this.material);
+        this.scene.add(this.points);
+
+        this.clock = new THREE.Clock();
+        this.isPlaying = true;
+        this.initialized = true;
+
+        window.addEventListener('mousemove', this.onMouseMove);
+        document.addEventListener('mouseleave', this.onMouseLeave);
+
+        this.setupObserver();
+        this.rafId = requestAnimationFrame(this.animate);
+      }
+
+      destroy() {
+        if (!this.initialized) return;
+
+        if (this.rafId) cancelAnimationFrame(this.rafId);
+        window.removeEventListener('mousemove', this.onMouseMove);
+        document.removeEventListener('mouseleave', this.onMouseLeave);
+
+        if (this.observer) this.observer.disconnect();
+
+        this.geometry.dispose();
+        this.material.dispose();
+        this.renderer.dispose();
+
+        if (this.renderer.domElement && this.renderer.domElement.parentNode) {
+          this.renderer.domElement.parentNode.removeChild(this.renderer.domElement);
+        }
+
+        this.scene = null;
+        this.camera = null;
+        this.renderer = null;
+        this.points = null;
+        this.initialized = false;
+      }
+
+      onMouseMove(event) {
+        this.isHovering = true;
+        this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+      }
+
+      onMouseLeave() {
+        this.isHovering = false;
+        if (this.points) {
+          this.points.material.uniforms.uMousePos.value.set(999, 999);
+        }
+      }
+
+      updateMouse() {
+        if (!this.isHovering || !this.points) return;
+
+        this.raycaster.setFromCamera(this.mouse, this.camera);
+        if (this.raycaster.ray.intersectPlane(this.basePlane, this.mouseWorld)) {
+          const rotY = this.points.rotation.y;
+          const cos = Math.cos(-rotY);
+          const sin = Math.sin(-rotY);
+          const localX = this.mouseWorld.x * cos - this.mouseWorld.z * sin;
+          const localZ = this.mouseWorld.x * sin + this.mouseWorld.z * cos;
+
+          this.points.material.uniforms.uMousePos.value.set(localX, localZ);
+        }
+      }
+
+      setupObserver() {
+        this.observer = new IntersectionObserver((entries) => {
+          this.isPlaying = entries[0].isIntersecting;
+        }, { threshold: 0.1 });
+        this.observer.observe(this.container);
+      }
+
+      onWindowResize() {
+        if (window.innerWidth < 768) {
+          this.destroy();
+          return;
+        }
+
+        if (!this.initialized) {
+          this.init();
+          return;
+        }
+
+        this.camera.aspect = window.innerWidth / window.innerHeight;
+        this.camera.updateProjectionMatrix();
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
+      }
+
+      animate() {
+        this.rafId = requestAnimationFrame(this.animate);
+        if (!this.isPlaying || !this.initialized) return;
+
+        const time = this.clock.getElapsedTime();
+        this.points.material.uniforms.uTime.value = time;
+        this.points.rotation.y = Math.sin(time * 0.05) * 0.1;
+
+        this.updateMouse();
+        this.renderer.render(this.scene, this.camera);
+      }
+    }
+
+    new TopographySim('visual-background');
+
+    // DÉCLENCHEMENT DE L'ANCRAGE 3D
+    const stage = document.getElementById('stage-3d');
+    if (stage) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            stage.classList.add('is-landed');
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      observer.observe(stage);
+    }
+  </script>
 </body>
 </html>
