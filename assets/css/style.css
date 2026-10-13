@@ -390,6 +390,15 @@ footer .label {
   transition: color 0.2s;
 }
 .site-header nav a:hover { color: var(--accent-blue); }
+.site-header nav .lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.site-header nav .lang .on {
+  color: var(--text);
+  font-weight: 700;
+}
 
 .project-page {
   max-width: 900px;
