@@ -357,6 +357,16 @@ footer .label {
   transform: none;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  #progress { transition: none; }
+}
+
 /* ---- RESPONSIVE ---- */
 @media (max-width: 768px) {
   .meta { grid-template-columns: 1fr 1fr; }
@@ -543,7 +553,28 @@ footer {
 @media (max-width: 768px) {
   .project-meta dl { grid-template-columns: 1fr 1fr; }
   .project-meta .wide { grid-column: span 2; }
-  .site-header { padding: 1rem 1.25rem; }
   .project-page { padding: 2rem 1.25rem 4rem; }
+
+  /* En-tête de page : la marque et la navigation se chevauchaient faute de
+     place. On passe la navigation sur sa propre ligne, sans jamais couper
+     un libellé en plein milieu. */
+  .site-header {
+    flex-wrap: wrap;
+    gap: 0.6rem 1rem;
+    padding: 0.9rem 1.25rem;
+  }
+  .site-header .brand { white-space: nowrap; }
+  .site-header nav {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.1rem;
+    font-size: 0.72rem;
+  }
+  .site-header nav a,
+  .site-header nav .lang,
+  .site-header nav .lang a,
+  .site-header nav .lang span {
+    white-space: nowrap;
+  }
 }
 

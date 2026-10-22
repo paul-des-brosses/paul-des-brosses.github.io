@@ -4,6 +4,52 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Paul des Brosses — Creative Technology & Engineering</title>
+  <meta name="theme-color" content="#F4F1EA">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="canonical" href="https://paul-des-brosses.github.io/en/">
+  <link rel="alternate" hreflang="fr" href="https://paul-des-brosses.github.io/fr/">
+  <link rel="alternate" hreflang="en" href="https://paul-des-brosses.github.io/en/">
+  <link rel="alternate" hreflang="x-default" href="https://paul-des-brosses.github.io/fr/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Paul des Brosses">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:title" content="Paul des Brosses — Creative Technology &amp; Engineering">
+  <meta property="og:description" content="Portfolio of Paul des Brosses: embedded systems, signal processing, spatial modelling and hardware/software rapid prototyping.">
+  <meta property="og:url" content="https://paul-des-brosses.github.io/en/">
+  <meta property="og:image" content="https://paul-des-brosses.github.io/assets/img/og-cover-en.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <noscript><style>.projet-card-3d { transform: none !important; opacity: 1 !important; }</style></noscript>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Paul des Brosses",
+  "jobTitle": "Creative Technology Engineer",
+  "description": "Portfolio: embedded systems, signal processing, spatial modelling and hardware/software prototyping.",
+  "url": "https://paul-des-brosses.github.io/en/",
+  "image": "https://paul-des-brosses.github.io/assets/img/photo-cv.jpeg",
+  "email": "mailto:pdesbrosses@outlook.fr",
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "ESILV"
+  },
+  "knowsAbout": [
+    "Embedded systems",
+    "Signal processing",
+    "Digital twins",
+    "Rapid prototyping",
+    "Local AI"
+  ],
+  "sameAs": [
+    "https://github.com/paul-des-brosses",
+    "https://www.linkedin.com/in/paul-des-brosses/"
+  ]
+}
+  </script>
   <meta name="description" content="Portfolio of Paul des Brosses: embedded systems, signal processing, spatial modelling and hardware/software rapid prototyping.">
   <style>
     :root {
@@ -42,6 +88,7 @@
     #hero-container {
       position: relative;
       height: 100vh;
+      height: 100svh;
       width: 100%;
       overflow: hidden;
     }
@@ -60,22 +107,27 @@
 
     .ui-top {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
+      gap: 0.75rem 1.25rem;
       border-bottom: 1px solid var(--border-light);
       padding-bottom: 1.25rem;
     }
     .ui-brand {
       font-weight: 600;
       letter-spacing: 0.04em;
+      white-space: nowrap;
     }
     .ui-nav {
       display: flex;
+      flex-wrap: wrap;
       gap: 0.6rem;
       align-items: center;
     }
     .ui-actions {
       display: flex;
+      flex-wrap: wrap;
       gap: 0.5rem;
       align-items: center;
     }
@@ -84,6 +136,7 @@
     .ui-actions span {
       display: inline-flex;
       align-items: center;
+      white-space: nowrap;
       background: rgba(244, 241, 234, 0.82);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
@@ -110,9 +163,23 @@
     }
 
     .ui-center {
+      position: relative;
       text-align: center;
       max-width: 900px;
       margin: 0 auto;
+    }
+    /* Voile radial : garantit la lisibilité du bloc de titre par-dessus le
+       nuage de points, quel que soit le format d'écran. */
+    .ui-center::before {
+      content: "";
+      position: absolute;
+      inset: -3.5rem -4rem;
+      z-index: -1;
+      pointer-events: none;
+      background: radial-gradient(ellipse at center,
+        rgba(244, 241, 234, 0.95) 0%,
+        rgba(244, 241, 234, 0.82) 45%,
+        rgba(244, 241, 234, 0) 75%);
     }
     .ui-tag {
       color: var(--accent-blue);
@@ -139,7 +206,7 @@
       50% { transform: scale(1.3); opacity: 0.6; }
     }
     .ui-name {
-      font-size: clamp(3.4rem, 8.5vw, 7.5rem);
+      font-size: clamp(2.75rem, 9.5vw, 7.5rem);
       font-weight: 600;
       letter-spacing: -0.045em;
       line-height: 0.95;
@@ -189,6 +256,11 @@
       inset: 0;
       z-index: 1;
     }
+    #visual-background canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
 
     /* ---- LAYOUT GLOBAL ---- */
     .wrap {
@@ -225,13 +297,17 @@
       perspective-origin: 50% 20%;
     }
 
+    /* Trame de 6 colonnes : ligne 1 = 2 cartes sur 3 colonnes,
+       ligne 2 = 3 cartes sur 2 colonnes. */
     .projets-3d-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(6, minmax(0, 1fr));
       column-gap: 1.5rem;
       row-gap: 2rem;
       transform-style: preserve-3d;
     }
+    .projet-card-3d { grid-column: span 2; }
+    .projet-card-3d.card-feature { grid-column: span 3; }
 
     .projet-card-3d {
       background: var(--surface);
@@ -241,7 +317,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      aspect-ratio: 3 / 4.2;
+      aspect-ratio: 1 / 1.12;
       text-decoration: none;
       color: inherit;
       position: relative;
@@ -257,11 +333,13 @@
       will-change: transform, opacity;
     }
 
-    .projet-card-3d:nth-child(1) { --offset-x: -30px; --rot-y: 8deg;  transition-delay: 0.00s; }
-    .projet-card-3d:nth-child(2) { --offset-x: -10px; --rot-y: 3deg;  transition-delay: 0.10s; }
-    .projet-card-3d:nth-child(3) { --offset-x: 10px;  --rot-y: -3deg; transition-delay: 0.20s; }
-    .projet-card-3d:nth-child(4) { --offset-x: 30px;  --rot-y: -8deg; transition-delay: 0.30s; }
-    .projet-card-3d:nth-child(5) { --offset-x: -25px; --rot-y: 6deg;  transition-delay: 0.40s; }
+    .projet-card-3d.card-feature { aspect-ratio: 3 / 2.2; }
+
+    .projet-card-3d:nth-child(1) { --offset-x: -26px; --rot-y: 6deg;  transition-delay: 0.00s; }
+    .projet-card-3d:nth-child(2) { --offset-x: 26px;  --rot-y: -6deg; transition-delay: 0.08s; }
+    .projet-card-3d:nth-child(3) { --offset-x: -32px; --rot-y: 7deg;  transition-delay: 0.20s; }
+    .projet-card-3d:nth-child(4) { --offset-x: 0px;   --rot-y: 0deg;  transition-delay: 0.28s; }
+    .projet-card-3d:nth-child(5) { --offset-x: 32px;  --rot-y: -7deg; transition-delay: 0.36s; }
 
     .perspective-stage.is-landed .projet-card-3d {
       transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg) scale(1);
@@ -312,17 +390,18 @@
       margin-bottom: 1.25rem;
     }
     .card-viz {
+      position: relative;
       flex-grow: 1;
+      min-height: 120px;
       border: 1px solid var(--border-light);
       background: #FAF8F5;
       border-radius: 2px;
       margin-bottom: 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       overflow: hidden;
     }
     .card-viz img {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -548,15 +627,48 @@
 
     /* ---- RESPONSIVE ---- */
     @media (max-width: 1024px) {
-      .projets-3d-grid { grid-template-columns: repeat(2, 1fr); }
-      .projet-card-3d {
+      .projets-3d-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .projet-card-3d,
+      .projet-card-3d.card-feature {
+        grid-column: span 1;
         transform: none !important;
         opacity: 1 !important;
         aspect-ratio: auto;
       }
+      .card-viz { min-height: 200px; }
       .about-intro-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .pillars-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Téléphone couché ou fenêtre très basse : un hero plein écran écrase le
+       bloc de titre. On le laisse reprendre sa hauteur naturelle. */
+    @media (max-height: 540px) and (orientation: landscape) {
+      #hero-container { height: auto; }
+      .hero-ui {
+        position: relative;
+        inset: auto;
+        min-height: 480px;
+        padding: 1.5rem 2rem;
+      }
+      .ui-name { margin-bottom: 1rem; }
+      .ui-tag { margin-bottom: 1rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .projet-card-3d {
+        transform: none !important;
+        opacity: 1 !important;
+        transition: none !important;
+      }
+      .status-dot-live { animation: none; }
+    }
+
+    /* Grille a deux colonnes uniquement : si le nombre de cartes est impair,
+       la dernière prend la ligne entière au lieu de laisser un demi-vide. */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .projet-card-3d:last-child:nth-child(odd) { grid-column: span 2; }
     }
 
     @media (max-width: 768px) {
@@ -564,7 +676,7 @@
       .ui-top, .ui-bottom { display: flex; flex-direction: column; gap: 1rem; text-align: center; }
       .ui-nav, .ui-actions { gap: 1rem; flex-wrap: wrap; justify-content: center; }
       .ui-bottom { grid-template-columns: 1fr; }
-      .projets-3d-grid { grid-template-columns: 1fr; }
+      .projets-3d-grid { grid-template-columns: minmax(0, 1fr); }
       .wrap { padding: 0 1.5rem; }
       #projets, #a-propos, #contact { padding: 4rem 0; }
     }
@@ -574,7 +686,7 @@
 
   <!-- 1. HERO CONTAINER -->
   <div id="hero-container">
-    <div id="visual-background"></div>
+    <div id="visual-background" aria-hidden="true"></div>
 
     <div class="hero-ui">
       <header class="ui-top mono">
@@ -624,7 +736,7 @@
         <div class="projets-3d-grid">
 
           <!-- PROJECT 1 -->
-          <a href="projects/applied-fox.html" class="projet-card-3d">
+          <a href="projects/applied-fox.html" class="projet-card-3d card-feature">
             <div>
               <div class="card-meta mono">
                 <span style="color: var(--accent-blue);">LOCAL AI</span>
@@ -634,7 +746,7 @@
               <p class="card-desc">100% local multi-agent system for R&amp;D tech watch with strict human validation.</p>
             </div>
             <div class="card-viz">
-              <img src="../assets/img/applied-fox/master.png" alt="Applied Fox preview" loading="lazy">
+              <img src="../assets/img/applied-fox/card.png" alt="Applied Fox preview" width="900" height="619" loading="lazy" decoding="async">
             </div>
             <div class="card-cta mono">
               <span>VIEW</span> <span>→</span>
@@ -642,7 +754,7 @@
           </a>
 
           <!-- PROJECT 2 -->
-          <a href="projects/forest-of-senses.html" class="projet-card-3d">
+          <a href="projects/forest-of-senses.html" class="projet-card-3d card-feature">
             <div>
               <div class="card-meta mono">
                 <span style="color: var(--accent-blue);">REHABILITATION</span>
@@ -652,7 +764,7 @@
               <p class="card-desc">Post-stroke motor rehabilitation environment driven by a 5-finger isometric sensor.</p>
             </div>
             <div class="card-viz">
-              <img src="../assets/img/forest/master.jpg" alt="Forest of Senses preview" loading="lazy">
+              <img src="../assets/img/forest/card.jpg" alt="Forest of Senses preview" width="900" height="506" loading="lazy" decoding="async">
             </div>
             <div class="card-cta mono">
               <span>VIEW</span> <span>→</span>
@@ -670,7 +782,7 @@
               <p class="card-desc">Hedgerow digital twin to reconcile ecology and economy. Interactive online simulation.</p>
             </div>
             <div class="card-viz">
-              <img src="../assets/img/bocage/master_fond.png" alt="Bocage Digital Twin preview" loading="lazy">
+              <img src="../assets/img/bocage/card.jpg" alt="Bocage Digital Twin preview" width="900" height="572" loading="lazy" decoding="async">
             </div>
             <div class="card-cta mono">
               <span>TRY DEMO</span> <span>→</span>
@@ -688,7 +800,7 @@
               <p class="card-desc">Simulation of a 3-station VLF lightning detection network using hyperbolic multilateration.</p>
             </div>
             <div class="card-viz">
-              <img src="../assets/img/lightning/hero.jpg" alt="Lightning TDoA preview" loading="lazy">
+              <img src="../assets/img/lightning/card.jpg" alt="Lightning TDoA preview" width="900" height="506" loading="lazy" decoding="async">
             </div>
             <div class="card-cta mono">
               <span>TRY DEMO</span> <span>→</span>
@@ -706,7 +818,7 @@
               <p class="card-desc">Modular lamp in laser-cut thermoformed acrylic. Crowdfunding validated at 337%.</p>
             </div>
             <div class="card-viz">
-              <img src="../assets/img/petale/master.jpg" alt="Pétale preview" loading="lazy">
+              <img src="../assets/img/petale/card.jpg" alt="Pétale preview" width="900" height="506" loading="lazy" decoding="async">
             </div>
             <div class="card-cta mono">
               <span>VIEW</span> <span>→</span>
@@ -887,6 +999,29 @@
   </section>
 
   <!-- SCRIPTS -->
+  <script>
+    /* Atterrissage des cartes projets. Volontairement hors module : si le CDN
+       Three.js est injoignable, les cartes s'affichent quand même. */
+    (function () {
+      var stage = document.getElementById('stage-3d');
+      if (!stage) return;
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced || !('IntersectionObserver' in window)) {
+        stage.classList.add('is-landed');
+        return;
+      }
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            stage.classList.add('is-landed');
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+      observer.observe(stage);
+    })();
+  </script>
+
   <script type="importmap">
     {
       "imports": {
@@ -898,6 +1033,45 @@
   <script type="module">
     import * as THREE from 'three';
 
+    const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    /* Deux profils de rendu.
+       - wide    : desktop, caméra rasante, trame fine.
+       - compact : portrait/téléphone, caméra plus plongeante et champ plus
+                   large pour que le relief remplisse un cadre étroit, trame
+                   allégée (200x200 au lieu de 350x350) pour tenir le framerate.
+       Le masque central est elliptique en compact afin de dégager toute la
+       hauteur occupée par le titre. */
+    const PROFILES = {
+      wide: {
+        breakpoint: 768,
+        segments: 350,
+        fov: 45,
+        camera: [0, 4.5, 6],
+        fog: [5, 12],
+        far: 20,
+        refAspect: 1.6,
+        mask: [0.05, 0.22],
+        maskAspect: 1.0,
+        hoverRadius: 2.5,
+        pointSize: 14.0,
+        maxPixelRatio: 2
+      },
+      compact: {
+        segments: 256,
+        fov: 60,
+        camera: [0, 6, 7.5],
+        fog: [6, 15],
+        far: 30,
+        refAspect: 0.46,
+        mask: [0.035, 0.16],
+        maskAspect: 2.2,
+        hoverRadius: 1.6,
+        pointSize: 16.0,
+        maxPixelRatio: 2
+      }
+    };
+
     class TopographySim {
       constructor(containerId) {
         this.container = document.getElementById(containerId);
@@ -905,7 +1079,11 @@
 
         this.initialized = false;
         this.rafId = null;
-        this.isHovering = false;
+        this.resizeTimer = null;
+        this.inView = true;
+        this.pointerActive = false;
+        this.profileName = null;
+        this.time = 0;
 
         this.mouse = new THREE.Vector2(999, 999);
         this.mouseWorld = new THREE.Vector3(999, 0, 999);
@@ -913,34 +1091,76 @@
         this.raycaster = new THREE.Raycaster();
 
         this.onMouseMove = this.onMouseMove.bind(this);
-        this.onMouseLeave = this.onMouseLeave.bind(this);
-        this.onWindowResize = this.onWindowResize.bind(this);
+        this.onTouchMove = this.onTouchMove.bind(this);
+        this.onPointerOut = this.onPointerOut.bind(this);
+        this.onResize = this.onResize.bind(this);
+        this.onMotionPreference = this.onMotionPreference.bind(this);
         this.animate = this.animate.bind(this);
 
-        window.addEventListener('resize', this.onWindowResize);
-
-        if (window.innerWidth >= 768) {
-          this.init();
+        window.addEventListener('resize', this.onResize, { passive: true });
+        window.addEventListener('orientationchange', this.onResize);
+        if (REDUCED_MOTION.addEventListener) {
+          REDUCED_MOTION.addEventListener('change', this.onMotionPreference);
         }
+
+        if (!REDUCED_MOTION.matches) this.init();
+      }
+
+      /* Toujours mesurer le conteneur, jamais window : sur mobile le repli de
+         la barre d'adresse fait varier innerHeight et provoquerait des
+         reconstructions en boucle. */
+      measure() {
+        const rect = this.container.getBoundingClientRect();
+        return {
+          width: Math.max(1, Math.round(rect.width)),
+          height: Math.max(1, Math.round(rect.height))
+        };
+      }
+
+      wantedProfile(width) {
+        return width < PROFILES.wide.breakpoint ? 'compact' : 'wide';
+      }
+
+      /* La clairière centrale doit rester calée sur le bloc de titre quel que
+         soit le format : plus le cadre est large, plus elle s'élargit ; plus il
+         est haut, plus elle s'étire verticalement. Sans cela le sous-titre se
+         retrouve noyé dans les points (fenêtre basse, téléphone couché). */
+      applyAspect(width, height) {
+        if (!this.material) return;
+        const p = PROFILES[this.profileName];
+        const k = Math.min(1.8, Math.max(0.6, (width / height) / p.refAspect));
+        const u = this.material.uniforms;
+        u.uMaskInner.value = p.mask[0] * k;
+        u.uMaskOuter.value = p.mask[1] * k;
+        u.uMaskAspect.value = Math.min(3.0, Math.max(1.0, p.maskAspect / k));
       }
 
       init() {
-        if (this.initialized) return;
+        if (this.initialized || REDUCED_MOTION.matches) return;
+
+        const { width, height } = this.measure();
+        this.profileName = this.wantedProfile(width);
+        const p = PROFILES[this.profileName];
+
+        try {
+          this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+        } catch (err) {
+          return; // pas de WebGL : le hero garde son fond uni, rien ne casse
+        }
+
+        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, p.maxPixelRatio));
+        this.renderer.setSize(width, height);
+        this.container.appendChild(this.renderer.domElement);
 
         this.scene = new THREE.Scene();
         this.scene.background = new THREE.Color('#F4F1EA');
-        this.scene.fog = new THREE.Fog('#F4F1EA', 5, 12);
+        this.scene.fog = new THREE.Fog('#F4F1EA', p.fog[0], p.fog[1]);
 
-        this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 20);
-        this.camera.position.set(0, 4.5, 6);
+        this.camera = new THREE.PerspectiveCamera(p.fov, width / height, 0.1, p.far);
+        this.camera.position.set(p.camera[0], p.camera[1], p.camera[2]);
         this.camera.lookAt(0, 0, 0);
 
-        this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
-        this.renderer.setSize(window.innerWidth, window.innerHeight);
-        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        this.container.appendChild(this.renderer.domElement);
-
-        this.geometry = new THREE.PlaneGeometry(16, 16, 350, 350);
+        this.geometry = new THREE.PlaneGeometry(16, 16, p.segments, p.segments);
         this.geometry.rotateX(-Math.PI / 2);
 
         this.material = new THREE.ShaderMaterial({
@@ -950,11 +1170,22 @@
             uColorMid: { value: new THREE.Color('#3A7D99') },     /* Bleu azur technique */
             uColorHigh: { value: new THREE.Color('#2563EB') },    /* Électrique éclatant */
             uColorHover: { value: new THREE.Color('#0D9488') },   /* Cyan / vert émeraude au survol */
-            uMousePos: { value: new THREE.Vector2(999, 999) }
+            uMousePos: { value: new THREE.Vector2(999, 999) },
+            uMaskInner: { value: p.mask[0] },
+            uMaskOuter: { value: p.mask[1] },
+            uMaskAspect: { value: p.maskAspect },
+            // (recalculés juste après par applyAspect)
+            uHoverRadius: { value: p.hoverRadius },
+            uPointSize: { value: p.pointSize }
           },
           vertexShader: `
             uniform float uTime;
             uniform vec2 uMousePos;
+            uniform float uMaskInner;
+            uniform float uMaskOuter;
+            uniform float uMaskAspect;
+            uniform float uHoverRadius;
+            uniform float uPointSize;
 
             varying float vElevation;
             varying float vAlphaMask;
@@ -985,11 +1216,12 @@
               vec3 pos = position;
 
               vec2 uv = (pos.xz + 8.0) / 16.0;
-              float dist = distance(uv, vec2(0.5));
-              vAlphaMask = smoothstep(0.05, 0.22, dist);
+              vec2 toCenter = vec2(uv.x - 0.5, (uv.y - 0.5) / uMaskAspect);
+              float dist = length(toCenter);
+              vAlphaMask = smoothstep(uMaskInner, uMaskOuter, dist);
 
               float distToMouse = distance(pos.xz, uMousePos);
-              vHover = smoothstep(2.5, 0.0, distToMouse);
+              vHover = smoothstep(uHoverRadius, 0.0, distToMouse);
 
               float wave = fbm(pos.xz * 1.5 + uTime * 0.12) * 1.35;
               float micro = fbm(pos.xz * 4.0 - uTime * 0.06) * 0.35;
@@ -1000,7 +1232,7 @@
               vElevation = pos.y;
 
               vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
-              gl_PointSize = (14.0 / -mvPosition.z) * vAlphaMask * (1.0 + vHover * 0.4);
+              gl_PointSize = (uPointSize / -mvPosition.z) * vAlphaMask * (1.0 + vHover * 0.4);
               gl_Position = projectionMatrix * mvPosition;
             }
           `,
@@ -1034,13 +1266,16 @@
 
         this.points = new THREE.Points(this.geometry, this.material);
         this.scene.add(this.points);
+        this.applyAspect(width, height);
 
         this.clock = new THREE.Clock();
-        this.isPlaying = true;
         this.initialized = true;
 
-        window.addEventListener('mousemove', this.onMouseMove);
-        document.addEventListener('mouseleave', this.onMouseLeave);
+        window.addEventListener('mousemove', this.onMouseMove, { passive: true });
+        window.addEventListener('touchmove', this.onTouchMove, { passive: true });
+        window.addEventListener('touchend', this.onPointerOut, { passive: true });
+        window.addEventListener('touchcancel', this.onPointerOut, { passive: true });
+        document.addEventListener('mouseleave', this.onPointerOut);
 
         this.setupObserver();
         this.rafId = requestAnimationFrame(this.animate);
@@ -1050,41 +1285,68 @@
         if (!this.initialized) return;
 
         if (this.rafId) cancelAnimationFrame(this.rafId);
-        window.removeEventListener('mousemove', this.onMouseMove);
-        document.removeEventListener('mouseleave', this.onMouseLeave);
+        this.rafId = null;
 
-        if (this.observer) this.observer.disconnect();
+        window.removeEventListener('mousemove', this.onMouseMove);
+        window.removeEventListener('touchmove', this.onTouchMove);
+        window.removeEventListener('touchend', this.onPointerOut);
+        window.removeEventListener('touchcancel', this.onPointerOut);
+        document.removeEventListener('mouseleave', this.onPointerOut);
+
+        if (this.observer) {
+          this.observer.disconnect();
+          this.observer = null;
+        }
 
         this.geometry.dispose();
         this.material.dispose();
-        this.renderer.dispose();
 
-        if (this.renderer.domElement && this.renderer.domElement.parentNode) {
-          this.renderer.domElement.parentNode.removeChild(this.renderer.domElement);
-        }
+        const canvas = this.renderer.domElement;
+        this.renderer.dispose();
+        if (canvas && canvas.parentNode) canvas.parentNode.removeChild(canvas);
 
         this.scene = null;
         this.camera = null;
         this.renderer = null;
         this.points = null;
+        this.pointerActive = false;
         this.initialized = false;
       }
 
-      onMouseMove(event) {
-        this.isHovering = true;
-        this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+      /* Coordonnées relatives au conteneur : reste juste même si le hero a
+         déjà défilé. */
+      setPointer(clientX, clientY) {
+        const rect = this.container.getBoundingClientRect();
+        if (!rect.width || !rect.height) return;
+        this.pointerActive = true;
+        this.mouse.x = ((clientX - rect.left) / rect.width) * 2 - 1;
+        this.mouse.y = -((clientY - rect.top) / rect.height) * 2 + 1;
       }
 
-      onMouseLeave() {
-        this.isHovering = false;
+      onMouseMove(event) {
+        this.setPointer(event.clientX, event.clientY);
+      }
+
+      onTouchMove(event) {
+        if (!event.touches || !event.touches.length) return;
+        const touch = event.touches[0];
+        const rect = this.container.getBoundingClientRect();
+        if (touch.clientY < rect.top || touch.clientY > rect.bottom) {
+          this.onPointerOut();
+          return;
+        }
+        this.setPointer(touch.clientX, touch.clientY);
+      }
+
+      onPointerOut() {
+        this.pointerActive = false;
         if (this.points) {
           this.points.material.uniforms.uMousePos.value.set(999, 999);
         }
       }
 
-      updateMouse() {
-        if (!this.isHovering || !this.points) return;
+      updatePointer() {
+        if (!this.pointerActive || !this.points) return;
 
         this.raycaster.setFromCamera(this.mouse, this.camera);
         if (this.raycaster.ray.intersectPlane(this.basePlane, this.mouseWorld)) {
@@ -1099,59 +1361,63 @@
       }
 
       setupObserver() {
+        if (!('IntersectionObserver' in window)) return;
         this.observer = new IntersectionObserver((entries) => {
-          this.isPlaying = entries[0].isIntersecting;
-        }, { threshold: 0.1 });
+          this.inView = entries[0].isIntersecting;
+        }, { threshold: 0 });
         this.observer.observe(this.container);
       }
 
-      onWindowResize() {
-        if (window.innerWidth < 768) {
-          this.destroy();
-          return;
-        }
+      onMotionPreference() {
+        if (REDUCED_MOTION.matches) this.destroy();
+        else this.init();
+      }
 
-        if (!this.initialized) {
-          this.init();
-          return;
-        }
+      /* Debounce : une rotation d'écran ou un repli de barre d'adresse ne doit
+         jamais déclencher une reconstruction par frame. On ne reconstruit la
+         scène que si le profil change réellement. */
+      onResize() {
+        clearTimeout(this.resizeTimer);
+        this.resizeTimer = setTimeout(() => {
+          if (REDUCED_MOTION.matches) return;
 
-        this.camera.aspect = window.innerWidth / window.innerHeight;
-        this.camera.updateProjectionMatrix();
-        this.renderer.setSize(window.innerWidth, window.innerHeight);
+          const { width, height } = this.measure();
+
+          if (!this.initialized) {
+            this.init();
+            return;
+          }
+          if (this.wantedProfile(width) !== this.profileName) {
+            this.destroy();
+            this.init();
+            return;
+          }
+
+          this.camera.aspect = width / height;
+          this.camera.updateProjectionMatrix();
+          this.renderer.setSize(width, height);
+          this.applyAspect(width, height);
+        }, 150);
       }
 
       animate() {
         this.rafId = requestAnimationFrame(this.animate);
-        if (!this.isPlaying || !this.initialized) return;
+        if (!this.initialized) return;
 
-        const time = this.clock.getElapsedTime();
-        this.points.material.uniforms.uTime.value = time;
-        this.points.rotation.y = Math.sin(time * 0.05) * 0.1;
+        const delta = Math.min(this.clock.getDelta(), 0.05);
+        if (!this.inView || document.hidden) return;
 
-        this.updateMouse();
+        this.time += delta;
+        this.points.material.uniforms.uTime.value = this.time;
+        this.points.rotation.y = Math.sin(this.time * 0.05) * 0.1;
+
+        this.updatePointer();
         this.renderer.render(this.scene, this.camera);
       }
     }
 
     new TopographySim('visual-background');
-
-    // 3D STAGE OBSERVER
-    const stage = document.getElementById('stage-3d');
-    if (stage) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            stage.classList.add('is-landed');
-          }
-        });
-      }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
-      });
-
-      observer.observe(stage);
-    }
   </script>
+
 </body>
 </html>

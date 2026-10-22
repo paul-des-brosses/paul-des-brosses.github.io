@@ -4,7 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lightning TDOA Simulator — Paul des Brosses</title>
+  <meta name="description" content="Simulation d&#x27;un réseau VLF de détection de foudre à trois stations par multilatération TDOA et étude de la précision atteignable sous bruit contrôlé.">
+  <meta name="theme-color" content="#F4F1EA">
+  <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+  <link rel="canonical" href="https://paul-des-brosses.github.io/fr/projets/lightning-tdoa.html">
+  <link rel="alternate" hreflang="fr" href="https://paul-des-brosses.github.io/fr/projets/lightning-tdoa.html">
+  <link rel="alternate" hreflang="en" href="https://paul-des-brosses.github.io/en/projects/lightning-tdoa.html">
+  <link rel="alternate" hreflang="x-default" href="https://paul-des-brosses.github.io/fr/projets/lightning-tdoa.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Paul des Brosses">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta property="og:title" content="Lightning TDOA Simulator — Paul des Brosses">
+  <meta property="og:description" content="Simulation d&#x27;un réseau VLF de détection de foudre à trois stations par multilatération TDOA et étude de la précision atteignable sous bruit contrôlé.">
+  <meta property="og:url" content="https://paul-des-brosses.github.io/fr/projets/lightning-tdoa.html">
+  <meta property="og:image" content="https://paul-des-brosses.github.io/assets/img/lightning/card.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="../../assets/css/style.css" />
+  <noscript><style>[data-reveal] { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
 <body>
 
@@ -33,7 +50,7 @@
     </section>
 
     <figure class="project-cover" data-reveal>
-      <img src="../../media/lightning-tdoa-simulator/heatmap_main.png" alt="Carte d'erreur TDOA" />
+      <img src="../../media/lightning-tdoa-simulator/heatmap_main.png" alt="Carte d'erreur TDOA" width="1096" height="910" loading="lazy" decoding="async" />
       <figcaption>La carte d'erreur calculée en direct autour du triangle des trois stations (S1–S3). Faible à l'intérieur du triangle, elle s'envole le long des axes médians où la géométrie se dégrade.</figcaption>
     </figure>
 
@@ -72,12 +89,12 @@
     </section>
 
     <figure class="project-figure" data-reveal>
-      <img src="../../media/lightning-tdoa-simulator/noise_curve.png" alt="Courbe erreur vs bruit TDOA" />
+      <img src="../../media/lightning-tdoa-simulator/noise_curve.png" alt="Courbe erreur vs bruit TDOA" width="1040" height="661" loading="lazy" decoding="async" />
       <figcaption>Erreur médiane vs σ sur les canaux temporels (log-log). La pente ≈ <span class="data">1</span> confirme le scaling linéaire ; à <span class="data">100 ns</span> le point est bon à <span class="data">~55 m</span>.</figcaption>
     </figure>
 
     <figure class="project-figure" data-reveal>
-      <img src="../../media/lightning-tdoa-simulator/solver_comparison.png" alt="Comparaison des deux solveurs TDOA" />
+      <img src="../../media/lightning-tdoa-simulator/solver_comparison.png" alt="Comparaison des deux solveurs TDOA" width="1020" height="660" loading="lazy" decoding="async" />
       <figcaption>Comparaison des deux solveurs (NLLS vs intersection fermée) : accord à <span class="data">&lt; 5&nbsp;%</span> sur l'ensemble de la zone.</figcaption>
     </figure>
 
@@ -85,7 +102,7 @@
       <h2>Démo &amp; code</h2>
       <p>La démo web est un site statique (HTML/CSS/JS + Pyodide) : la bibliothèque Python est chargée telle quelle dans le navigateur, sans portage JavaScript. On déplace les trois stations, on déclenche des orages, et on regarde le solveur travailler.</p>
       <figure class="project-figure">
-        <img src="../../media/lightning-tdoa-simulator/demo_scenario.png" alt="Interface démo live TDOA" />
+        <img src="../../media/lightning-tdoa-simulator/demo_scenario.png" alt="Interface démo live TDOA" width="880" height="748" loading="lazy" decoding="async" />
         <figcaption>L'interface live : trois stations déplaçables, la carte d'erreur recalculée, les détections et un panneau temps réel (éclairs, taux observé, erreur médiane et p95).</figcaption>
       </figure>
       <div class="actions">

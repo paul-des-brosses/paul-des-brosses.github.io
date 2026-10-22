@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page introuvable — Paul des Brosses</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#F4F1EA">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <style>
+    :root {
+      --bg: #F4F1EA;
+      --border: #DCD6C8;
+      --text: #2A3235;
+      --text-muted: #687175;
+      --accent-blue: #58879B;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .panel { max-width: 540px; text-align: center; }
+    .code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-blue);
+      margin-bottom: 1.25rem;
+    }
+    h1 {
+      font-size: clamp(1.9rem, 6vw, 2.8rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+    p {
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 2rem;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+    a {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.6rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    a.solid { background: var(--text); color: var(--bg); border-color: var(--text); }
+    a:hover { border-color: var(--accent-blue); color: var(--accent-blue); }
+    a.solid:hover { background: var(--accent-blue); color: #FFFFFF; }
+  </style>
+</head>
+<body>
+  <main class="panel">
+    <p class="code">Erreur 404 &middot; Page not found</p>
+    <h1>Cette page n'existe pas</h1>
+    <p>
+      Le lien est peut-être obsolète ou mal recopié.<br>
+      This page could not be found — the link may be outdated.
+    </p>
+    <div class="row">
+      <a class="solid" href="/fr/">Portfolio (FR)</a>
+      <a href="/en/">Portfolio (EN)</a>
+      <a href="/fr/cv.html">CV</a>
+    </div>
+  </main>
+</body>
+</html>

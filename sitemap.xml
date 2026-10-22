@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://paul-des-brosses.github.io/fr/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://paul-des-brosses.github.io/fr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://paul-des-brosses.github.io/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://paul-des-brosses.github.io/fr/"/>
+    <lastmod>2026-10-22</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://paul-des-brosses.github.io/en/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://paul-des-brosses.github.io/fr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://paul-des-brosses.github.io/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://paul-des-brosses.github.io/fr/"/>
+    <lastmod>2026-10-22</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://paul-des-brosses.github.io/fr/cv.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://paul-des-brosses.github.io/fr/cv.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://paul-des-brosses.github.io/en/cv.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://paul-des-brosses.github.io/fr/cv.html"/>
+    <lastmod>2026-10-22</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://paul-des-brosses.github.io/en/cv.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://paul-des-brosses.github.io/fr/cv.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://paul-des-brosses.github.io/en/cv.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://paul-des-brosses.github.io/fr/cv.html"/>
+    <lastmod>2026-10-22</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://paul-des-brosses.github.io/fr/projets/applied-fox.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://paul-des-brosses.github.io/fr/projets/applied-fox.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://paul-des-brosses.github.io/en/projects/applied-fox.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://paul-des-brosses.github.io/fr/projets/applied-fox.html"/>
+    <lastmod>2026-10-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://paul-des-brosses.github.io/en/projects/applied-fox.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://paul-des-brosses.github.io/fr/projets/applied-fox.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://paul-des-brosses.github.io/en/projects/applied-fox.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://paul-des-brosses.github.io/fr/projets/applied-fox.html"/>
+    <lastmod>2026-10-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://paul-des-brosses.github.io/fr/projets/bocage-digital-twin.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://paul-des-brosses.github.io/fr/projets/bocage-digital-twin.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://paul-des-brosses.github.io/en/projects/bocage-digital-twin.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://paul-des-brosses.github.io/fr/projets/bocage-digital-twin.html"/>
+    <lastmod>2026-10-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://paul-des-brosses.github.io/en/projects/bocage-digital-twin.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://paul-des-brosses.github.io/fr/projets/bocage-digital-twin.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://paul-des-brosses.github.io/en/projects/bocage-digital-twin.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://paul-des-brosses.github.io/fr/projets/bocage-digital-twin.html"/>
+    <lastmod>2026-10-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://paul-des-brosses.github.io/fr/projets/forest-of-senses.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://paul-des-brosses.github.io/fr/projets/forest-of-senses.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://paul-des-brosses.github.io/en/projects/forest-of-senses.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://paul-des-brosses.github.io/fr/projets/forest-of-senses.html"/>
+    <lastmod>2026-10-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://paul-des-brosses.github.io/en/projects/forest-of-senses.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://paul-des-brosses.github.io/fr/projets/forest-of-senses.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://paul-des-brosses.github.io/en/projects/forest-of-senses.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://paul-des-brosses.github.io/fr/projets/forest-of-senses.html"/>
+    <lastmod>2026-10-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://paul-des-brosses.github.io/fr/projets/lightning-tdoa.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://paul-des-brosses.github.io/fr/projets/lightning-tdoa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://paul-des-brosses.github.io/en/projects/lightning-tdoa.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://paul-des-brosses.github.io/fr/projets/lightning-tdoa.html"/>
+    <lastmod>2026-10-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://paul-des-brosses.github.io/en/projects/lightning-tdoa.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://paul-des-brosses.github.io/fr/projets/lightning-tdoa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://paul-des-brosses.github.io/en/projects/lightning-tdoa.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://paul-des-brosses.github.io/fr/projets/lightning-tdoa.html"/>
+    <lastmod>2026-10-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://paul-des-brosses.github.io/fr/projets/petale.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://paul-des-brosses.github.io/fr/projets/petale.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://paul-des-brosses.github.io/en/projects/petale.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://paul-des-brosses.github.io/fr/projets/petale.html"/>
+    <lastmod>2026-10-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://paul-des-brosses.github.io/en/projects/petale.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://paul-des-brosses.github.io/fr/projets/petale.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://paul-des-brosses.github.io/en/projects/petale.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://paul-des-brosses.github.io/fr/projets/petale.html"/>
+    <lastmod>2026-10-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+</urlset>
