@@ -367,6 +367,128 @@
       50% { transform: translateY(6px); }
     }
 
+    .scroll-hint-indicator {
+      margin-top: 40px;
+      padding: 10px 20px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #ffffff;
+      border-radius: 999px;
+      background: var(--amber-deep);
+      box-shadow: 0 6px 18px rgba(180, 83, 9, 0.35);
+      animation: hintGlow 1.8s infinite ease-in-out;
+    }
+    @keyframes hintGlow {
+      0%, 100% { box-shadow: 0 6px 18px rgba(180, 83, 9, 0.35), 0 0 0 0 rgba(180, 83, 9, 0.45); }
+      50% { box-shadow: 0 6px 18px rgba(180, 83, 9, 0.35), 0 0 0 10px rgba(180, 83, 9, 0); }
+    }
+    .scroll-hint-indicator .hint-arrow {
+      font-size: 18px;
+      line-height: 1;
+      animation: hintBounceStrong 1.1s infinite ease-in-out;
+    }
+    @keyframes hintBounceStrong {
+      0%, 100% { transform: translateY(-2px); }
+      50% { transform: translateY(7px); }
+    }
+
+    .fos-explainer {
+      max-width: 680px;
+      margin: 6px auto 0;
+      font-family: var(--font-primary);
+      font-size: clamp(13px, 1.1vw, 15px);
+      line-height: 1.5;
+      color: #eee6da;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+    }
+    .fos-stage-footer {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: 14px;
+      flex-shrink: 0;
+    }
+    .fos-detail-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 24px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--amber-bright);
+      text-decoration: none;
+      border: 2px solid rgba(245, 158, 11, 0.6);
+      border-radius: 999px;
+      background: rgba(12, 10, 8, 0.6);
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+    .fos-detail-link:hover {
+      background: var(--amber-bright);
+      color: #0c0a08;
+    }
+    .matching-goal {
+      padding-top: 12px;
+      border-top: 1px dashed rgba(180, 83, 9, 0.3);
+    }
+    .fos-explainer .kw {
+      font-weight: 700;
+      color: var(--amber-bright);
+      background: none;
+      padding: 0;
+    }
+    .fos-accent {
+      color: var(--amber-bright);
+    }
+
+    .phase-hint {
+      margin: 0 0 8px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-align: center;
+      color: var(--amber-bright);
+      transition: opacity 0.4s ease;
+    }
+    .phase-hint::after {
+      content: ' ↓';
+      display: inline-block;
+      animation: hintBounce 1.5s infinite ease-in-out;
+    }
+    .fos-details-frame.is-explored .phase-hint { opacity: 0.4; }
+    .fos-details-frame.is-explored .phase-hint::after { animation: none; }
+    .phase-btn.is-nudge .phase-btn-node {
+      animation: phaseNudge 1.4s infinite ease-out;
+    }
+    @keyframes phaseNudge {
+      0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.85); }
+      100% { box-shadow: 0 0 0 12px rgba(245, 158, 11, 0); }
+    }
+
+    .next-project {
+      max-width: 640px;
+      margin: 0 auto 12px;
+      padding: 18px 22px;
+      font-family: var(--font-primary);
+      font-size: clamp(14px, 1.1vw, 16px);
+      line-height: 1.6;
+      text-align: center;
+      color: #3f362e;
+      background: #ffffff;
+      border: 1.5px dashed rgba(180, 83, 9, 0.35);
+      border-radius: 18px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-hint-indicator,
+      .scroll-hint-indicator .hint-arrow,
+      .phase-hint::after,
+      .phase-btn.is-nudge .phase-btn-node { animation: none; }
+    }
+
     #feed-stage {
       position: relative;
       min-height: 100vh;
@@ -595,6 +717,15 @@
       color: #3f362e;
       margin-bottom: 14px;
     }
+    .matching-paragraph .kw,
+    .next-project .kw {
+      font-weight: 700;
+      color: var(--text-dark);
+      background: linear-gradient(transparent 58%, rgba(245, 158, 11, 0.3) 58%);
+      padding: 0 0.08em;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
 
     .matching-aside {
       font-weight: 600;
@@ -771,18 +902,15 @@
       white-space: nowrap;
       pointer-events: none;
       position: relative;
-      will-change: transform;
     }
 
     .fos-header-sub {
       text-align: center;
       margin: 0;
-      opacity: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 6px;
-      will-change: opacity, transform;
     }
     .fos-meta-tag {
       font-family: var(--font-mono);
@@ -806,20 +934,20 @@
       display: inline-flex;
       flex-direction: column;
       align-items: center;
-      gap: 7px;
-      max-width: 700px;
+      gap: 8px;
+      max-width: 760px;
       margin: 0 auto;
-      padding: 9px 20px 10px;
-      background: rgba(8, 7, 6, 0.82);
+      padding: 14px 26px;
+      background: rgba(8, 7, 6, 0.9);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1.5px solid rgba(245, 158, 11, 0.6);
       border-radius: 18px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.08), 0 0 36px rgba(245, 158, 11, 0.22), 0 8px 24px rgba(0, 0, 0, 0.6);
     }
     .fos-subtitle {
       font-family: var(--font-sans);
-      font-size: clamp(12px, 1.05vw, 13.5px);
+      font-size: clamp(13.5px, 1.2vw, 16px);
       font-weight: 600;
       color: #ffffff;
       letter-spacing: -0.01em;
@@ -827,39 +955,6 @@
       text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95);
     }
 
-    .fos-project-spec {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin: 0;
-      padding-top: 8px;
-      border-top: 1px solid rgba(255, 255, 255, 0.14);
-      width: 100%;
-    }
-    .fos-project-spec > div {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2px;
-      padding: 0 18px;
-      border-right: 1px solid rgba(255, 255, 255, 0.13);
-    }
-    .fos-project-spec > div:last-child { border-right: none; }
-    .fos-project-spec dt {
-      font-family: var(--font-mono);
-      font-size: 9px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--amber-bright);
-    }
-    .fos-project-spec dd {
-      font-family: var(--font-sans);
-      font-size: 11.5px;
-      font-weight: 600;
-      color: #ffffff;
-      letter-spacing: -0.01em;
-      white-space: nowrap;
-    }
 
     .fos-showcase-grid {
       display: grid;
@@ -867,7 +962,6 @@
       gap: 22px;
       align-items: stretch;
       position: relative;
-      opacity: 0;
       max-height: 480px;
     }
 
@@ -2009,13 +2103,7 @@
       .fos-phase-selector { grid-template-columns: repeat(4, 1fr); }
       .phase-btn { padding: 16px 2px 4px; gap: 5px; }
       .phase-btn-label { white-space: normal; text-align: center; line-height: 1.25; }
-      .fos-project-card { padding: 9px 14px 10px; }
-      .fos-project-spec > div {
-        padding: 3px 10px;
-        border-right: none;
-        flex: 0 0 auto;
-      }
-      .fos-project-spec dd { font-size: 10.5px; white-space: normal; text-align: center; }
+      .fos-project-card { padding: 12px 16px; }
 
       .phase-btn-label,
       .fos-mechanic-label { font-size: 9.5px; }
@@ -2172,12 +2260,12 @@
         </div>
 
         <div class="matching-cell matching-card" id="block-txt-1">
-          <h2 class="matching-heading">What blew me away in your work</h2>
+          <h2 class="matching-heading">Why you?</h2>
           <p class="matching-paragraph">
-            Honest story: I was looking for companies worth spending my final-year internship with (and, let's be real, maybe starting my career with). Then I found Moment Factory, and I was blown away.
+            I'm fascinated by the meeting point of <strong class="kw">technology</strong> and <strong class="kw">art</strong> when it creates <strong class="kw">emotion</strong> and carries ideas. My favorite project of yours: <strong class="kw">Aura</strong>.
           </p>
           <p class="matching-paragraph" style="margin-bottom: 0;">
-            A studio that takes over the Sphere in Las Vegas, turns the Santiago Bernabéu into a playground, builds worlds at Futuroscope and lights up Notre-Dame Basilica and Saint-Roch, all with cutting-edge tech, all just to give people moments they will never forget. That's when I knew what my number one goal was.
+            <strong class="kw">Projection mapping</strong> on Notre-Dame Basilica, <strong class="kw">real-time visuals</strong> at the Sphere in Las Vegas, forests that <strong class="kw">react to the people walking through them</strong> in the Lumina night walks: you turn places into <strong class="kw">living systems</strong>. What fascinates me most is the part nobody sees: keeping projectors, sound and sensors <strong class="kw">in sync to the millisecond</strong>, so that a whole building can <strong class="kw">react as one</strong>. That's exactly what I want to build: the part where code meets the physical world.
           </p>
         </div>
 
@@ -2187,10 +2275,10 @@
             I built a website instead of writing a cover letter. Yes, this is the cover letter.
           </p>
           <p class="matching-paragraph">
-            Creative Technology student at ESILV, driven by that exact shift where an abstract hunch, a complex challenge, or a bold bet turns into a tangible reality. My goal: building concrete systems and technical feats that speak for themselves, far better than any theoretical pitch.
+            I'm a <strong class="kw">Creative Technology</strong> student at ESILV. What I love is turning an idea, or a hunch, into a <strong class="kw">real, tangible object</strong>: <strong class="kw">concrete systems</strong> that speak louder than any pitch. What draws me to innovation is the <strong class="kw">magic</strong> of making things so new they feel unreal, and the <strong class="kw">emotion</strong> they spark. And I enjoy tricky problems, turning them over from every angle until I find the best solution, and the simplest one.
           </p>
-          <p class="matching-paragraph" style="margin-bottom: 0;">
-            What draws me to creative studios is that pursuit of pure magic, creating innovations so fresh they almost feel unreal. In practice, I thrive on technical challenges and problem-solving: tackling tricky puzzles from every possible angle to find the smartest, simplest solution.
+          <p class="matching-paragraph matching-goal" style="margin-bottom: 0;">
+            I'm looking for a <strong class="kw">6-month graduation internship</strong> starting <strong class="kw">February 2027</strong>.
           </p>
         </div>
 
@@ -2234,7 +2322,7 @@
 
       <template data-phase-text="1" data-badge="PHASE 01 // SENSORY AWAKENING" data-sound="true">
               <div class="fos-card-tag">PHASE 01 // PERCEPTUAL AWAKENING &amp; DISCOVERY</div>
-              <h3 class="fos-card-title">1 Finger = 1 Note</h3>
+              <h3 class="fos-card-title">Finger individuation: isolating each finger</h3>
               <div class="fos-card-mechanic">
                 <div class="fos-mechanic-box">
                   <span class="fos-mechanic-label">Motor action</span>
@@ -2249,7 +2337,7 @@
 
       <template data-phase-text="2" data-badge="PHASE 02 // MOTOR RESISTANCE" data-sound="true">
               <div class="fos-card-tag">PHASE 02 // HARMONIC MODULATION</div>
-              <h3 class="fos-card-title">1 Finger = 1 Full Chord</h3>
+              <h3 class="fos-card-title">Force modulation: pacing the effort</h3>
               <div class="fos-card-mechanic">
                 <div class="fos-mechanic-box">
                   <span class="fos-mechanic-label">Motor action</span>
@@ -2264,7 +2352,7 @@
 
       <template data-phase-text="3" data-badge="PHASE 03 // FINAL SYMBIOSIS" data-sound="true">
               <div class="fos-card-tag">PHASE 03 // CONVERGENCE &amp; SYMBIOSIS</div>
-              <h3 class="fos-card-title">1 Finger = 1 Piece of Music</h3>
+              <h3 class="fos-card-title">Fine motor control: hitting a precise force</h3>
               <div class="fos-card-mechanic">
                 <div class="fos-mechanic-box">
                   <span class="fos-mechanic-label">Motor action</span>
@@ -2296,12 +2384,8 @@
         <div class="fos-header-sub" id="fos-header-sub">
           <div class="fos-meta-tag">RESEARCH &amp; DEVELOPMENT // M1 PROJECT</div>
           <div class="fos-project-card">
-            <p class="fos-subtitle">Immersive environment &amp; implicit motor adaptation biofeedback</p>
-            <dl class="fos-project-spec">
-              <div><dt>Context</dt><dd>Post-stroke clinical study</dd></div>
-              <div><dt>Setup</dt><dd>5 custom isometric sensors</dd></div>
-              <div><dt>Cohort</dt><dd>15 participants</dd></div>
-            </dl>
+            <p class="fos-subtitle">An <span class="fos-accent">audio-visual</span> environment that induces measurable <span class="fos-accent">motor adaptation</span>, driven by a five-finger force&nbsp;sensor.</p>
+            <p class="fos-explainer">The forest and the music respond to every press. With <strong class="kw">no instructions</strong> at all: the scenery guides the hand. A tool designed for stroke <strong class="kw">rehabilitation</strong>.</p>
           </div>
         </div>
       </div>
@@ -2359,6 +2443,8 @@
 
           <div class="fos-manifesto" id="fos-manifesto"></div>
 
+          <p class="phase-hint">Click a phase to see how the system responds</p>
+
           <div class="fos-phase-selector" id="fos-phase-selector">
             <div class="phase-rail-track" aria-hidden="true">
               <div class="phase-rail-progress" id="phase-rail-progress"></div>
@@ -2387,6 +2473,10 @@
 
         </div>
 
+      </div>
+
+      <div class="fos-stage-footer">
+        <a class="fos-detail-link" href="https://paul-des-brosses.github.io/en/projects/forest-of-senses.html" target="_blank" rel="noopener noreferrer">The project in detail <span aria-hidden="true">↗</span></a>
       </div>
 
     </div>
@@ -2444,6 +2534,8 @@
 
   <section class="more-work" id="more-work">
     <div class="more-work-inner">
+      <p class="next-project">And this year, I'm working on <strong class="kw">Echoes of a Gesture</strong>, a <strong class="kw">computer vision</strong> project meant as the pivot of Forest of Senses. I can't say more here yet, but I'd be happy to tell you more on a&nbsp;call.</p>
+
       <h2 class="more-work-title">Other projects you might enjoy</h2>
 
       <div class="more-work-grid">
@@ -2641,9 +2733,6 @@
 
       const fosSectionWrapper = document.getElementById('fos-section-wrapper');
       const fosStageContainer = document.getElementById('fos-stage-container');
-      const fosMainTitle = document.getElementById('fos-main-title');
-      const fosHeaderSub = document.getElementById('fos-header-sub');
-      const fosShowcaseGrid = document.getElementById('fos-showcase-grid');
       const fosBgBase = document.getElementById('fos-bg-base');
       const fosBgIncoming = document.getElementById('fos-bg-incoming');
       const fullScanBlade = document.getElementById('full-scan-blade');
@@ -2775,15 +2864,16 @@
             background: '#FAF6EE'
           },
 
-          duration: 15,
+          duration: 11,
 
           loop: false,
-          viscosity: 0.048,
+          viscosity: 0.036,
+          waveSpeed: 0.9,
           agitation: 0.016,
           haloScale: 1.35,
           grain: isCoarsePointer ? 0.5 : 0.85,
 
-          maxDpr: isCoarsePointer ? 1 : 2
+          maxDpr: isCoarsePointer ? 1 : 1.5
         });
       }
 
@@ -3080,10 +3170,30 @@
 
       let isEjectingCrashedScreen = false;
 
+      let lastIntroGestureAt = 0;
+      let ejectionStartedAt = 0;
+
+      function finishEjectionWhenStill() {
+        const now = performance.now();
+        const stillScrolling = now - lastIntroGestureAt < 140;
+        if (stillScrolling && now - ejectionStartedAt < 2600) {
+          setTimeout(finishEjectionWhenStill, 50);
+          return;
+        }
+        window.scrollTo(0, 0);
+        lastScrollYPos = 0;
+        unlockScroll();
+        isEjectingCrashedScreen = false;
+        releaseIntroGestures();
+        if (fmMatchingInstance) fmMatchingInstance.refresh();
+      }
+
       function handleFirstMovement() {
         if (!canListenToUserMovement || hasUserMoved || isEjectingCrashedScreen) return;
         hasUserMoved = true;
         isEjectingCrashedScreen = true;
+        ejectionStartedAt = performance.now();
+        lastIntroGestureAt = ejectionStartedAt;
 
         window.scrollTo(0, 0);
 
@@ -3172,21 +3282,21 @@
         });
 
         setTimeout(() => {
-          if (crashedStage) crashedStage.style.display = 'none';
-          window.scrollTo(0, 0);
-          lastScrollYPos = 0;
-          unlockScroll();
-          isEjectingCrashedScreen = false;
 
-          releaseIntroGestures();
-          if (fmMatchingInstance) fmMatchingInstance.refresh();
-        }, 700);
+          if (crashedStage) crashedStage.style.display = 'none';
+
+          window.scrollTo(0, 0);
+
+          finishEjectionWhenStill();
+
+        }, 800);
       }
 
       function onCrashedScreenGesture(e) {
         if (!canListenToUserMovement || hasUserMoved || isEjectingCrashedScreen) {
 
           if (isEjectingCrashedScreen && (e.type === 'wheel' || e.type === 'touchmove')) {
+            lastIntroGestureAt = performance.now();
             e.preventDefault();
             e.stopPropagation();
           }
@@ -3371,9 +3481,15 @@
         }, 220);
       }
 
+      const nudgeBtn = document.querySelector('.phase-btn[data-phase="1"]');
+      if (nudgeBtn) nudgeBtn.classList.add('is-nudge');
+      const fosDetailsFrame = document.getElementById('fos-details-frame');
+
       phaseBtns.forEach(btn => {
         btn.addEventListener('click', () => {
           const idx = parseInt(btn.getAttribute('data-phase'), 10);
+          phaseBtns.forEach(b => b.classList.remove('is-nudge'));
+          if (fosDetailsFrame) fosDetailsFrame.classList.add('is-explored');
           switchPhase(idx);
         });
       });
@@ -3393,24 +3509,12 @@
         });
       }
 
-      function initFosTitlePosition() {
-        if (!fosMainTitle || hasStartedFosIntro) return;
-        const rect = fosMainTitle.getBoundingClientRect();
-        const desiredCenterY = window.innerHeight / 2;
-        const currentCenterY = rect.top + rect.height / 2;
-        const deltaY = desiredCenterY - currentCenterY;
-        gsap.set(fosMainTitle, { y: deltaY });
-      }
 
-      if (fosHeaderSub) gsap.set(fosHeaderSub, { opacity: 0, y: 12 });
-      if (fosShowcaseGrid) gsap.set(fosShowcaseGrid, { opacity: 0, y: 18 });
 
-      setTimeout(initFosTitlePosition, 50);
 
       if (document.fonts && document.fonts.ready) {
         document.fonts.ready.then(() => {
           if (isFleeingActive) initNonButtonPosition();
-          if (!hasStartedFosIntro) initFosTitlePosition();
         }).catch(() => {});
       }
 
@@ -3427,35 +3531,6 @@
           }
         });
 
-        setTimeout(() => {
-          if (fosMainTitle) {
-            gsap.to(fosMainTitle, {
-              y: 0,
-              duration: 0.85,
-              ease: 'power3.inOut'
-            });
-          }
-
-          if (fosHeaderSub) {
-            gsap.to(fosHeaderSub, {
-              opacity: 1,
-              y: 0,
-              duration: 0.65,
-              delay: 0.2,
-              ease: 'power2.out'
-            });
-          }
-
-          if (fosShowcaseGrid) {
-            gsap.to(fosShowcaseGrid, {
-              opacity: 1,
-              y: 0,
-              duration: 0.75,
-              delay: 0.35,
-              ease: 'power2.out'
-            });
-          }
-        }, 500);
       }
 
       let isSnappingFos = false;
@@ -3497,8 +3572,8 @@
         const scrollObj = { y: currentScrollY };
         fosSnapTween = gsap.to(scrollObj, {
           y: targetScrollY,
-          duration: 0.5,
-          ease: 'power3.out',
+          duration: 0.8,
+          ease: 'power2.inOut',
           onUpdate: () => {
             window.scrollTo(0, Math.round(scrollObj.y));
           },
@@ -3510,40 +3585,35 @@
 
       function evaluateFosFraming() {
         if (!fosSectionWrapper || fosSectionWrapper.style.display === 'none') return;
-        if (isSnappingFos || isEjectingCrashedScreen) return;
+        if (isEjectingCrashedScreen) return;
 
         const rect = fosSectionWrapper.getBoundingClientRect();
-        const currentScrollY = window.scrollY || window.pageYOffset;
-        const isScrollingUp = (currentScrollY - lastScrollYPos) < -1;
-        lastScrollYPos = currentScrollY;
+        lastScrollYPos = window.scrollY || window.pageYOffset;
 
         if (!hasStartedFosIntro && rect.bottom > 0 && rect.top <= window.innerHeight * 0.55) {
           startForestOfSensesIntro();
         }
 
-        if (isScrollingUp) {
-          clearTimeout(fosSettleTimer);
-          fosSettleTimer = null;
-          if (rect.top > 40) hasSnappedToFos = false;
-          return;
-        }
+        if (isSnappingFos) return;
+        clearTimeout(fosSettleTimer);
+        fosSettleTimer = setTimeout(settleFosFraming, FOS_SETTLE_DELAY);
+      }
 
-        if (hasSnappedToFos) return;
+      const FOS_SETTLE_DELAY = 500;
 
-        if (rect.top > 24 && rect.top <= window.innerHeight * 0.45) {
-          correctFosFraming(true);
-          return;
-        }
+      function settleFosFraming() {
+        fosSettleTimer = null;
+        if (isSnappingFos || isEjectingCrashedScreen) return;
+        if (!fosSectionWrapper || fosSectionWrapper.style.display === 'none') return;
 
-        if (rect.top > 3 && rect.top <= 160) {
-          clearTimeout(fosSettleTimer);
-          fosSettleTimer = setTimeout(() => {
-            fosSettleTimer = null;
-            if (isSnappingFos || hasSnappedToFos) return;
-            const settled = fosSectionWrapper.getBoundingClientRect();
-            if (settled.top > 3 && settled.top <= 160) correctFosFraming(true);
-          }, 120);
-        }
+        const stage = document.getElementById('fos-stage-container') || fosSectionWrapper;
+        if (Math.abs(fosSectionWrapper.getBoundingClientRect().top) <= 2) return;
+        const rect = stage.getBoundingClientRect();
+        if (rect.height <= 0) return;
+
+        const visible = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+        const visibleShare = visible / Math.min(rect.height, window.innerHeight);
+        if (visibleShare >= 0.55) correctFosFraming(true);
       }
 
       function queueFosFramingCheck() {
@@ -3556,6 +3626,10 @@
       }
 
       window.addEventListener('scroll', queueFosFramingCheck, { passive: true });
+
+      window.addEventListener('wheel', () => {
+        if (isSnappingFos) cancelFosSnap();
+      }, { passive: true });
 
       window.addEventListener('touchstart', () => {
         if (isSnappingFos) cancelFosSnap();
@@ -3728,19 +3802,19 @@
         };
 
         copyPhoneBtn.addEventListener('click', () => {
-          const mail = copyMailBtn.dataset.mail || '';
+          const value = copyPhoneBtn.dataset.phone || copyPhoneBtn.dataset.mail || '';
           if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(mail)
+            navigator.clipboard.writeText(value)
               .then(confirmCopy)
               .catch(() => {
 
-                if (copyTextFallback(mail)) confirmCopy();
-                else copyMailBtn.remove();
+                if (copyTextFallback(value)) confirmCopy();
+                else copyPhoneBtn.remove();
               });
-          } else if (copyTextFallback(mail)) {
+          } else if (copyTextFallback(value)) {
             confirmCopy();
           } else {
-            copyMailBtn.remove();
+            copyPhoneBtn.remove();
           }
         });
       }
@@ -3755,7 +3829,6 @@
             th = tCanvas.height = window.innerHeight;
           }
           if (isFleeingActive) initNonButtonPosition();
-          if (!hasStartedFosIntro) initFosTitlePosition();
 
           if (window.matchMedia('(hover: hover)').matches &&
               hasSnappedToFos && !isSnappingFos && fosSectionWrapper &&
