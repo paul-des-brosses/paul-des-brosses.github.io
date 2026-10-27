@@ -1,0 +1,13 @@
+# Fichiers d'instructions IA & backstage (ne pas exposer publiquement sur GitHub)
+AGENTS.md
+CLAUDE.md
+.cursorrules
+
+# Fichiers systme & sauvegardes
+.DS_Store
+Thumbs.db
+*.backup.*
+*.tmp
+
+# Environnement local
+.vscode/
