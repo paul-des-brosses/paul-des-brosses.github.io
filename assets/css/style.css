@@ -436,6 +436,10 @@ footer .label {
 }
 .project-cover img, .project-figure img {
   width: 100%;
+  /* Indispensable : les attributs width/height du HTML agissent comme des
+     indications de presentation. Sans height:auto, la hauteur native du
+     fichier (jusqu'a 1800 px) s'applique telle quelle et l'image s'etire. */
+  height: auto;
   border-radius: 4px;
   border: 1px solid var(--border);
   display: block;
