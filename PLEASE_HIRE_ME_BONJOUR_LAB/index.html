@@ -3067,16 +3067,47 @@
         isFleeingActive = false;
         if (ouiCheckFill) ouiCheckFill.classList.add('is-checked');
 
-        gsap.to([gatekeeper, btnNon], {
-          opacity: 0,
-          duration: 0.4,
-          ease: 'power2.inOut',
+        const box = ouiCheckFill ? ouiCheckFill.parentElement : null;
+        const boxRect = box ? box.getBoundingClientRect() : null;
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (!boxRect || !boxRect.width || !tunnelOverlay || reduceMotion) {
+          gsap.to([gatekeeper, btnNon], {
+            opacity: 0,
+            duration: 0.4,
+            ease: 'power2.inOut',
+            onComplete: () => {
+              if (gatekeeper) gatekeeper.style.display = 'none';
+              if (btnNon) btnNon.style.display = 'none';
+              startTunnelSequence();
+            }
+          });
+          return;
+        }
+
+        const cx = boxRect.left + boxRect.width / 2;
+        const cy = boxRect.top + boxRect.height / 2;
+        const size = ouiCheckFill.offsetWidth || boxRect.width;
+        const reach = 2 * Math.hypot(Math.max(cx, window.innerWidth - cx), Math.max(cy, window.innerHeight - cy));
+
+        const portal = document.createElement('div');
+        portal.style.cssText = `position:fixed;left:${cx - size / 2}px;top:${cy - size / 2}px;width:${size}px;height:${size}px;`
+          + `background:${getComputedStyle(tunnelOverlay).backgroundColor};z-index:5100;pointer-events:none;visibility:hidden;`;
+        document.body.appendChild(portal);
+        gatekeeper.style.transformOrigin = `${cx}px ${cy}px`;
+
+        gsap.timeline({
+          delay: 0.12,
           onComplete: () => {
             if (gatekeeper) gatekeeper.style.display = 'none';
             if (btnNon) btnNon.style.display = 'none';
             startTunnelSequence();
+            gsap.to(portal, { opacity: 0, duration: 0.2, onComplete: () => portal.remove() });
           }
-        });
+        })
+          .set(portal, { visibility: 'visible' }, 0)
+          .to(btnNon, { opacity: 0, duration: 0.2, ease: 'power2.out' }, 0)
+          .to([gatekeeper, portal], { scale: reach / size, duration: 0.85, ease: 'power4.in' }, 0);
       }
 
       if (ouiContainer) {
