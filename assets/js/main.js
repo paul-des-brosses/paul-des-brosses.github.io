@@ -1,3 +1,12 @@
+// Nettoyage de l'URL si accès direct avec extension .html
+(function () {
+  if (window.location.pathname.endsWith('/index.html')) {
+    window.history.replaceState(null, '', window.location.pathname.slice(0, -10) + window.location.search + window.location.hash);
+  } else if (window.location.pathname.endsWith('.html')) {
+    window.history.replaceState(null, '', window.location.pathname.slice(0, -5) + window.location.search + window.location.hash);
+  }
+})();
+
 // Progress bar on scroll
 const progressEl = document.getElementById('progress');
 if (progressEl) {

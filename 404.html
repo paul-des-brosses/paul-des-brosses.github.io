@@ -7,6 +7,17 @@
   <meta name="robots" content="noindex">
   <meta name="theme-color" content="#F4F1EA">
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <script>
+    (function () {
+      var p = window.location.pathname;
+      if (p.length > 1 && p.endsWith('/')) {
+        var trimmed = p.slice(0, -1);
+        if (trimmed !== '/fr' && trimmed !== '/en') {
+          window.location.replace(trimmed + window.location.search + window.location.hash);
+        }
+      }
+    })();
+  </script>
   <style>
     :root {
       --bg: #F4F1EA;
@@ -81,7 +92,7 @@
     <div class="row">
       <a class="solid" href="/fr/">Portfolio (FR)</a>
       <a href="/en/">Portfolio (EN)</a>
-      <a href="/fr/cv.html">CV</a>
+      <a href="/fr/cv">CV</a>
     </div>
   </main>
 </body>

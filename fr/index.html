@@ -23,6 +23,13 @@
   <meta property="og:image:height" content="630">
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
   <noscript><style>.projet-card-3d { transform: none !important; opacity: 1 !important; }</style></noscript>
+  <script>
+    if (location.pathname.endsWith('/index.html')) {
+      history.replaceState(null, '', location.pathname.slice(0, -10) + location.search + location.hash);
+    } else if (location.pathname.endsWith('.html')) {
+      history.replaceState(null, '', location.pathname.slice(0, -5) + location.search + location.hash);
+    }
+  </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -694,12 +701,12 @@
         <nav class="ui-nav interactive">
           <a href="#projets">PROJETS</a>
           <a href="#a-propos">À PROPOS</a>
-          <a href="cv.html">CV ↗</a>
+          <a href="cv">CV ↗</a>
           <a href="#contact">CONTACT</a>
         </nav>
         <div class="ui-actions interactive">
           <span class="lang-active">FR</span>
-          <a href="../en/index.html">EN</a>
+          <a href="../en/">EN</a>
           <a href="https://github.com/paul-des-brosses" target="_blank" rel="noopener">GITHUB ↗</a>
         </div>
       </header>
@@ -736,7 +743,7 @@
         <div class="projets-3d-grid">
 
           <!-- PROJET 1 -->
-          <a href="projets/applied-fox.html" class="projet-card-3d card-feature">
+          <a href="projets/applied-fox" class="projet-card-3d card-feature">
             <div>
               <div class="card-meta mono">
                 <span style="color: var(--accent-blue);">IA LOCALE</span>
@@ -754,7 +761,7 @@
           </a>
 
           <!-- PROJET 2 -->
-          <a href="projets/forest-of-senses.html" class="projet-card-3d card-feature">
+          <a href="projets/forest-of-senses" class="projet-card-3d card-feature">
             <div>
               <div class="card-meta mono">
                 <span style="color: var(--accent-blue);">RÉÉDUCATION</span>
@@ -772,7 +779,7 @@
           </a>
 
           <!-- PROJET 3 -->
-          <a href="projets/bocage-digital-twin.html" class="projet-card-3d">
+          <a href="projets/bocage-digital-twin" class="projet-card-3d">
             <div>
               <div class="card-meta mono">
                 <span style="color: var(--accent-blue);">WEBGL &amp; SIG</span>
@@ -790,7 +797,7 @@
           </a>
 
           <!-- PROJET 4 -->
-          <a href="projets/lightning-tdoa.html" class="projet-card-3d">
+          <a href="projets/lightning-tdoa" class="projet-card-3d">
             <div>
               <div class="card-meta mono">
                 <span style="color: var(--accent-blue);">WASM &amp; SIGNAL</span>
@@ -808,7 +815,7 @@
           </a>
 
           <!-- PROJET 5 -->
-          <a href="projets/petale.html" class="projet-card-3d">
+          <a href="projets/petale" class="projet-card-3d">
             <div>
               <div class="card-meta mono">
                 <span style="color: var(--accent-sage);">HARDWARE</span>
@@ -883,7 +890,7 @@
               </div>
             </div>
             <div style="margin-top: 1.5rem; text-align: center;">
-              <a href="cv.html" class="scroll-btn interactive" style="display:inline-block; width:100%; text-align:center;">
+              <a href="cv" class="scroll-btn interactive" style="display:inline-block; width:100%; text-align:center;">
                 CONSULTER LE CV COMPLET ↗
               </a>
             </div>

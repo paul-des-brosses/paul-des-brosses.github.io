@@ -12,7 +12,7 @@
   <link rel="alternate" hreflang="en" href="https://paul-des-brosses.github.io/en/">
   <link rel="alternate" hreflang="x-default" href="https://paul-des-brosses.github.io/fr/">
   <!-- Repli sans JavaScript : la version française reste la destination par défaut. -->
-  <noscript><meta http-equiv="refresh" content="0; url=fr/index.html"></noscript>
+  <noscript><meta http-equiv="refresh" content="0; url=fr/"></noscript>
   <script>
     // Redirection selon la langue du navigateur, français par défaut.
     (function () {
@@ -23,7 +23,7 @@
         if (l.indexOf('fr') === 0) { prefersEnglish = false; break; }
         if (l.indexOf('en') === 0) { break; }
       }
-      location.replace(prefersEnglish ? 'en/index.html' : 'fr/index.html');
+      location.replace(prefersEnglish ? 'en/' : 'fr/');
     })();
   </script>
   <style>
@@ -43,6 +43,6 @@
   </style>
 </head>
 <body>
-  <p>Portfolio&nbsp;: <a href="fr/index.html">Français</a> &middot; <a href="en/index.html">English</a></p>
+  <p>Portfolio&nbsp;: <a href="fr/">Français</a> &middot; <a href="en/">English</a></p>
 </body>
 </html>
