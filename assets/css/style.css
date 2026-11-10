@@ -12,12 +12,22 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 ::selection {
-  background: var(--accent-blue);
+  background: #58879B;
   color: #FFFFFF;
 }
 
 ::-moz-selection {
-  background: var(--accent-blue);
+  background: #58879B;
+  color: #FFFFFF;
+}
+
+*::selection {
+  background: #58879B;
+  color: #FFFFFF;
+}
+
+*::-moz-selection {
+  background: #58879B;
   color: #FFFFFF;
 }
 
