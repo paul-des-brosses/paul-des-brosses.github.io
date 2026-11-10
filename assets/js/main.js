@@ -1,3 +1,21 @@
+// Console Easter egg
+(function () {
+  var isEn = document.documentElement.lang === 'en' || window.location.pathname.indexOf('/en/') !== -1;
+  var msg = isEn
+    ? "Looking under the hood? Always great to meet a fellow engineer!\nLet's talk tech, architecture or immersive projects:\n✉ pdesbrosses@outlook.fr · 🐙 github.com/paul-des-brosses\n"
+    : "Curieux d'inspecter sous le capot ? Ravi de voir un pair !\nDiscutons tech, architecture ou projets immersifs :\n✉ pdesbrosses@outlook.fr · 🐙 github.com/paul-des-brosses\n";
+
+  console.log(
+    '%c  PAUL DES BROSSES  %c  Creative Technology Engineer\n' +
+    '%c  Hardware · Signal Processing · 3D Realtime\n\n' +
+    '%c' + msg,
+    'background: #2A3235; color: #F4F1EA; font-weight: bold; padding: 4px 8px; border-radius: 4px; font-size: 13px; font-family: monospace;',
+    'color: #58879B; font-weight: bold; font-size: 12px; font-family: monospace;',
+    'color: #778A71; font-size: 11px; font-family: monospace; font-style: italic;',
+    'color: #2A3235; font-size: 11px; font-family: monospace; line-height: 1.5;'
+  );
+})();
+
 // Nettoyage de l'URL si accès direct avec extension .html
 (function () {
   if (window.location.pathname.endsWith('/index.html')) {

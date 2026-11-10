@@ -72,6 +72,16 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    ::selection {
+      background: var(--accent-blue);
+      color: #FFFFFF;
+    }
+
+    ::-moz-selection {
+      background: var(--accent-blue);
+      color: #FFFFFF;
+    }
+
     html {
       scroll-behavior: smooth;
     }
@@ -1007,6 +1017,17 @@
 
   <!-- SCRIPTS -->
   <script>
+    console.log(
+      '%c  PAUL DES BROSSES  %c  Creative Technology Engineer\n' +
+      '%c  Hardware · Signal Processing · 3D Realtime\n\n' +
+      '%cLooking under the hood? Always great to meet a fellow engineer!\n' +
+      'Let\'s talk tech, architecture or immersive projects :\n' +
+      '✉ pdesbrosses@outlook.fr · 🐙 github.com/paul-des-brosses\n',
+      'background: #2A3235; color: #F4F1EA; font-weight: bold; padding: 4px 8px; border-radius: 4px; font-size: 13px; font-family: monospace;',
+      'color: #58879B; font-weight: bold; font-size: 12px; font-family: monospace;',
+      'color: #778A71; font-size: 11px; font-family: monospace; font-style: italic;',
+      'color: #2A3235; font-size: 11px; font-family: monospace; line-height: 1.5;'
+    );
     /* Atterrissage des cartes projets. Volontairement hors module : si le CDN
        Three.js est injoignable, les cartes s'affichent quand même. */
     (function () {
@@ -1102,10 +1123,12 @@
         this.onPointerOut = this.onPointerOut.bind(this);
         this.onResize = this.onResize.bind(this);
         this.onMotionPreference = this.onMotionPreference.bind(this);
+        this.onVisibilityChange = this.onVisibilityChange.bind(this);
         this.animate = this.animate.bind(this);
 
         window.addEventListener('resize', this.onResize, { passive: true });
         window.addEventListener('orientationchange', this.onResize);
+        document.addEventListener('visibilitychange', this.onVisibilityChange);
         if (REDUCED_MOTION.addEventListener) {
           REDUCED_MOTION.addEventListener('change', this.onMotionPreference);
         }
@@ -1299,6 +1322,7 @@
         window.removeEventListener('touchend', this.onPointerOut);
         window.removeEventListener('touchcancel', this.onPointerOut);
         document.removeEventListener('mouseleave', this.onPointerOut);
+        document.removeEventListener('visibilitychange', this.onVisibilityChange);
 
         if (this.observer) {
           this.observer.disconnect();
@@ -1407,12 +1431,30 @@
         }, 150);
       }
 
-      animate() {
-        this.rafId = requestAnimationFrame(this.animate);
+      onVisibilityChange() {
         if (!this.initialized) return;
+        if (document.hidden) {
+          if (this.rafId) {
+            cancelAnimationFrame(this.rafId);
+            this.rafId = null;
+          }
+        } else {
+          if (!this.rafId) {
+            this.clock.getDelta();
+            this.animate();
+          }
+        }
+      }
+
+      animate() {
+        if (!this.initialized || document.hidden) {
+          this.rafId = null;
+          return;
+        }
+        this.rafId = requestAnimationFrame(this.animate);
 
         const delta = Math.min(this.clock.getDelta(), 0.05);
-        if (!this.inView || document.hidden) return;
+        if (!this.inView) return;
 
         this.time += delta;
         this.points.material.uniforms.uTime.value = this.time;

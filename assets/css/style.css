@@ -11,6 +11,16 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+::selection {
+  background: var(--accent-blue);
+  color: #FFFFFF;
+}
+
+::-moz-selection {
+  background: var(--accent-blue);
+  color: #FFFFFF;
+}
+
 html { scroll-behavior: smooth; }
 
 body {
