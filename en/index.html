@@ -767,8 +767,20 @@
       }
       .cta-cv-box {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        text-align: center;
         gap: 1.25rem;
+        padding: 1.75rem 1.5rem;
+      }
+      .cta-cv-joke {
+        text-align: center;
+      }
+      .cta-cv-actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
       }
       .cta-footer-bar {
         text-align: center;
@@ -779,6 +791,20 @@
       .cta-footer-bar div {
         text-align: center;
         margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .cta-cv-box {
+        padding: 1.5rem 1.15rem;
+      }
+      .cta-cv-actions {
+        width: 100%;
+        flex-direction: column;
+      }
+      .cta-cv-btn {
+        width: 100%;
+        justify-content: center;
       }
     }
 
@@ -1054,19 +1080,13 @@
 
       </div>
 
-      <!-- QUICK CONTACT & CHIPS -->
+      <!-- QUICK PHONE CONTACT -->
       <div class="cta-quick">
         <p class="cta-quick-direct mono">
           <a href="tel:+33602732840">06 02 73 28 40</a>
           <span aria-hidden="true">&ndash;</span>
           <button type="button" id="cta-copy-phone" data-phone="06 02 73 28 40" data-label="Copy phone number" data-done="Number copied!">Copy phone number</button>
         </p>
-        <p class="cta-quick-label mono">Short on time? Start a conversation in one click:</p>
-        <div class="cta-quick-chips">
-          <a class="cta-chip" href="mailto:pdesbrosses@outlook.fr?subject=Creative%20Tech%20Project%20Inquiry">Discuss a project</a>
-          <a class="cta-chip" href="mailto:pdesbrosses@outlook.fr?subject=Quick%20intro%20call%20or%20coffee">Coffee or a quick call?</a>
-          <a class="cta-chip" href="mailto:pdesbrosses@outlook.fr?subject=Work%20Opportunity">Collaboration opportunity</a>
-        </div>
       </div>
 
       <!-- CV BOX -->
