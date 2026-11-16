@@ -440,206 +440,346 @@
       color: var(--accent-blue);
     }
 
-    /* ---- 3. SECTION À PROPOS ---- */
-    #a-propos {
+        /* ---- 3. SECTION CONTACT & CLÔTURE (STYLE PLEASE HIRE ME) ---- */
+    #contact {
       border-top: 1px solid var(--border);
-      padding: 6rem 0;
+      padding: 7rem 0 0 0;
       background: var(--bg);
+      position: relative;
     }
-    .about-layout {
+    .cta-container {
       display: flex;
       flex-direction: column;
       gap: 3.5rem;
     }
-    .about-intro-grid {
-      display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap: 3rem;
-      align-items: start;
-    }
-    .about-lead {
-      font-size: 1.3rem;
-      font-weight: 500;
-      line-height: 1.5;
-      color: var(--text);
-      letter-spacing: -0.015em;
-      margin-bottom: 1.25rem;
-    }
-    .about-prose p {
-      font-size: 1rem;
-      line-height: 1.7;
-      color: var(--text-muted);
-      margin-bottom: 1.2rem;
-    }
-    .about-prose p strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    /* Piliers d'ingénierie */
-    .demarche-title {
-      font-size: 1.15rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-    .pillar-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 1.75rem;
+    .cta-header {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.2s ease, border-color 0.2s ease;
+      align-items: center;
+      gap: 1.1rem;
     }
-    .pillar-card:hover {
-      transform: translateY(-3px);
-      border-color: var(--accent-blue);
-    }
-    .pillar-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 1rem;
-    }
-    .pillar-num {
-      font-size: 0.75rem;
-      color: var(--accent-blue);
+    .cta-badge {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      color: var(--accent-sage);
       font-weight: 700;
     }
-    .pillar-icon {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-    .pillar-card h3 {
-      font-size: 1.1rem;
+    .cta-title {
+      font-size: clamp(2.1rem, 3.8vw, 3.2rem);
       font-weight: 600;
-      margin-bottom: 0.6rem;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
       color: var(--text);
-      letter-spacing: -0.01em;
     }
-    .pillar-card p {
-      font-size: 0.88rem;
-      line-height: 1.6;
+    .cta-subtitle {
+      font-size: clamp(1rem, 1.15vw, 1.15rem);
+      line-height: 1.65;
       color: var(--text-muted);
-      margin-bottom: 1.2rem;
     }
-    .pillar-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      border-top: 1px dashed var(--border);
-      padding-top: 0.9rem;
-    }
-    .pill {
-      font-size: 0.7rem;
-      padding: 0.2rem 0.55rem;
-      background: rgba(42, 50, 53, 0.04);
-      border: 1px solid var(--border-light);
-      border-radius: 3px;
+    .cta-subtitle strong {
       color: var(--text);
+      font-weight: 600;
+    }
+    .cta-location {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      padding: 0.45rem 1.1rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.5);
+    }
+    .cta-location .status-dot-live {
+      width: 7px;
+      height: 7px;
     }
 
-    .status-panel {
+    /* Actions Grid */
+    .cta-actions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .cta-card {
+      text-decoration: none;
+      border-radius: 12px;
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .cta-card-primary {
+      background: #2A3235;
+      color: #FFFFFF;
+      border: 1px solid rgba(88, 135, 155, 0.4);
+      box-shadow: 0 10px 24px rgba(42, 50, 53, 0.08);
+    }
+    .cta-card-primary:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent-blue);
+      box-shadow: 0 16px 36px rgba(42, 50, 53, 0.18);
+    }
+    .cta-card-secondary {
       background: var(--surface);
+      color: var(--text);
       border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 2rem;
-      height: 100%;
+      box-shadow: 0 6px 16px rgba(42, 50, 53, 0.03);
+    }
+    .cta-card-secondary:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent-blue);
+      box-shadow: 0 14px 28px rgba(42, 50, 53, 0.08);
+    }
+    .cta-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .cta-card-primary .cta-card-icon {
+      background: rgba(88, 135, 155, 0.22);
+      color: #8EB9CC;
+    }
+    .cta-card-secondary .cta-card-icon {
+      background: rgba(88, 135, 155, 0.1);
+      color: var(--accent-blue);
+    }
+    .cta-card-content {
+      flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      gap: 0.25rem;
+      min-width: 0;
     }
-    .status-badge {
+    .cta-card-badge {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      font-weight: 700;
+    }
+    .cta-card-primary .cta-card-badge {
+      color: #8EB9CC;
+    }
+    .cta-card-secondary .cta-card-badge {
+      color: var(--accent-sage);
+    }
+    .cta-card-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cta-card-primary .cta-card-title {
+      color: #FFFFFF;
+    }
+    .cta-card-secondary .cta-card-title {
+      color: var(--text);
+    }
+    .cta-card-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cta-card-primary .cta-card-desc {
+      color: rgba(244, 241, 234, 0.7);
+    }
+    .cta-card-arrow {
+      font-size: 1.25rem;
+      font-weight: 600;
+      transition: transform 0.25s ease;
+      color: var(--text-muted);
+    }
+    .cta-card-primary .cta-card-arrow {
+      color: #8EB9CC;
+    }
+    .cta-card:hover .cta-card-arrow {
+      transform: translateX(4px);
+      color: var(--accent-blue);
+    }
+
+    /* Quick line & Chips */
+    .cta-quick {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      text-align: center;
+    }
+    .cta-quick-direct {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .cta-quick-direct a,
+    .cta-quick-direct button {
+      font: inherit;
+      letter-spacing: inherit;
+      color: var(--text);
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: all 0.2s ease;
+    }
+    .cta-quick-direct a:hover,
+    .cta-quick-direct button:hover {
+      color: var(--accent-blue);
+      border-color: var(--accent-blue);
+    }
+    #cta-copy-phone.is-done {
+      color: var(--accent-sage);
+      border-color: var(--accent-sage);
+      font-weight: 600;
+    }
+    .cta-quick-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .cta-quick-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+    .cta-chip {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      padding: 0.45rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .cta-chip:hover {
+      transform: translateY(-2px);
+      background: var(--accent-blue);
+      border-color: var(--accent-blue);
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(88, 135, 155, 0.2);
+    }
+
+    /* Box CV */
+    .cta-cv-box {
+      background: rgba(255, 255, 255, 0.7);
+      border: 1.5px dashed var(--border);
+      border-radius: 14px;
+      padding: 1.75rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .cta-cv-joke {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      margin: 0;
+    }
+    .cta-cv-actions {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .cta-cv-btn {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      color: var(--accent-sage);
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-    .status-badge::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      background: var(--accent-sage);
-      border-radius: 50%;
-    }
-    .status-desc {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-    }
-    .status-desc strong {
-      color: var(--text);
-    }
-    .spec-list {
-      border-top: 1px dashed var(--border);
-      padding-top: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-    .spec-item {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.8rem;
-    }
-    .spec-k { color: var(--text-muted); }
-    .spec-v { font-weight: 600; color: var(--text); }
-
-    /* ---- 4. SECTION CONTACT & FOOTER ---- */
-    #contact {
-      border-top: 1px solid var(--border);
-      padding: 6rem 0 4rem 0;
-      background: var(--bg);
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-bottom: 5rem;
-    }
-    .contact-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 1.5rem;
-      border-radius: 4px;
       text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 120px;
-      transition: all 0.2s ease;
-    }
-    .contact-card:hover {
-      border-color: var(--accent-blue);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(42, 50, 53, 0.04);
-    }
-    .contact-card .val {
-      font-size: 1rem;
+      padding: 0.65rem 1.25rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
       font-weight: 600;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .cta-cv-btn-primary {
+      background: var(--accent-blue);
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(88, 135, 155, 0.2);
+    }
+    .cta-cv-btn-primary:hover {
+      background: #466e80;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(88, 135, 155, 0.3);
+    }
+    .cta-cv-btn-ghost {
+      background: var(--surface);
       color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .cta-cv-btn-ghost:hover {
+      border-color: var(--accent-blue);
+      color: var(--accent-blue);
+      transform: translateY(-2px);
     }
 
-    footer {
+    /* Footer Final */
+    .cta-footer-bar {
       border-top: 1px solid var(--border-light);
-      padding-top: 2rem;
+      padding: 2.75rem 0;
+      width: 100%;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
       color: var(--text-muted);
+      margin: 0 auto;
+    }
+    .cta-footer-bar div {
+      text-align: center;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 900px) {
+      .cta-actions-grid {
+        grid-template-columns: 1fr;
+      }
+      .cta-cv-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.25rem;
+      }
+      .cta-footer-bar {
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        padding: 2.25rem 0;
+      }
+      .cta-footer-bar div {
+        text-align: center;
+        margin: 0 auto;
+      }
     }
 
     /* ---- RESPONSIVE ---- */
@@ -695,7 +835,8 @@
       .ui-bottom { grid-template-columns: 1fr; }
       .projets-3d-grid { grid-template-columns: minmax(0, 1fr); }
       .wrap { padding: 0 1.5rem; }
-      #projets, #a-propos, #contact { padding: 4rem 0; }
+      #projets, #a-propos { padding: 4rem 0; }
+      #contact { padding: 4rem 0 0 0; }
     }
   </style>
 </head>
@@ -710,7 +851,6 @@
         <div class="ui-brand">PAUL DES BROSSES</div>
         <nav class="ui-nav interactive">
           <a href="#projets">PROJETS</a>
-          <a href="#a-propos">À PROPOS</a>
           <a href="cv">CV ↗</a>
           <a href="#contact">CONTACT</a>
         </nav>
@@ -848,169 +988,113 @@
     </div>
   </section>
 
-  <!-- 3. SECTION À PROPOS -->
-  <section id="a-propos">
-    <div class="wrap">
+    <!-- 3. SECTION CONTACT & CLÔTURE (STYLE PLEASE HIRE ME) -->
+  <section id="contact" class="cta-section">
+    <div id="a-propos"></div>
+    <div class="wrap cta-container">
 
-      <header class="sec-header">
-        <div class="sec-title">
-          <h2>Ingénierie &amp; Démarche</h2>
-        </div>
-      </header>
+      <div class="cta-header">
+        <span class="mono cta-badge">CONTACT &amp; COLLABORATION</span>
+        <h2 class="cta-title">Un projet en tête&nbsp;? Parlons-en.</h2>
+        <p class="cta-subtitle">
+          Ingénieur diplômé en <strong>Creative Technology</strong> à l'ESILV. À la recherche d'opportunités et de défis en <strong>prototypage hardware/software, IA locale, traitement du signal</strong> ou <strong>installations immersives</strong>.
+        </p>
+        <p class="cta-location mono">
+          <span class="status-dot-live"></span> DISPONIBLE POUR UN STAGE PFE (6 MOIS) &middot; DÈS FÉVRIER 2027
+        </p>
+      </div>
 
-      <div class="about-layout">
-        
-        <!-- INTRO & DISPONIBILITÉ -->
-        <div class="about-intro-grid">
-          <div class="about-prose">
-            <p class="about-lead">
-              Je ne m'arrête pas au modèle théorique : <strong>je câble, j'assemble en atelier, j'écris le firmware et les algorithmes de traitement</strong>.
-            </p>
-            <p>
-              Ce qui en sort est chiffré, pas affirmé : <strong>+57 %</strong> de force d'isolation sur 15 sujets (p = 0,002) pour Forest of Senses, une erreur médiane de <strong>~52 m</strong> à 100 ns de bruit pour le réseau TDoA, <strong>70 %</strong> d'appels LLM court-circuités par filtrage déterministe sur Applied Fox.
-            </p>
-            <p>
-              Même logique côté architecture : un jumeau numérique rejouable à la graine près, un cœur de simulation en C# pur sans dépendance au moteur, une IA qui ne quitte jamais la machine.
-            </p>
+      <div class="cta-actions-grid">
+
+        <!-- CARTE EMAIL -->
+        <a href="mailto:pdesbrosses@outlook.fr" class="cta-card cta-card-primary">
+          <div class="cta-card-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
           </div>
-
-          <div class="status-panel">
-            <div>
-              <div class="status-badge mono">DISPONIBILITÉ R&amp;D</div>
-              <p class="status-desc">
-                Étudiant en <strong>M2 Creative Technology à l'ESILV</strong> (majeure hardware, IA et simulation de systèmes), je recherche un <strong>stage de fin d'études de 6 mois à partir de février 2027</strong> en prototypage hardware/software, R&amp;D appliquée ou ingénierie de pointe.
-              </p>
-            </div>
-            <div class="spec-list mono">
-              <div class="spec-item">
-                <span class="spec-k">DURÉE</span>
-                <span class="spec-v">6 mois</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-k">PÉRIODE</span>
-                <span class="spec-v">Février 2027</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-k">LOCALISATION</span>
-                <span class="spec-v">Île-de-France / Mobilité</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-k">OBJECTIF</span>
-                <span class="spec-v">R&amp;D / Prototypage</span>
-              </div>
-            </div>
-            <div style="margin-top: 1.5rem; text-align: center;">
-              <a href="cv" class="scroll-btn interactive" style="display:inline-block; width:100%; text-align:center;">
-                CONSULTER LE CV COMPLET ↗
-              </a>
-            </div>
+          <div class="cta-card-content">
+            <span class="cta-card-badge mono">CONTACT DIRECT</span>
+            <h3 class="cta-card-title">M'envoyer un email</h3>
+            <p class="cta-card-desc">pdesbrosses@outlook.fr</p>
           </div>
-        </div>
+          <div class="cta-card-arrow">→</div>
+        </a>
 
-        <!-- LES 3 PILIERS DE LA DÉMARCHE -->
-        <div>
-          <div class="demarche-title">
-            <span class="mono" style="color: var(--accent-sage);">AXES D'EXPERTISE</span>
-            <span>Trois axes, cinq projets</span>
+        <!-- CARTE LINKEDIN -->
+        <a href="https://www.linkedin.com/in/paul-des-brosses/" target="_blank" rel="noopener noreferrer" class="cta-card cta-card-secondary">
+          <div class="cta-card-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9z"/>
+            </svg>
           </div>
-
-          <div class="pillars-grid">
-            <div class="pillar-card">
-              <div>
-                <div class="pillar-header mono">
-                  <span class="pillar-num">01</span>
-                  <span class="pillar-icon">PHYSIQUE &rarr; SIGNAL</span>
-                </div>
-                <h3>Hardware, Capteurs &amp; Embarqué</h3>
-                <p>
-                  Acquisition bas niveau et traitement du signal : forces isométriques des cinq doigts captées à <strong>14 Hz</strong>, transitoires VLF datés à <strong>100 ns</strong> près.
-                </p>
-              </div>
-              <div class="pillar-tags mono">
-                <span class="pill">ESP32 / C++</span>
-                <span class="pill">Traitement du signal</span>
-                <span class="pill">TDOA / RF</span>
-                <span class="pill">KiCad</span>
-              </div>
-            </div>
-
-            <div class="pillar-card">
-              <div>
-                <div class="pillar-header mono">
-                  <span class="pillar-num">02</span>
-                  <span class="pillar-icon">MATHS &rarr; DÉCISION</span>
-                </div>
-                <h3>Modélisation &amp; Jumeaux Numériques</h3>
-                <p>
-                  Simulation rejouable à la graine près, solveurs non linéaires, validation Monte Carlo. <strong>Six leviers</strong> agronomiques contre <strong>deux scénarios</strong> climatiques, run réelle contre run témoin gelée.
-                </p>
-              </div>
-              <div class="pillar-tags mono">
-                <span class="pill">Python / SciPy</span>
-                <span class="pill">Monte Carlo</span>
-                <span class="pill">Unity 6 / C#</span>
-                <span class="pill">WebGL / WASM</span>
-              </div>
-            </div>
-
-            <div class="pillar-card">
-              <div>
-                <div class="pillar-header mono">
-                  <span class="pillar-num">03</span>
-                  <span class="pillar-icon">LOCAL &rarr; CONTRÔLE</span>
-                </div>
-                <h3>IA Locale &amp; Systèmes</h3>
-                <p>
-                  Pipelines multi-agents qui ne quittent pas la machine : contrats de types Pydantic, validation humaine à chaque étape, <strong>trois couches de filtres</strong> qui éliminent 70 % des appels LLM.
-                </p>
-              </div>
-              <div class="pillar-tags mono">
-                <span class="pill">LangGraph</span>
-                <span class="pill">Ollama</span>
-                <span class="pill">Pydantic</span>
-                <span class="pill">Multi-agents</span>
-              </div>
-            </div>
+          <div class="cta-card-content">
+            <span class="cta-card-badge mono">RÉSEAU PROFESSIONNEL</span>
+            <h3 class="cta-card-title">Profil LinkedIn</h3>
+            <p class="cta-card-desc">Expériences, recommandations &amp; réseau</p>
           </div>
-        </div>
+          <div class="cta-card-arrow">↗</div>
+        </a>
+
+        <!-- CARTE GITHUB -->
+        <a href="https://github.com/paul-des-brosses" target="_blank" rel="noopener noreferrer" class="cta-card cta-card-secondary">
+          <div class="cta-card-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+          </div>
+          <div class="cta-card-content">
+            <span class="cta-card-badge mono">PROJETS &amp; CODE</span>
+            <h3 class="cta-card-title">Profil GitHub</h3>
+            <p class="cta-card-desc">Code source, dépôts &amp; expérimentations</p>
+          </div>
+          <div class="cta-card-arrow">↗</div>
+        </a>
 
       </div>
 
-    </div>
-  </section>
-
-  <!-- 4. SECTION CONTACT -->
-  <section id="contact">
-    <div class="wrap">
-
-      <header class="sec-header">
-        <div class="sec-title">
-          <h2>Contact</h2>
+      <!-- CONTACT RAPIDE & CHIPS -->
+      <div class="cta-quick">
+        <p class="cta-quick-direct mono">
+          <a href="tel:+33602732840">06 02 73 28 40</a>
+          <span aria-hidden="true">&ndash;</span>
+          <button type="button" id="cta-copy-phone" data-phone="06 02 73 28 40" data-label="Copier le numéro" data-done="Numéro copié !">Copier le numéro</button>
+        </p>
+        <p class="cta-quick-label mono">Pas le temps&nbsp;? Lancez un échange en un clic&nbsp;:</p>
+        <div class="cta-quick-chips">
+          <a class="cta-chip" href="mailto:pdesbrosses@outlook.fr?subject=Discussion%20projet%20Creative%20Tech">Discuter d'un projet</a>
+          <a class="cta-chip" href="mailto:pdesbrosses@outlook.fr?subject=Un%20café%20ou%20un%20call%20%3F">Un café ou un call ?</a>
+          <a class="cta-chip" href="mailto:pdesbrosses@outlook.fr?subject=Opportunité%20de%20collaboration">Opportunité de collaboration</a>
         </div>
-      </header>
-
-      <div class="contact-grid">
-        <a href="mailto:pdesbrosses@outlook.fr" class="contact-card">
-          <span class="mono" style="color: var(--text-muted);">EMAIL</span>
-          <span class="val">pdesbrosses@outlook.fr</span>
-          <span class="mono" style="color: var(--accent-blue);">ÉCRIRE ↗</span>
-        </a>
-        <a href="https://www.linkedin.com/in/paul-des-brosses/" target="_blank" rel="noopener" class="contact-card">
-          <span class="mono" style="color: var(--text-muted);">LINKEDIN</span>
-          <span class="val">Paul des Brosses</span>
-          <span class="mono" style="color: var(--accent-blue);">CONNECTER ↗</span>
-        </a>
-        <a href="https://github.com/paul-des-brosses" target="_blank" rel="noopener" class="contact-card">
-          <span class="mono" style="color: var(--text-muted);">GITHUB</span>
-          <span class="val">paul-des-brosses</span>
-          <span class="mono" style="color: var(--accent-blue);">PARCOURIR ↗</span>
-        </a>
       </div>
 
-      <footer class="mono">
-        <div>PAUL DES BROSSES</div>
-        <div>PORTFOLIO &bull; CREATIVE TECHNOLOGY</div>
-      </footer>
+      <!-- BOX CV -->
+      <div class="cta-cv-box">
+        <p class="cta-cv-joke">Curieux de consulter le parcours complet&nbsp;?</p>
+        <div class="cta-cv-actions">
+          <a href="cv" class="cta-cv-btn cta-cv-btn-primary">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+            <span>Consulter le CV en ligne ↗</span>
+          </a>
+          <a href="../media/CV/CV_Paul_des_Brosses_FR.pdf" download="CV_Paul_des_Brosses_FR.pdf" class="cta-cv-btn cta-cv-btn-ghost">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            <span>Télécharger le CV (PDF)</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- FOOTER FINAL -->
+      <div class="cta-footer-bar mono">
+        <div>PAUL DES BROSSES &bull; PORTFOLIO &bull; CREATIVE TECHNOLOGY</div>
+      </div>
 
     </div>
   </section>
@@ -1028,6 +1112,47 @@
       'color: #778A71; font-size: 11px; font-family: monospace; font-style: italic;',
       'color: #2A3235; font-size: 11px; font-family: monospace; line-height: 1.5;'
     );
+    /* Copier le numéro de téléphone */
+    (function () {
+      var btn = document.getElementById('cta-copy-phone');
+      if (!btn) return;
+      var timer = null;
+      btn.addEventListener('click', function () {
+        var phone = btn.getAttribute('data-phone') || '+33 6 02 73 28 40';
+        var doneMsg = btn.getAttribute('data-done') || 'Numéro copié !';
+        var labelMsg = btn.getAttribute('data-label') || 'Copier le numéro';
+        var copyOk = function () {
+          btn.textContent = doneMsg;
+          btn.classList.add('is-done');
+          clearTimeout(timer);
+          timer = setTimeout(function () {
+            btn.textContent = labelMsg;
+            btn.classList.remove('is-done');
+          }, 2400);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(phone).then(copyOk).catch(function () {
+            fallback();
+          });
+        } else {
+          fallback();
+        }
+        function fallback() {
+          try {
+            var ta = document.createElement('textarea');
+            ta.value = phone;
+            ta.setAttribute('readonly', '');
+            ta.style.cssText = 'position:fixed;top:-1000px;opacity:0';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            copyOk();
+          } catch (e) {}
+        }
+      });
+    })();
+
     /* Atterrissage des cartes projets. Volontairement hors module : si le CDN
        Three.js est injoignable, les cartes s'affichent quand même. */
     (function () {

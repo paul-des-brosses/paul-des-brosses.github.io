@@ -11,3 +11,8 @@ Thumbs.db
 
 # Environnement local
 .vscode/
+
+# Templates & brouillons
+PLEASE_HIRE_ME_template/
+PLEASE_HIRE_ME_template_FR/
+
