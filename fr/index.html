@@ -696,6 +696,43 @@
       box-shadow: 0 4px 12px rgba(88, 135, 155, 0.2);
     }
 
+    /* Encart "Et aujourd'hui ?" */
+    .cta-wip-box {
+      background: rgba(255, 255, 255, 0.7);
+      border: 1.5px dashed var(--border);
+      border-radius: 14px;
+      padding: 1.25rem 2rem;
+      max-width: 880px;
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .cta-wip-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 0 0 0.55rem 0;
+      letter-spacing: -0.01em;
+      text-align: center;
+    }
+    .cta-wip-text {
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--text-muted);
+      margin: 0 0 0.45rem 0;
+      text-align: center;
+    }
+    .cta-wip-text strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+    .cta-wip-text:last-child {
+      margin-bottom: 0;
+    }
+
     /* Box CV */
     .cta-cv-box {
       background: rgba(255, 255, 255, 0.7);
@@ -825,6 +862,9 @@
       }
       .cta-cv-box {
         padding: 1.5rem 1.15rem;
+      }
+      .cta-wip-box {
+        padding: 1.15rem 1rem;
       }
       .cta-cv-actions {
         width: 100%;
@@ -1048,6 +1088,17 @@
   <section id="contact" class="cta-section">
     <div id="a-propos"></div>
     <div class="wrap cta-container">
+
+      <!-- ENCART "ET AUJOURD'HUI ?" -->
+      <div class="cta-wip-box">
+        <h3 class="cta-wip-title">Et aujourd'hui&nbsp;?</h3>
+        <p class="cta-wip-text">
+          Je travaille en ce moment même sur <strong>Echoes of a Gesture</strong>, un projet de recherche appliquée explorant la qualité et la nuance du mouvement comme modalité d'interaction continue. Grâce à un pipeline de <strong>vision par ordinateur sans capteur porté</strong>, le système traduit l'expressivité et la dynamique du geste en <strong>matière visuelle temps réel</strong>.
+        </p>
+        <p class="cta-wip-text">
+          Le prototype et les bancs d'essai sont en cours de développement, parlons-en autour d'un café.
+        </p>
+      </div>
 
       <div class="cta-header">
         <span class="mono cta-badge">CONTACT &amp; COLLABORATION</span>

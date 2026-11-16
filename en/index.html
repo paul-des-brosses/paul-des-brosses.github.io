@@ -696,6 +696,43 @@
       box-shadow: 0 4px 12px rgba(88, 135, 155, 0.2);
     }
 
+    /* "And today?" Box */
+    .cta-wip-box {
+      background: rgba(255, 255, 255, 0.7);
+      border: 1.5px dashed var(--border);
+      border-radius: 14px;
+      padding: 1.25rem 2rem;
+      max-width: 880px;
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .cta-wip-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 0 0 0.55rem 0;
+      letter-spacing: -0.01em;
+      text-align: center;
+    }
+    .cta-wip-text {
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--text-muted);
+      margin: 0 0 0.45rem 0;
+      text-align: center;
+    }
+    .cta-wip-text strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+    .cta-wip-text:last-child {
+      margin-bottom: 0;
+    }
+
     /* Box CV */
     .cta-cv-box {
       background: rgba(255, 255, 255, 0.7);
@@ -825,6 +862,9 @@
       }
       .cta-cv-box {
         padding: 1.5rem 1.15rem;
+      }
+      .cta-wip-box {
+        padding: 1.15rem 1rem;
       }
       .cta-cv-actions {
         width: 100%;
@@ -1048,6 +1088,17 @@
   <section id="contact" class="cta-section">
     <div id="a-propos"></div>
     <div class="wrap cta-container">
+
+      <!-- "AND TODAY?" BOX -->
+      <div class="cta-wip-box">
+        <h3 class="cta-wip-title">And today?</h3>
+        <p class="cta-wip-text">
+          I am currently working on <strong>Echoes of a Gesture</strong>, an applied research project exploring the quality and nuance of human movement as a continuous interaction modality. Using a <strong>markerless computer vision</strong> pipeline, the system translates physical expressivity and gesture dynamics into <strong>realtime generative visuals</strong>.
+        </p>
+        <p class="cta-wip-text">
+          Prototypes and test benches are actively in development, feel free to get in touch to discuss the technical approach.
+        </p>
+      </div>
 
       <div class="cta-header">
         <span class="mono cta-badge">CONTACT &amp; COLLABORATION</span>
