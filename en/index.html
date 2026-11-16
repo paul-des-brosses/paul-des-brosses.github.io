@@ -84,6 +84,8 @@
 
     html {
       scroll-behavior: smooth;
+      overflow-x: hidden;
+      max-width: 100%;
     }
 
     body {
@@ -91,6 +93,7 @@
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       overflow-x: hidden;
+      max-width: 100%;
       min-height: 100vh;
     }
 
@@ -307,11 +310,13 @@
       background: var(--bg);
       border-top: 1px solid var(--border);
       padding: 6rem 0;
+      overflow: hidden;
     }
 
     .perspective-stage {
       perspective: 1200px;
       perspective-origin: 50% 20%;
+      overflow: hidden;
     }
 
     /* Trame de 6 colonnes : ligne 1 = 2 cartes sur 3 colonnes,
@@ -446,6 +451,7 @@
       padding: 7rem 0 0 0;
       background: var(--bg);
       position: relative;
+      overflow: hidden;
     }
     .cta-container {
       display: flex;
@@ -468,11 +474,14 @@
       font-weight: 700;
     }
     .cta-title {
-      font-size: clamp(2.1rem, 3.8vw, 3.2rem);
+      font-size: clamp(1.65rem, 3.8vw, 3.2rem);
       font-weight: 600;
       letter-spacing: -0.03em;
       line-height: 1.15;
       color: var(--text);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      max-width: 100%;
     }
     .cta-subtitle {
       font-size: clamp(1rem, 1.15vw, 1.15rem);
@@ -486,14 +495,19 @@
     .cta-location {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.55rem;
       font-size: 0.72rem;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.08em;
       color: var(--text-muted);
       padding: 0.45rem 1.1rem;
       border: 1px solid var(--border);
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.5);
+      max-width: 100%;
+      text-align: center;
+      line-height: 1.4;
+      box-sizing: border-box;
     }
     .cta-location .status-dot-live {
       width: 7px;
@@ -795,6 +809,21 @@
     }
 
     @media (max-width: 600px) {
+      .cta-card {
+        padding: 1.25rem 1rem;
+        gap: 0.85rem;
+      }
+      .cta-card-icon {
+        width: 42px;
+        height: 42px;
+      }
+      .cta-location {
+        font-size: 0.65rem;
+        letter-spacing: 0.04em;
+        padding: 0.4rem 0.8rem;
+        border-radius: 12px;
+        flex-wrap: wrap;
+      }
       .cta-cv-box {
         padding: 1.5rem 1.15rem;
       }
@@ -855,14 +884,16 @@
     }
 
     @media (max-width: 768px) {
-      .hero-ui { padding: 2rem 1.5rem; }
-      .ui-top, .ui-bottom { display: flex; flex-direction: column; gap: 1rem; text-align: center; }
-      .ui-nav, .ui-actions { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+      .hero-ui { padding: 2rem 1.25rem; }
+      .ui-top, .ui-bottom { display: flex; flex-direction: column; gap: 0.85rem; text-align: center; }
+      .ui-nav, .ui-actions { gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
+      .ui-center::before { inset: -2rem -1rem; }
+      .ui-name { font-size: clamp(2.2rem, 8.5vw, 4.5rem); }
       .ui-bottom { grid-template-columns: 1fr; }
       .projets-3d-grid { grid-template-columns: minmax(0, 1fr); }
-      .wrap { padding: 0 1.5rem; }
-      #projets, #a-propos { padding: 4rem 0; }
-      #contact { padding: 4rem 0 0 0; }
+      .wrap { padding: 0 1.25rem; max-width: 100%; box-sizing: border-box; }
+      #projets, #a-propos { padding: 4rem 0; overflow: hidden; }
+      #contact { padding: 4rem 0 0 0; overflow: hidden; }
     }
   </style>
 </head>
